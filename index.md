@@ -1,6 +1,5 @@
 ---
-layout: page
-title : simple site
+layout: default
 ---
 An overview of project work: 
 
