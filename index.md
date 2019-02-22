@@ -1,5 +1,6 @@
 ---
 layout: page
+title : simple site
 ---
 An overview of project work: 
 
