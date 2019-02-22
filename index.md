@@ -1,6 +1,2 @@
----
-layout: default
----
-<html>
-Click <a href="page1.html">here</a> to go to project page.
-</html>
+An overview of project work: 
+– [Introduction to reinforcement learning] (https://github.com/aparna-surendra/aparna-surendra.github.io/blob/master/page1.html)
