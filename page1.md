@@ -10,15 +10,8 @@ text {
 }
 </style>
 <head>
-	<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
-<body>
-</html>
-# Header 1
-ghghghgghghghgghghghgghghghgghghghgghghghgghghghgghghghgghghghgghghghgghghghgghghghgghghghgghghghgghghghgghghghgghghghgghghghgghghghg
-ghghghg
-<html>
 <div id="grid"></div>
 <script src="grid.js" type="text/javascript"></script>
-</body>
 </html>
