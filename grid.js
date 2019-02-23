@@ -54,8 +54,8 @@ console.log(gridData);
 
 var grid = d3.select("#grid")
 	.append("svg")
-	.attr("width","510px")
-	.attr("height","510px");
+	.attr("width","250px")
+	.attr("height","250px");
 	
 var row = grid.selectAll(".row")
 	.data(gridData)
