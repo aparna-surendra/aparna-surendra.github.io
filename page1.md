@@ -2,6 +2,7 @@
 layout: default
 ---
 
+# Heading 1
 <html>
 <style>
 text {
@@ -21,3 +22,5 @@ text {
 <script src="grid.js" type="text/javascript"></script>
 </body>
 </html>
+
+# Heading2
