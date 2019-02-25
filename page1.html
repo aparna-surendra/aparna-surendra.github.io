@@ -26,17 +26,17 @@ body{
     <h3>Initial intuition</h3>
   </header>
 <div id="content">
-<div align="center">
 Reinforcement learning is a method of learning that relies on interaction with an environment. It can be considered a computational approach to how a child learns – we learn how to walk without an explicit teacher, and instead learn which actions to take through trial-and-error, and identifying cause and effect in relation to our physical movement and the environment. 
-
+\n
 How does this translate to a computational approach? The child (or ‘learner’) can be considered as an agent who is trying to maximise a reward signal – there are negative rewards for falling (the immediate pain of the fall), and positive rewards for balancing and – eventually– walking (the absence of pain; the benefits of increased mobility). 
-
+\n
 To make this more concrete, we can simplify this using game based on a simple 3 x 3 grid environment. The goal of the game is simple – to click on squares and collect as high a total reward as possible.  
-
+\n
 Through interaction with the game, the user will learn:
 1. Constraints: The game must start on a specific square; movement from one square to another is based on certain conditions. 
 2. Reward details: Some squares have a positive reward (+1), others have a negative reward (-1). 
 
+<div align="center">
 <div id="grid"></div>
 <script src="grid.js" type="text/javascript"></script>
 </div>
