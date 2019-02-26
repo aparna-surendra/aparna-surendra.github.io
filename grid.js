@@ -7,10 +7,10 @@ function gridData() {
 	var height = 50;
 	var click = 0;
 	// iterate for rows	
-	for (var row = 0; row < 3; row++) {
+	for (var row = 0; row < 4; row++) {
 		data.push( new Array() );
 		// iterate for cells/columns inside rows
-		for (var column = 0; column < 3; column++) {
+		for (var column = 0; column < 4; column++) {
 		if (column == row){
 			data[row].push({
 				x: xpos,
@@ -43,8 +43,7 @@ function gridData() {
 	return data;
 }
 
-var gridData = gridData();	
-// I like to log the data to the console for quick debugging
+function build_grid(gridData, grid){
 var blue_counter = 0;
 var yellow_counter = 0; 
 var x_start = -49; 
@@ -52,24 +51,21 @@ var y_start = -49;
 
 console.log(gridData);
 
-var grid = d3.select("#grid")
-	.append("svg")
-	.attr("width","200px")
-	.attr("height","200px");
-	
 var row = grid.selectAll(".row")
 	.data(gridData)
 	.enter().append("g")
 	.attr("class", "row");
 
 grid.append("text")
-	    	.attr("x", 0)
-	    	.attr("y", 165)
+			.attr("class", "text_remove")
+	    	.attr("x", 215)
+	    	.attr("y", 100)
 	    	.text(function(d,i){return  "BLUE COUNTER: " + blue_counter;})
 
 grid.append("text")
-	    	.attr("x", 0)
-	    	.attr("y", 175)
+			.attr("class", "text_remove")
+	    	.attr("x", 215)
+	    	.attr("y", 112)
 	    	.text(function(d,i){return  "ORANGE COUNTER: " + yellow_counter;})
 
 var column = row.selectAll(".square")
@@ -103,31 +99,58 @@ var column = row.selectAll(".square")
 		   x_start = d.x;
 		   y_start = d.y;
 		   total_counter = blue_counter - yellow_counter;	
-		grid.selectAll("text").remove()
-		grid.append("text")
-	    	.attr("x", 0)
-	    	.attr("y", 165)
-	    	.text(function(d,i){return  "BLUE COUNTER: " + blue_counter;})
-	    grid.append("text")
-	    	.attr("x", 0)
-	    	.attr("y", 175)
-	    	.text(function(d,i){return  "ORANGE COUNTER: " + yellow_counter;})
-	    grid.append("text")
-	    	.attr("x", 0)
-	    	.attr("y", 190)
-	    	.text(function(d,i){return  "TOTAL: " + total_counter;})
-	    	.style("font-weight", "bold")
-	    	.style("font-size", "12px")
-	    	.style("fill", function (d) {if (total_counter >=0) {return "blue"} else {return "red"}});
-
-
-
+		   grid.selectAll(".text_remove").remove()
+		   grid.append("text")
+		   		.attr("class", "text_remove")
+		    	.attr("x", 215)
+		    	.attr("y",100)
+		    	.text(function(d,i){return  "BLUE COUNTER: " + blue_counter;})
+	       grid.append("text")
+	       		.attr("class", "text_remove")
+		    	.attr("x", 215)
+		    	.attr("y", 112)
+		    	.text(function(d,i){return  "ORANGE COUNTER: " + yellow_counter;})
+	       grid.append("text")
+	  			.attr("class", "text_remove")
+		    	.attr("x", 215)
+		    	.attr("y", 125)
+		    	.text(function(d,i){return  "TOTAL: " + total_counter;})
+		    	.style("font-weight", "bold")
+		    	.style("font-size", "12px")
+		    	.style("fill", function (d) {if (total_counter >=0) {return "blue"} else {return "red"}});
 
 	   //if ((d.click)%4 == 2 ) { d3.select(this).style("fill","#F56C4E"); }
 	   //if ((d.click)%4 == 3 ) { d3.select(this).style("fill","#838690"); }
     }}
  
     );
+}
+var grid = d3.select("#grid")
+	.append("svg")
+	.attr("width","500px")
+	.attr("height","250px");
 
 
+grid.append("circle")
+	.attr("cx", 265)
+	.attr("cy", 150)
+	.attr("r", 7)
+	.attr("fill", "#D2B48C")
+	.attr("font-color", "white")
+	.attr("stroke", "black")
+	.on('click', function(){
+		grid.selectAll(".row").remove();
+		grid.selectAll(".text_remove").remove()
+		build_grid(gridData, grid);
+	})
+
+grid.append("text")
+	.text("RESET")
+	.attr("x", 215)
+	.attr("y", 155)
+	.style("font-weight", "bold")
+
+
+var gridData = gridData();	
+build_grid(gridData, grid);
 
