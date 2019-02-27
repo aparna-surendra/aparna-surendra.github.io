@@ -3,15 +3,15 @@ function gridData() {
 	var data = new Array();
 	var xpos = 1; //starting xpos and ypos at 1 so the stroke will show when we make the grid below
 	var ypos = 1;
-	var width = 50;
-	var height = 50;
+	var width = 10;
+	var height = 10;
 	var click = 0;
 	// iterate for rows	
-	for (var row = 0; row < 4; row++) {
+	for (var row = 0; row < 20; row++) {
 		data.push( new Array() );
 		// iterate for cells/columns inside rows
-		for (var column = 0; column < 4; column++) {
-		if (column == row){
+		for (var column = 0; column < 20; column++) {
+		if (column <= 8){
 			data[row].push({
 				x: xpos,
 				y: ypos,
@@ -19,9 +19,11 @@ function gridData() {
 				height: height,
 				click: click,
 				activate:0,
-				text: "blue"
+				text: "blue",
+				row: row,
+				column: column
 			})}
-		if (column != row){
+		if (column > 8){
 			data[row].push({
 				x: xpos,
 				y: ypos,
@@ -29,7 +31,9 @@ function gridData() {
 				height: height,
 				click: click,
 				activate:0,
-				text: "yellow"
+				text: "orange",
+				row: row,
+				column: column
 			})}
 		;
 			// increment the x position. I.e. move it over by 50 (width variable)
@@ -42,12 +46,17 @@ function gridData() {
 	}
 	return data;
 }
+function color(transition, fill) {
+  transition
+      .style("fill", fill)
+}
 
 function build_grid(gridData, grid){
 var blue_counter = 0;
 var yellow_counter = 0; 
-var x_start = -49; 
-var y_start = -49; 
+var x_start = 1; 
+var y_start = 1; 
+var total_counter = blue_counter + yellow_counter; 
 
 console.log(gridData);
 
@@ -68,6 +77,15 @@ grid.append("text")
 	    	.attr("y", 112)
 	    	.text(function(d,i){return  "ORANGE COUNTER: " + yellow_counter;})
 
+grid.append("text")
+	  			.attr("class", "text_remove")
+		    	.attr("x", 215)
+		    	.attr("y", 130)
+		    	.text(function(d,i){return  "TOTAL POINTS: " + total_counter;})
+		    	.style("font-weight", "bold")
+		    	.style("font-size", "12px")
+		    	.style("fill", function (d) {if (total_counter >=0) {return "blue"} else {return "red"}});
+
 var column = row.selectAll(".square")
 	.data(function(d) { return d; })
 	.enter().append("rect")
@@ -76,11 +94,12 @@ var column = row.selectAll(".square")
 	.attr("y", function(d) { return d.y; })
 	.attr("width", function(d) { return d.width; })
 	.attr("height", function(d) { return d.height; })
-	.attr("font-family", "sans-serif")
-    .attr("font-size", "20px")
-    .attr("font-color", "red")
-    .attr("fill", "red")
 	.style("fill", "#D3D3D3")
+	.attr("class", function(d){
+    	if ((d.row == 0) & (d.column ==0)){
+    	color(d3.select(this).attr("class", "selected").transition(), "#686868")
+    	return "selected"}
+    })
 	.style("stroke", "#222")
 	.on("mouseover", function(d) {   
         d3.select(this).style("opacity", .6)  
@@ -90,12 +109,17 @@ var column = row.selectAll(".square")
     })
 	.on('click', function(d) {
        d.click ++;
-       if (((d.x) >= x_start-50 & d.x <=x_start+50) & ((d.y) >= y_start-50 & (d.y) <= y_start+50)){
+       console.log(d.x)
+       console.log(d.y)
+       if (((d.x) >= x_start-10 & d.x <=x_start+10) & ((d.y) >= y_start-10 & (d.y) <= y_start+10)){
 	       //if ((d.click)%2 == 0) { d3.select(this).style("fill", "white");}
 	       	// text(function (d) { return d.name; }).style("font-color","#2C93E8"); }
 		   if ((d.text) == "blue") { d3.select(this).style("fill","blue"); if ((d.activate)== 0) {blue_counter ++;}}
-		   if ((d.text) == "yellow") {d3.select(this).style("fill","orange"); if ((d.activate)== 0) {yellow_counter ++;}}
+		   if ((d.text) == "orange") {d3.select(this).style("fill","orange"); if ((d.activate)== 0) {yellow_counter ++;}}
 		   if (d.activate == 0){d.activate ++;}
+		   d3.selectAll(".selected").style("fill", function(d) {return d.text;})
+		   d3.selectAll(".selected").classed("selected", false)
+           color(d3.select(this).attr("class", "selected").transition(), "#686868")
 		   x_start = d.x;
 		   y_start = d.y;
 		   total_counter = blue_counter - yellow_counter;	
@@ -104,17 +128,17 @@ var column = row.selectAll(".square")
 		   		.attr("class", "text_remove")
 		    	.attr("x", 215)
 		    	.attr("y",100)
-		    	.text(function(d,i){return  "BLUE COUNTER: " + blue_counter;})
+		    	.text(function(d,i){return  "BLUE [+1] COUNTER: " + blue_counter;})
 	       grid.append("text")
 	       		.attr("class", "text_remove")
 		    	.attr("x", 215)
 		    	.attr("y", 112)
-		    	.text(function(d,i){return  "ORANGE COUNTER: " + yellow_counter;})
+		    	.text(function(d,i){return  "ORANGE [-1] COUNTER: " + yellow_counter;})
 	       grid.append("text")
 	  			.attr("class", "text_remove")
 		    	.attr("x", 215)
-		    	.attr("y", 125)
-		    	.text(function(d,i){return  "TOTAL: " + total_counter;})
+		    	.attr("y", 130)
+		    	.text(function(d,i){return  "TOTAL POINTS: " + total_counter;})
 		    	.style("font-weight", "bold")
 		    	.style("font-size", "12px")
 		    	.style("fill", function (d) {if (total_counter >=0) {return "blue"} else {return "red"}});
@@ -128,7 +152,7 @@ var column = row.selectAll(".square")
 var grid = d3.select("#grid")
 	.append("svg")
 	.attr("width","500px")
-	.attr("height","250px");
+	.attr("height","220px");
 
 
 grid.append("circle")

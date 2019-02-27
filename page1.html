@@ -24,7 +24,7 @@ text {
     <h3>1/5 Initial intuition <a href="page2.html"><img src="images/right_arrow.png"style="width:10px;height:15px;"></a></h3>
   </header>
 <div id="content">
-<div id="" style="overflow-y:scroll; height:400px;">
+<div id="" style="overflow-y:scroll; height:600px;">
 <p>
 Reinforcement learning is a method of learning that relies on interaction with an environment. It can be considered a computational approach to how a child learns – we learn how to walk without an explicit teacher, and instead learn which actions to take through trial-and-error, and identifying cause and effect in relation to our physical movement and the environment. 
 </p>
@@ -34,13 +34,19 @@ How does this translate to a computational approach? The child (or ‘learner’
 <p>
 To make this more concrete, we can simplify this using game based on a simple 3 x 3 grid environment. The goal of the game is simple – to click on squares and collect as high a total reward as possible.  
 Through interaction with the game, the user will learn:
-1. Constraints: The game must start on a specific square; movement from one square to another is based on certain conditions. 
-2. Reward details: Some squares have a positive reward (+1), others have a negative reward (-1). 
+<ul> 1. Constraints: The game must start on a specific square; movement from one square to another is based on certain conditions. </ul>
+<ul> 2. Reward details: Some squares have a positive reward (+1), others have a negative reward (-1). </ul>
 </p>
 <div align="center">
 <div id="grid"></div>
-<script src="grid.js" type="text/javascript"></script>
+<script src="grids/grid.js" type="text/javascript"></script>
 </div>
+<p>
+After training with the environment, you should be able to hit ‘reset’ and play the game for maximum cumulative reward, which is +3 points, by traversing the diagonal. Through interaction, you would have learned the constraints – the game must begin at the top-left corner, and you can only move along adjacent squares, and the rewards – each square along the diagonal has a positive reward (+1), and all other squares have a negative reward (-1). </p>
+
+<p>These are the basics of reinforcement learning!</p> 
+
+
 </div>
 </div>
 </body>
