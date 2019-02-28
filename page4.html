@@ -1,0 +1,82 @@
+---
+layout: default
+---
+
+<html>
+<style>
+#content {
+  float: left;
+  width: 800px;
+  margin: 0;
+}
+text {
+  font: 11px "Proxima Nova",sans-serif;
+  text-anchor: left;
+}
+.column {
+  float: left;
+  width: 45%;
+  padding: 10px;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+</style>
+<head>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+</head>
+<body>
+ <header>
+    <h1>Introduction to reinforcement learning</h1>
+    <h3>4/5 Initial intuition <a href="page5.html"><img src="images/right_arrow.png"style="width:10px;height:15px;"></a></h3>
+  </header>
+<div id="content">
+<div id="" style="overflow-y:scroll; height:600px;">
+<p>
+The 4 x 4 grid environment is simplistic, but it expresses some key elements in a reinforcement learning system. The agent’s objective is to maximise the total reward it receives over the long run. Ultimately, our strategy involves a series of squares (known as <b>‘states’</b>) and <b>actions</b>. This mapping of states to actions that are taken when in those states can be considered a <b>policy</b>. The policy that yields the highest cumulative long-term reward is known as the <b>optimal policy</b>. 
+</p>
+<div align="center">
+<div id="grid"></div>
+<script src="grids/grid8.js" type="text/javascript"></script>
+</div>
+<p>At each time-step, the agent receives a <b>reward signal</b> (either positive or negative), which defines the good and bad events for the agent. But success in this game is not based on selecting a state for its immediate reward – it is based on selecting it for its cumulative, long-term reward (the rewards attached to a policy that begin with this state), which is known as the state’s <b>value</b>. We select states based on their estimated value: if State A has a higher value than State B, we will select State A. 
+</p> 
+<p>
+To make this more concrete, consider a revised environment. The game must begin with a move to State 2, and completed within 4 moves. The first move has been made for you – you have 3 left. Experiment to find the optimal policy.
+</p>
+<div class = "row">
+<div class="column">
+<div id="grid2"></div>
+<script src="grids/grid9.js" type="text/javascript"></script>
+</div>
+<div class="column">
+<div id="grid3"></div>
+<script src="grids/grid10.js" type="text/javascript"></script>
+</div>
+</div>
+<p>From State 2, you can choose to move to State 3 or State 5. If we were to consider the immediate reward, the states would be equivalent – you receive +1 for moving to either state. However, if we consider the value – which is the long-term cumulative reward received from a policy that begins with a given state – State 5 is more desirable than State 3. Policy #1 shows the highest value policy for the game when moving from State 2 to State 3, which is a cumulative reward of +1.  Policy #2 shows the highest value policy for the game when moving from State 2 to State 5, which is a cumulative reward of +2. Policy #2 is the optimal policy for the game. 
+ </p>
+<div class = "row">
+<div class="column">
+<div id="grid4"></div>
+<script src="grids/grid11.js" type="text/javascript"></script>
+</div>
+<div class="column">
+<div id="grid5"></div>
+<script src="grids/grid12.js" type="text/javascript"></script>
+</div>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

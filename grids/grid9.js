@@ -11,7 +11,7 @@ function gridData() {
 		data.push( new Array() );
 		// iterate for cells/columns inside rows
 		for (var column = 0; column < 4; column++) {
-		if (column == row){
+		if ((column == row)){
 			data[row].push({
 				x: xpos,
 				y: ypos,
@@ -19,9 +19,19 @@ function gridData() {
 				height: height,
 				click: click,
 				activate:0,
-				text: "blue"
+				text: "#3090C7"
 			})}
-		if (column != row){
+		else if ((column == 3) & (row == 0)) {
+			data[row].push({
+				x: xpos,
+				y: ypos,
+				width: width,
+				height: height,
+				click: click,
+				activate:0,
+				text: "#3090C7"
+			})}
+		else {
 			data[row].push({
 				x: xpos,
 				y: ypos,
@@ -31,6 +41,8 @@ function gridData() {
 				activate:0,
 				text: "orange"
 			})}
+	
+
 		;
 			// increment the x position. I.e. move it over by 50 (width variable)
 			xpos += width;
@@ -49,9 +61,9 @@ function color(transition, fill) {
 function build_grid(gridData, grid){
 var blue_counter = 0;
 var yellow_counter = 0; 
-var total_counter = blue_counter - yellow_counter; 
-var x_start = -49; 
-var y_start = -49; 
+var total_counter = blue_counter + yellow_counter; 
+var x_start = 49; 
+var y_start = 49; 
 
 console.log(gridData);
 
@@ -59,26 +71,6 @@ var row = grid.selectAll(".row")
 	.data(gridData)
 	.enter().append("g")
 	.attr("class", "row");
-
-grid.append("text")
-			.attr("class", "text_remove")
-	    	.attr("x", 215)
-	    	.attr("y", 100)
-	    	.text(function(d,i){return  "BLUE COUNTER: " + blue_counter;})
-
-grid.append("text")
-			.attr("class", "text_remove")
-	    	.attr("x", 215)
-	    	.attr("y", 112)
-	    	.text(function(d,i){return  "ORANGE COUNTER: " + yellow_counter;})
-
-grid.append("text")
-	  		.attr("class", "text_remove")
-		    .attr("x", 215)
-		    .attr("y", 130)
-		    .text(function(d,i){return  "TOTAL POINTS: " + total_counter;})
-		    .style("font-weight", "bold")
-		    .style("font-size", "12px")
 
 var column = row.selectAll(".square")
 	.data(function(d) { return d; })
@@ -90,22 +82,23 @@ var column = row.selectAll(".square")
 	.attr("height", function(d) { return d.height; })
 	.attr("font-family", "sans-serif")
     .attr("font-size", "20px")
-    .attr("font-color", "red")
-    .attr("fill", "red")
-	.style("fill", "#D3D3D3")
 	.style("stroke", "#222")
+	.style("fill","#D3D3D3" )
+	.style("fill", function (d){
+		if (d.text == "#3090C7") {return d.text}	
+		else {return "#D3D3D3"}	
+}
+	)
 	.on("mouseover", function(d) {   
         d3.select(this).style("opacity", .6)  
         })                  
     .on("mouseout", function(d) {       
         d3.select(this).style("opacity", 1);   
     })
-	.on('click', function(d) {
+    .on('click', function(d) {
        d.click ++;
        if (((d.x) >= x_start-50 & d.x <=x_start+50) & ((d.y) >= y_start-50 & (d.y) <= y_start+50)){
-	       //if ((d.click)%2 == 0) { d3.select(this).style("fill", "white");}
-	       	// text(function (d) { return d.name; }).style("font-color","#2C93E8"); }
-		   if ((d.text) == "blue") { d3.select(this).style("fill","blue"); if ((d.activate)== 0) {blue_counter ++;}}
+	       if ((d.text) == "#3090C7") { d3.select(this).style("fill",d.text); if ((d.activate)== 0) {blue_counter ++;}}
 		   if ((d.text) == "orange") {d3.select(this).style("fill","orange"); if ((d.activate)== 0) {yellow_counter ++;}}
 		   if (d.activate == 0){d.activate ++;}
 		   d3.selectAll(".selected").style("fill", function(d) {return d.text;})
@@ -135,40 +128,35 @@ var column = row.selectAll(".square")
 		    	.style("font-size", "12px")
 		    	.style("fill", function (d) {if (total_counter >=0) {return "blue"} else {return "red"}});
 
-	   //if ((d.click)%4 == 2 ) { d3.select(this).style("fill","#F56C4E"); }
-	   //if ((d.click)%4 == 3 ) { d3.select(this).style("fill","#838690"); }
-    }}
+	 }}
  
     );
+
+		
+for (var square = 0; square < 16; square++) {
+	grid.append("text")
+		.text(square)
+		.attr("x",  ((square%4 * 50)+ 20))
+		.attr("y",Math.floor(square/4)*50 +30)
+		.style("font-color","red")
+		.style("font-weight", "bold")
+
+}
 }
 
-
-var grid = d3.select("#grid")
+var grid2 = d3.select("#grid2")
 	.append("svg")
 	.attr("width","500px")
 	.attr("height","220px");
 
-
-grid.append("circle")
-	.attr("cx", 265)
-	.attr("cy", 150)
-	.attr("r", 7)
-	.attr("fill", "#D2B48C")
-	.attr("font-color", "white")
-	.attr("stroke", "black")
-	.on('click', function(){
-		grid.selectAll(".row").remove();
-		grid.selectAll(".text_remove").remove()
-		build_grid(gridData, grid);
-	})
-
-grid.append("text")
-	.text("RESET")
-	.attr("x", 215)
-	.attr("y", 155)
+grid2.append("text")
+	.text("New environment with revealed rewards")
+	.attr("x", 0)
+	.attr("y", 215)
 	.style("font-weight", "bold")
+	.style("font-size", "12px")
 
 
 var gridData = gridData();	
-build_grid(gridData, grid);
+build_grid(gridData, grid2);
 

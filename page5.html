@@ -1,0 +1,57 @@
+---
+layout: default
+---
+
+<html>
+<style>
+#content {
+  float: left;
+  width: 800px;
+  margin: 0;
+}
+text {
+  font: 11px "Proxima Nova",sans-serif;
+  text-anchor: left;
+}
+.column {
+  float: left;
+  width: 45%;
+  padding: 10px;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+</style>
+<head>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+</head>
+<body>
+ <header>
+    <h1>Introduction to reinforcement learning</h1>
+    <h3>5/5 Initial intuition <a href="page5.html"><img src="images/right_arrow.png"style="width:10px;height:15px;"></a></h3>
+  </header>
+<div id="content">
+<div id="" style="overflow-y:scroll; height:600px;">
+<p>
+How do these grids connect to more complex environments, such as Atari, Pong, or Go?
+Consider an agent trained to play the Atari game 'Pong'.
+</p>
+<div align="center">
+<div id="grid"></div>
+<script src="grids/grid8.js" type="text/javascript"></script>
+</div>
+
+
+
+</div>
+</div>
+</body>
+</html>

@@ -19,7 +19,8 @@ function gridData() {
 				height: height,
 				click: click,
 				activate:0,
-				text: "blue"
+				text: "blue",
+				square_n: (row+1)*2 + (column+1)
 			})}
 		if (column != row){
 			data[row].push({
@@ -29,7 +30,8 @@ function gridData() {
 				height: height,
 				click: click,
 				activate:0,
-				text: "orange"
+				text: "orange",
+				square_n: (row+1)*2 + (column+1)
 			})}
 		;
 			// increment the x position. I.e. move it over by 50 (width variable)
@@ -47,9 +49,9 @@ function color(transition, fill) {
       .style("fill", fill)
 }
 function build_grid(gridData, grid){
-var blue_counter = 0;
+var blue_counter = 4;
 var yellow_counter = 0; 
-var total_counter = blue_counter - yellow_counter; 
+var total_counter = blue_counter + yellow_counter; 
 var x_start = -49; 
 var y_start = -49; 
 
@@ -64,13 +66,13 @@ grid.append("text")
 			.attr("class", "text_remove")
 	    	.attr("x", 215)
 	    	.attr("y", 100)
-	    	.text(function(d,i){return  "BLUE COUNTER: " + blue_counter;})
+	    	.text(function(d,i){return  "BLUE COUNTER [+1]: " + blue_counter;})
 
 grid.append("text")
 			.attr("class", "text_remove")
 	    	.attr("x", 215)
 	    	.attr("y", 112)
-	    	.text(function(d,i){return  "ORANGE COUNTER: " + yellow_counter;})
+	    	.text(function(d,i){return  "ORANGE COUNTER [-1]: " + yellow_counter;})
 
 grid.append("text")
 	  		.attr("class", "text_remove")
@@ -79,6 +81,8 @@ grid.append("text")
 		    .text(function(d,i){return  "TOTAL POINTS: " + total_counter;})
 		    .style("font-weight", "bold")
 		    .style("font-size", "12px")
+		    .style("fill", function (d) {if (total_counter >=0) {return "blue"} else {return "red"}});
+
 
 var column = row.selectAll(".square")
 	.data(function(d) { return d; })
@@ -90,83 +94,41 @@ var column = row.selectAll(".square")
 	.attr("height", function(d) { return d.height; })
 	.attr("font-family", "sans-serif")
     .attr("font-size", "20px")
-    .attr("font-color", "red")
-    .attr("fill", "red")
-	.style("fill", "#D3D3D3")
 	.style("stroke", "#222")
+	.style("fill","#D3D3D3" )
+	.style("fill", function (d){
+		if (d.text == "blue") {return "#3090C7"}	
+		else {return "#D3D3D3"}	
+}
+	)
 	.on("mouseover", function(d) {   
         d3.select(this).style("opacity", .6)  
         })                  
     .on("mouseout", function(d) {       
         d3.select(this).style("opacity", 1);   
-    })
-	.on('click', function(d) {
-       d.click ++;
-       if (((d.x) >= x_start-50 & d.x <=x_start+50) & ((d.y) >= y_start-50 & (d.y) <= y_start+50)){
-	       //if ((d.click)%2 == 0) { d3.select(this).style("fill", "white");}
-	       	// text(function (d) { return d.name; }).style("font-color","#2C93E8"); }
-		   if ((d.text) == "blue") { d3.select(this).style("fill","blue"); if ((d.activate)== 0) {blue_counter ++;}}
-		   if ((d.text) == "orange") {d3.select(this).style("fill","orange"); if ((d.activate)== 0) {yellow_counter ++;}}
-		   if (d.activate == 0){d.activate ++;}
-		   d3.selectAll(".selected").style("fill", function(d) {return d.text;})
-		   d3.selectAll(".selected").classed("selected", false)
-           //d3.select(this).attr("class", "selected").style("fill", "#606060");
-          color(d3.select(this).attr("class", "selected").transition(), "#686868")
-		   x_start = d.x;
-		   y_start = d.y;
-		   total_counter = blue_counter - yellow_counter;	
-		   grid.selectAll(".text_remove").remove()
-		   grid.append("text")
-		   		.attr("class", "text_remove")
-		    	.attr("x", 215)
-		    	.attr("y",100)
-		    	.text(function(d,i){return  "BLUE COUNTER: " + blue_counter;})
-	       grid.append("text")
-	       		.attr("class", "text_remove")
-		    	.attr("x", 215)
-		    	.attr("y", 112)
-		    	.text(function(d,i){return  "ORANGE COUNTER: " + yellow_counter;})
-	       grid.append("text")
-	  			.attr("class", "text_remove")
-		    	.attr("x", 215)
-		    	.attr("y", 125)
-		    	.text(function(d,i){return  "TOTAL: " + total_counter;})
-		    	.style("font-weight", "bold")
-		    	.style("font-size", "12px")
-		    	.style("fill", function (d) {if (total_counter >=0) {return "blue"} else {return "red"}});
+    });
+for (var square = 0; square < 16; square++) {
+	grid.append("text")
+		.text(square)
+		.attr("x",  ((square%4 * 50)+ 20))
+		.attr("y",Math.floor(square/4)*50 +30)
+		.style("font-color","red")
+		.style("font-weight", "bold")
 
-	   //if ((d.click)%4 == 2 ) { d3.select(this).style("fill","#F56C4E"); }
-	   //if ((d.click)%4 == 3 ) { d3.select(this).style("fill","#838690"); }
-    }}
- 
-    );
 }
-
+}
 
 var grid = d3.select("#grid")
 	.append("svg")
 	.attr("width","500px")
 	.attr("height","220px");
 
-
-grid.append("circle")
-	.attr("cx", 265)
-	.attr("cy", 150)
-	.attr("r", 7)
-	.attr("fill", "#D2B48C")
-	.attr("font-color", "white")
-	.attr("stroke", "black")
-	.on('click', function(){
-		grid.selectAll(".row").remove();
-		grid.selectAll(".text_remove").remove()
-		build_grid(gridData, grid);
-	})
-
 grid.append("text")
-	.text("RESET")
-	.attr("x", 215)
-	.attr("y", 155)
+	.text("Optimal Policy with Labelled States")
+	.attr("x", 0)
+	.attr("y", 215)
 	.style("font-weight", "bold")
+	.style("font-size", "12px")
 
 
 var gridData = gridData();	
