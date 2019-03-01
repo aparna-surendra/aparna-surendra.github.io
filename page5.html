@@ -41,16 +41,24 @@ text {
 <div id="content">
 <div id="" style="overflow-y:scroll; height:600px;">
 <p>
-How do these grids connect to more complex environments, such as Atari, Pong, or Go?
+How do these grids connect to more complex environments, such as Atari games, chess or Go?
 Consider an agent trained to play the Atari game 'Pong'.
 </p>
 <div align="center">
 <video width="320" height="240" controls>
-  <source src="images/pong_orig.mp4" type="video/mp4">
+  <source src="images/pong_orig.mp4"  type="video/mp4">
 </video>
+<br><b><i>Trained agent on right</b></i>
 </div>
-
-
+<p>Pong has the same building blocks as the grid environment. <ul> The <b>state</b> is the input perceived by the agent. While our 4 x 4 grid had 16 states, Pong's state space is far greater. For simplicity, envision that a state is every frame possible from the video input, including all possible pixel variations to represent the two paddles and the ball.</ul> <ul> The <b>actions</b> are the legal actions available in Pong (move the agent's paddle up, down, no movement)</ul> <ul>The <b> reward signal</b> is +1 or -1, depending on whether the agent scores or not. </ul><ul> The <b>policy</b> is the mapping of states to actions. We can intuit what makes a policy based on an analysis of how a human plays Pong. When we see a ball cresting towards us, we select a series of actions to move the paddle in preparation for the shot and - based on an assessment of our opponent's position – angle it in a way that seems most likely to score. The sequence of actions based on the changing states – which includes our position, our opponent's position, and the ball's –  is the policy. </ul>
+<ul>We can also intuit a state's <b>value function</b>. A state where the opponent is about to score (e.g. the agent's paddle is at the top right corner, while as the ball is about to reach the bottom right corner) is an undesirable or low-value state. Conversely, a state where the agent's paddle is about to strike the ball is a high-value state. </ul>
+</p>
+Through Pong, we can identify some of the challenges related to more complex environments.
+<ul><b>Large state-action spaces:</b> </ul>
+<ul><b>Uncertainty in the environment:</b></ul>
+<ul><b>Reward assignment: </b> The agent  influences the reward signal  through its actions – which either leads to a direct reward, or an indirect effect by changing the environment’s state. </ul>
+<p>
+</p>
 </div>
 </div>
 </body>
