@@ -35,25 +35,21 @@ p, ul {
 
 }
 
-  th {
-            text-align: right;
+ th {
+            text-align: left;
             font-weight: bold;
+      }
+
+ table {
+         text-align: left;
+         padding-right: 2px;
+         margin-right: 3px;
+         width: 100%;
         }
 
-        table {
-            text-align: right;
-            padding-right: 2px;
-            margin-right: 3px;
-            width: 100%;
-        }
-
-        td:nth-child(6) {
-            margin-right: 8px;
-        }
-
-        td:nth-child(1) {
-            width: 200px;
-        }
+td, th {
+border-left: solid 1px black;
+} 
 
 </style>
 <head>
@@ -73,12 +69,20 @@ p, ul {
 We now understand the intuition behnd reinforcement learning: an agent maximises reward over the long-term, by selecting actions that lead to 'high value' states. But how does an agent 'learn' a value function? 
 
 We can return to the 4 x 4 grid. We have talked about calculating values for each state (by calculating long-term rewards), but we can add more rigor to this. 
-
 </p>
 <div align="center">
 <div id="grid"></div>
 <script src="grids/grid8.js" type="text/javascript"></script>
 </div> 
+<div class = "row">
+<div class="column">
+<div id="grid3"></div>
+</div>
+<div class="column">
+<table id="table"></table>
+</div>
+<script src="grids/grid13.js" type="text/javascript"></script>
+</div>
 
 <p> First, let's move to  appropriate terminology. Every move can be considered a time-step  \(t\), and all states, actions, and rewards are represented by the time step in which they are experienced (states  \(s\)), taken (actions \(a\)), or received (rewards  \(r\)). </p>
 
@@ -98,11 +102,10 @@ Consider the first move, from off-the-grid to Square 0. </p>
 <ul><li> And so on ... </ul></li>
 </ol>
 <p>This is programmatically defining what was already intuitive to us. Let's make this more concrete and calculate some values using this method. If we consider  first states as off-the grid,  </p>
-<div id="grid3"></div>
-<table id="table"> </table>
-<script src="grids/grid13.js" type="text/javascript"></script>
 
-</div>
+<p>
+Now let's consider my 
+</p>
 </div>
 </body>
 </html>

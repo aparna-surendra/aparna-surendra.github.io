@@ -1,0 +1,221 @@
+---
+layout: default
+---
+
+<html>
+<style>
+#content {
+  float: left;
+  width: 800px;
+  margin: 0;
+}
+text {
+  font: 11px "Proxima Nova",sans-serif;
+  text-anchor: left;
+}
+.column {
+  float: left;
+  width: 45%;
+  padding: 10px;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.column2 {
+  float: left;
+  width: 32%;
+}
+
+ul, ol {
+    margin: 0;
+}
+
+p, ul {
+
+    margin: 15px;
+
+}
+
+ th {
+            text-align: left;
+            font-weight: bold;
+      }
+
+ table {
+         text-align: left;
+         padding-right: 2px;
+         margin-right: 3px;
+         width: 100%;
+        }
+
+td, th {
+border-left: solid 1px black;
+} 
+
+</style>
+<head>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+	<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+</head>
+<body>
+ <header>
+    <h1>Introduction to reinforcement learning</h1>
+    <h3>1/5 Introducing an RL algorithm <a href="page5.html"><img src="images/right_arrow.png"style="width:10px;height:15px;"></a></h3>
+  </header>
+<div id="content">
+<div id="" style="overflow-y:scroll; height:600px;">
+<p>
+How does an agent 'learn' values? 
+If we were to approach the grid with no prior knowledge, we can assume that all $Q(s,a) = 0$.
+</p>
+<div class="row">
+<div class = "column">
+<div id="grid"></div>
+<script src="grids/grid8.js" type="text/javascript"></script>
+</div> 
+<div class="column">
+<div id="grid3"></div>
+<script src="grids/grid15.js" type="text/javascript"></script>
+</div>
+</div>
+<p>Recall that $Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$. We have two assumptions: 1) once a square has been used in a policy, it has been 'activated' and returning to it will not yield any additional rewards.</p>
+
+<div class="row">
+<div class="column">
+<b>Step 1 </b> <p></p> is to move off-the-grid to Square 0. We receive a reward ($r_t$) of +1 and can update our Q-values. 
+<p> For Square 0: We update the $r_t$ value: $Q(s_t,a_t) = 1 + 0 = 1$ </p>
+</div>
+<div class="column" style = "padding-left: 50px">
+<div id="grid4"></div>
+<script src="grids/grid16.js" type="text/javascript"></script>
+</div> 
+</div>
+
+<div class = "row">
+<div class = "column" style = " padding-left: 20px" >
+<div id="grid6"></div>
+<script src="grids/grid18.js" type="text/javascript"></script>
+</div>
+<div class="column" style = "padding-top: 20px">
+<b>Step 2</b> <p></p> Assessing next steps, all actions ${a_t}$ (right, down, right-diagonal) seem to lead to equally desirable $s_{t+1}$ (squares 1, 4, and 5)  – each potential $s_{t+1}$ has a Q-value of 0. <p></p>
+ is to move to Square 1 and receive a reward ($r_t$) of -1. We can update the Q-value for Square 1. 
+<p> For Square 1: We update the $r_t$ value: $Q(s_t,a_t) = -1 + 0 = -1$ </p>
+</div>
+</div>
+
+
+<p><b>And so on, until the end of the training episode.</b></p><p> For the following policy: Square 0 - 1 - 5 - 9 - 10 - 14 - 15
+we get the values. </p>
+
+<div align="center">
+<div id="grid5"></div>
+<script src="grids/grid17.js" type="text/javascript"></script>
+</div>
+
+<b>Training Episode 2 </b><p></p> We follow a 'greedy' policy, which means we select the highest value states without exploring further. I select Square 0 (which has a $Q(s_t, a_t) = 1$), as it is the only legal action. I  receive +1. The maximum $Q(s_{t+1}, a_{t+1})$ is higher than it was in the previous training episode. <p></p>
+For Square 0, update the $max. Q(s_{t+1}, a_{t+1})$ value to 1: <p></p>
+<p>$Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+1 = 2$</p>
+
+By following the policy, we move from Square 5 - Square 10 - Square 15. 
+<p>For Square 5, update the $max. Q(s_{t+1}, a_{t+1})$ value to 1 : $Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+1 = 2$ </p>
+<p>For Square 10, update the $max. Q(s_{t+1}, a_{t+1})$ value to 1 : $Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+1 = 2$ </p>
+<p>For Square 15, the update does not change the previous Q value : $Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+0 = 1$ </p>
+
+<b>Training Episode 3</b><p></p> Select Square 0 (which has a $Q(s_t, a_t) = 2$), as it is the only legal action, and receive +1. The maximum $Q(s_{t+1}, a_{t+1})$ is higher than it was in the previous training episode. <p></p>
+For Square 0, update the $max. Q(s_{t+1}, a_{t+1})$ value to 1: <p></p>
+<p>$Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+2 = 3$</p>
+
+Follow the policy again, and move from Square 5 - Square 10 - Square 15. 
+<p>For Square 5, update the $max. Q(s_{t+1}, a_{t+1})$ value to 2 : $Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+1 = 3$ </p>
+<p>For Squares 10 and 15, the update does not change the previous Q value</p>
+
+In <b>training episode 4</b><p></p> the Q-value of Square 0 is updated to 4. In all subsequent training episodes, the Q-values stay the same. This is known as <b>'convergence' </b>. The trained agent has learned the Q-values, and will know how to follow the optimal policy <p></p>
+
+<div class = "row">
+<div class = "column2" >
+<div id="grid7"></div> 
+<script src="grids/grid19.js" type="text/javascript"></script>
+</div>
+<div class="column2">
+<div id="grid8"></div>
+<script src="grids/grid20.js" type="text/javascript"></script>
+</div>
+<div class="column2">
+<div id="grid9"></div>
+<script src="grids/grid21.js" type="text/javascript"></script>
+</div>
+</div>
+<p></p><b>Learning Rate </b> <p></p>
+The illustration above has several simplifying assumptions that allow us to 'update' Q-values by replacing them with the most recent calculation (e.g. we find the optimal policy in the first training episode, and we always follow a greedy policy). But this  doesn't allow for any randomness in the grid. For example – what if Square 15 has a reward of +10 with 50% probability, and -100 with 50% probability? In the method above, our Q-value for Square 15 would swing to capture the most recent reward, and wouldn't indicate the average behaviour. In addition, the values wouldn't converge. <p></p>
+
+We manage this with a learning rate $\alpha$, which controls the speed of learning. 
+
+Instead of what we were doing before: 
+$$Q(s,a) = Q(s,a)_{new}$$
+Which can be represented as $$Q(s,a) =  Q(s,a)_{old} + [Q(s,a)_{new} - Q(s,a)_{old}] $$
+
+We now include the learning rate $\alpha$.
+$$Q(s,a) =  Q(s,a)_{old} + \alpha[Q(s,a)_{new} - Q(s,a)_{old}]$$
+
+When $\alpha = 1$, we are learning by completely replacing the old Q-value with the new Q-value (as in the previous examples). If $\alpha = 0$, we are not learning at all. 
+
+To make this more concrete, let us consider the example where Square 15 has a 50% probability of +10, and 50% probability of -100. <p></p>
+<b>Option 1: $\alpha = 1$ or $Q(s,a) = Q(s,a)_{new}$ </b> <p></p>
+Here, we learn in the same fashion as the previous example. In the first training episode, Square 15 reveals a reward of +10. In the second, -100. In the third, +10. Look at the Q-values as they update over the three episodes. Unlike in the previous example, the values will not converge in the 4th training episode – they will continue to swing back-and-forth. <p></p>
+<div class = "row">
+<div class = "column2">
+<div id="grid10"></div>
+<script src="grids/grid22.js" type="text/javascript"></script>
+</div> 
+<div class = "column2">
+<div id="grid11"></div>
+<script src="grids/grid23.js" type="text/javascript"></script>
+</div>
+<div class = "column2">
+<div id="grid12"></div>
+<script src="grids/grid24.js" type="text/javascript"></script>
+</div>  
+</div>
+<p></p>
+<b>Option 2: $\alpha = 0.9$</b> <p></p>
+When $\alpha = 0.5$, the update rule is: $$Q(s,a) =  Q(s,a)_{old} + 0.5[Q(s,a)_{new} - Q(s,a)_{old}]$$ 
+Now, let's follow the same sequence. In the first step, we move from off-the-grid to Square 0. We update the Q-value of Square 0 as follows:<p></p>
+<p>$Q(s,a)_{old} = 0$ </p> 
+<p>$Q(s,a)_{new} = r_t + max[(Q(s_{t+1}), a_{t+1})] = 1 + 0 = 1$ </p> 
+<p>$Q(s,a) =  Q(s,a)_{old} + 0.5[Q(s,a)_{new} - Q(s,a)_{old}] = 0 + 0.5[1-0] = 0.5$ </p>
+And so on. As can be seen, the Q-values will not converge in the 4th training episode, but -eventually - they will begin to tend towards the expected value for Square 15, which is -45 $[(0.50*-100) + (0.50*10)]$, representing that -on-average- it is not a desirable state. 
+<div class = "row">
+<div class = "column">
+<div id="grid13"></div>
+<script src="grids/grid25.js" type="text/javascript"></script>
+</div> 
+<div class = "column">
+<div id="grid14"></div>
+<script src="grids/grid26.js" type="text/javascript"></script>
+</div> 
+</div>  
+<p><b>Introducing Exploration</b> <p></p>
+<p> One method of implementing this is through an $\epsilon$ - greedy strategy. With some probability $\epsilon$ the agent selects a random action, otherwise the agent selects a 'greedy' strategy (the action that leads to the state with the highest Q-value).
+So if $\epsilon = 0.3$, there is a $70\%$ probability the agent will select the greedy action, and a $30\%$ probability that the agent selects a random action. Typically, $\epsilon$ decays with episode count – for instance, we can assume that an agent that has experienced 1,000,000 episodes requires less exploration, and is closer to converging on Q-values. </p>
+
+<p><b>Introducing Discounting</b> <p></p>
+We'
+
+ </p>
+</div>
+</body>
+</html>

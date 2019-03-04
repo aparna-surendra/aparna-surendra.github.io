@@ -1,5 +1,5 @@
 //Code indebted to: https://bl.ocks.org/cagrimmett/07f8c8daea00946b9e704e3efcbd5739
-function gridData3() {
+function gridData1() {
 	var data = new Array();
 	var xpos = 1; //starting xpos and ypos at 1 so the stroke will show when we make the grid below
 	var ypos = 1;
@@ -61,7 +61,7 @@ function color(transition, fill) {
   transition
       .style("fill", fill)
 }
-function build_grid3(gridData, grid){
+function build_grid1(gridData, grid){
 var blue_counter = 0;
 var yellow_counter = 1; 
 var total_counter = blue_counter - yellow_counter; 
@@ -110,8 +110,8 @@ var column = row.selectAll(".square")
 	.attr("class", "active")
     .attr("class", function(d){
     	if ((d.row == 0) & (d.column ==2)){
-    	color(d3.select(this).attr("class", "selected").transition(), "#686868")
-    	return "selected"}
+    	color(d3.select(this).attr("class", "selected0").transition(), "#686868")
+    	return "selected0"}
     	else {return "active"}
     })
 	.attr("font-family", "sans-serif")
@@ -133,10 +133,10 @@ var column = row.selectAll(".square")
 	       if ((d.text) == "#3090C7") { d3.select(this).style("fill",d.text); if (d3.select(this).classed("active")) {blue_counter ++;}}
 		   if ((d.text) == "orange") {d3.select(this).style("fill","orange"); if (d3.select(this).classed("active")) {yellow_counter ++;}}
 		   d3.select(this).classed("active", false)
-		   d3.selectAll(".selected").style("fill", function(d) {return d.text;})
-		   d3.selectAll(".selected").classed("selected", false)
+		   d3.selectAll(".selected0").style("fill", function(d) {return d.text;})
+		   d3.selectAll(".selected0").classed("selected0", false)
            //d3.select(this).attr("class", "selected").style("fill", "#606060");
-          color(d3.select(this).attr("class", "selected").transition(400), "#686868")
+          color(d3.select(this).attr("class", "selected0").transition(400), "#686868")
 		   x_start = d.x;
 		   y_start = d.y;
 		   total_clicks ++; 
@@ -187,19 +187,19 @@ for (var square = 0; square < 16; square++) {
 }
 }
 
-var grid3 = d3.select("#grid3")
+var grid1 = d3.select("#grid1")
 	.append("svg")
 	.attr("width","500px")
 	.attr("height","220px");
 
-grid3.append("text")
+grid1.append("text")
 	.text("Experiment to find the optimal policy")
 	.attr("x", 0)
 	.attr("y", 215)
 	.style("font-weight", "bold")
 	.style("font-size", "12px")
 
-grid3.append("circle")
+grid1.append("circle")
 	.attr("cx", 265)
 	.attr("cy", 150)
 	.attr("r", 7)
@@ -208,17 +208,17 @@ grid3.append("circle")
 	.attr("stroke", "black")
 	.on('click', function(){
 		//grid3.selectAll(".row").data()
-		grid3.selectAll(".row").remove();
-		grid3.selectAll(".text_remove").remove();
-		build_grid3(gridData3, grid3);
+		grid1.selectAll(".row").remove();
+		grid1.selectAll(".text_remove").remove();
+		build_grid1(gridData1, grid1);
 	})
 
-grid3.append("text")
+grid1.append("text")
 	.text("RESET")
 	.attr("x", 215)
 	.attr("y", 155)
 	.style("font-weight", "bold")
 
-var gridData3 = gridData3();	
-build_grid3(gridData3, grid3);
+var gridData1 = gridData1();	
+build_grid1(gridData1, grid1);
 
