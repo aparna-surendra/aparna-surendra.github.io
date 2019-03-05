@@ -1,0 +1,72 @@
+---
+layout: default
+---
+
+<html>
+<style>
+#content {
+  float: left;
+  width: 800px;
+  margin: 0;
+}
+text {
+  font: 11px "Proxima Nova",sans-serif;
+  text-anchor: left;
+}
+
+</style>
+<head>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+</head>
+<body>
+ <header>
+    <h1>Introduction to reinforcement learning</h1>
+    <h3><a href="new_page1.html"><img src="images/left_arrow.png"style="width:8px;height:13px;"></a> 2/5 From Intuition to Reinforcement Learning basics <a href="new_page3.html"><img src="images/right_arrow.png"style="width:10px;height:15px;"></a></h3>
+  </header>
+<div id="content">
+<div id="" style="overflow-y:scroll; height:600px;">
+<header>
+<h3> i. Intuition </h3>
+</header>
+<p>
+Let's begin with a simple 3 x 3 grid environment. The goal of the game is simple – to click on squares and collect as high a total reward as possible.  
+<p>With that information...interact with the grid below, and learn how to  play the game that collects the highest reward. </p>
+<div align="center">
+<div id="grid"></div>
+<script src="grids/grid.js" type="text/javascript"></script>
+</div>
+<p>After training with the environment, you should be able to hit ‘reset’ and play the game for +4 (the maximum possible total rewards) using the strategy below. </p>
+<p>
+</p>
+<div align="center">
+<div id="grid0"></div>
+<script src="grids/grid27.js" type="text/javascript"></script>
+</div>
+<p> Through interaction, you would have identifed: 
+<ul> <li> <b>First move:</b> The game must begin on the top-left square. </li></ul>
+<ul> <li> <b>Legal actions:</b> You can only move along neighboring squares within the grid. </li></ul>
+<ul> <li> <b>Reward details:</b> Along the diagonal, squares have a positive reward (+1) filled in blue. All other squares have a negative reward (-1), filled in orange. You can only receive one reward per square per game. You can return to a square, but you will not receive a reward for this action. </li> </ul>
+</p>
+<p>Reinforcement learning is a computational approach that, to some extent, captures the intuition you just displayed: to approach a new environment with a given goal, interact with the environment and learn by trial-and-error, and identify the best possible strategy to achieve the goal. </p> 
+
+<header>
+<h3> ii. A reinforcement learning frame </h3>
+</header>
+<p>How do we identify the best possible strategy? As one articulation: we identify the sequence of squares that leads to the highest total points over the long term. </p>
+<p> Let's introduce some reinforcement learning terms: 
+  <ul> <li> Our 4 x 4 grid is an <b>environment</b>, and it has 17 different possible representations: one for each square selected (16 representations), and one where no square is selected. Each representation is known as a <b>'state'</b>. </li></ul>
+  <ul> <li> The move from one square (state) to another is known as an <b>'action'</b>. </ul></li></p>
+  <ul> <li> The points received for each state is known as a <b>'reward'</b> </ul></li>
+  <ul> <li> The sequence to follow (the mapping of states to actions) is known as the <b>'policy'</b> </ul></li>
+</p>
+<p>
+To make it more concrete, let's frame our decisions using these new terms: our first <b>action</b> is to move from the off-the-grid <b>state</b> to the Square 0 <b>state</b>, receiving a <b>reward</b> of +1. We then follow a <b> policy</b> from Square 0 to 5, 10, and then 15. In this activity a human made decisions but, in reinforcement learning, we will train an <b>'agent'</b> to do the same. </p>
+<p>
+
+</div>
+</div>
+</body>
+</html>

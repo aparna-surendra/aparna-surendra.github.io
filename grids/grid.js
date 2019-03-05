@@ -19,7 +19,7 @@ function gridData() {
 				height: height,
 				click: click,
 				activate:0,
-				text: "blue"
+				text: "#3090C7"
 			})}
 		if (column != row){
 			data[row].push({
@@ -94,6 +94,7 @@ var column = row.selectAll(".square")
     .attr("fill", "red")
 	.style("fill", "#D3D3D3")
 	.style("stroke", "#222")
+	.attr("class", "active")
 	.on("mouseover", function(d) {   
         d3.select(this).style("opacity", .6)  
         })                  
@@ -105,9 +106,9 @@ var column = row.selectAll(".square")
        if (((d.x) >= x_start-50 & d.x <=x_start+50) & ((d.y) >= y_start-50 & (d.y) <= y_start+50)){
 	       //if ((d.click)%2 == 0) { d3.select(this).style("fill", "white");}
 	       	// text(function (d) { return d.name; }).style("font-color","#2C93E8"); }
-		   if ((d.text) == "blue") { d3.select(this).style("fill","blue"); if ((d.activate)== 0) {blue_counter ++;}}
-		   if ((d.text) == "orange") {d3.select(this).style("fill","orange"); if ((d.activate)== 0) {yellow_counter ++;}}
-		   if (d.activate == 0){d.activate ++;}
+		   if ((d.text) == "#3090C7") { d3.select(this).style("fill",d.text); if (d3.select(this).classed("active")) {blue_counter ++;}}
+		   if ((d.text) == "orange") {d3.select(this).style("fill","orange"); if (d3.select(this).classed("active")) {yellow_counter ++;}}
+		   d3.select(this).classed("active", false)
 		   d3.selectAll(".selected").style("fill", function(d) {return d.text;})
 		   d3.selectAll(".selected").classed("selected", false)
            //d3.select(this).attr("class", "selected").style("fill", "#606060");

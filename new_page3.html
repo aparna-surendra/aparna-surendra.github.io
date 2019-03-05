@@ -1,0 +1,153 @@
+---
+layout: default
+---
+
+<html>
+<style>
+#content {
+  float: left;
+  width: 800px;
+  margin: 0;
+}
+text {
+  font: 11px "Proxima Nova",sans-serif;
+  text-anchor: left;
+}
+
+.column {
+  float: left;
+  width: 45%;
+  padding: 10px;
+}
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+</style>
+<head>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+</head>
+<body>
+ <header>
+    <h1>Introduction to reinforcement learning</h1>
+    <h3><a href="new_page1.html"><img src="images/left_arrow.png"style="width:8px;height:13px;"></a> 3/5 Value Functions <a href="new_page3.html"><img src="images/right_arrow.png"style="width:10px;height:15px;"></a></h3>
+  </header>
+<div id="content">
+<div id="" style="overflow-y:scroll; height:600px;">
+<h3> i. Introducing values </h3>
+<p> We will introduce one new reinforcement learning term: each state has a <b> value</b>. A state's reward can be considered an indication of how 'good' it is immediately, while its value indicates how 'good' it is in the long-term. If State A has a higher value than State B, the agent will select State A. 
+
+<p>To provide more intuition on the distinction between a state's reward and its value, consider a revised environment (below) with all its +1 rewards revealed. Identify the optimal policy.</p>
+<ul><li>The game must be completed within 4 moves.</li> </ul>
+<ul><li>The game must begin by moving to State 2. This first move has been made for you – you have 3 left. </ul></li>
+</p>
+<div class = "row">
+<div class="column">
+<div id="grid2"></div>
+<script src="grids/grid9.js" type="text/javascript"></script>
+</div>
+<div class="column">
+<div id="grid1"></div>
+<script src="grids/grid10.js" type="text/javascript"></script>
+</div>
+</div>
+</p>
+<header>
+<h3> ii. Rewards, Values, and Q-values </h3>
+</header>
+<p><u>When in State 2: Do you move right to State 3 or down to State 5? </u> </p>
+<p> Based on their rewards, State 3 and State 5 are equally desirable (they each return $+1$). But we know they are not equivalent – a policy that moves from State 2 to State 5 returns a higher total reward.  
+<ul><li>Policy #1 displays the optimal policy for the game when moving from State 2 to State 3 –  a cumulative reward of $+1$. </li> </ul>
+<ul> <li> Policy #2 displays the optimal policy for the game when moving from State 2 to State 5 – a cumulative reward of $+2$. </li> </ul>
+Policy #2 is the optimal policy for the game. 
+<div class = "row">
+<div class="column">
+<div id="grid4"></div>
+<script src="grids/grid11.js" type="text/javascript"></script>
+</div>
+<div class="column">
+<div id="grid5"></div>
+<script src="grids/grid12.js" type="text/javascript"></script>
+</div>
+</div>
+<p>
+There are different methods to calculate value, but we will use one called <b> Q-value</b>, which is: the value of the optimal policy that begins with a state.
+<ul><li>The Q-value for State 3, within the constraints of this game, is $+2$. <ul><li>The optimal policy beginning with State 3 is: State 3-2-5, which yields a cumulative reward of $+2$. </li></ul> </li> </ul> 
+<ul><li>The Q-value for State 5, within the constraints of this game, is $+3$. <ul><li>The optimal policy beginning with State 5 is: State 5-10-15, which yields a cumulative reward of $+3$. </li></ul> </li> </ul> 
+</p>
+<p>When given the option of moving to State 3 (Q-value: $2$) State 5 (Q-value: $3$), the agent will select State 5.</p>
+<header>
+<h3> iii. Discounting </h3>
+</header>
+<p> 
+Consider two policies: Policy A yields +100 over 1 time step, while Policy B yields +100 in cumulative reward over 100 time steps. Are both policies equivalent, or would you prefer Policy 2? 
+</p>
+<p>
+We can express this preference mathematically by introducing two additional terms: <b>time step ($t$)</b> and <b>discount factor ($\gamma$)</b> and, for ease, some mathematical notation. 
+
+<header>
+<h4>a. Time Steps</h4>
+</header>
+<p> There is no external notion of time in this game – there is no clock runnning down in the background. But we can consider each action taken to represent some time period or <b>time-step</b>. All states, actions, and rewards are represented by the time-step in which they are experienced (states  \(s\)), taken (actions \(a\)), or received (rewards \(r\)). If we were to introduce clock-time, we could consider each minute a time-step or, alternatively, each second a time-step (depending on the game) </p>
+
+<p> To apply this new language, let's consider the following sequence: The game begins at time-step 0, and I move from Square 0 to Square 1 and receive reward $-1$. In time-step 1, I move from Square 1 to Square 5 and receive reward $+1$. </p>
+<ul><li> \(s_t\ =\) Square 0 ,   \(a_t\ = \) left ,   \(r_t = \) -1 ,  \(s_{t+1} = \) Square 1 </li> </ul>
+<ul> <li>\(s_{t+1}\ =\) Square 1 , \(a_{t+1}\ = \) down, \(r_{t+1} = \) +1 , \(s_{t+2} = \) Square 5 </li></ul>
+
+<header>
+<h4>b. Discount Factor</h4>
+</header>
+<p>We can weight rewards received in the future, so that they are less valuable than rewards received immediately. If time step $t$ begins at 0, the reward is discounted at discount factor ($\gamma^t$). At $t_0$, the reward $r_0$ is discounted at $\gamma^0$; at $t_1$, the reward $r_1$ is discounted at $\gamma^1$ and so on. If $\gamma = 0$, future rewards are discounted completely – only immediate rewards matter. If $\gamma = 1$, future rewards matter the same as those received immediately (as in all the previous examples).</p>
+
+<p>Let's return to the question posed at the beginning of Section iii:</p>
+<ul><li>If the discount factor ($\gamma$) = 1, then future rewards are weighted the same as immediate rewards. <ul><li>Policy A \(=\) Policy B  \(= 100\).</li></ul></li></ul>
+<ul><li>If $\gamma$ = 0.8, then Policy A has a cumulative discounted reward of $100$, while Policy B has one of $5$ (and is much less desirable). 
+<ul><li><i>Calculations:</i> Policy A $ = 100*0.8^0$; Policy B =  $1*0.8^0+ 1*0.8^1 + 1*0.8^2...1*0.80^{99}$ </li></ul></li> </ul>
+<ul><li>If $\gamma$ = 0.5, then Policy A has a cumulative discounted reward of $100$, while Policy B has one of $2$ (and is even less desirable).<ul><li> <i>Calculations:</i> Policy A $ = 100*0.5^0$; Policy B =  $1*0.5^0+ 1*0.5^1 + 1*0.5^2...1*0.50^{99}$</li></ul></li></ul>
+</p>
+<div class = "row">
+<div class="column">
+<div id="grid3"></div>
+<p>
+  <label for="nRadius" 
+         style="display: inline-block; width: 180px; text-align: left">
+         Discount Factor ($\gamma$)= <span id="nRadius-value">0.5</span>       
+  </label>
+  <input type="range" min="0" max="1" step="0.1" id="nRadius">
+</p>
+<div class = "text_label">
+<p><b><i>Adjust discount factor and estimate values of policies</b></i></p>
+</div>
+</div>
+<div class="column">
+<table id="table"></table>
+</div>
+<script src="grids/grid14.js" type="text/javascript"></script>
+</div>
+</div>
+
+
+
+
+<p> There are different types of reinforcement learning algorithms, but this primer focuses on one – <b>value-based methods</b>.</p>
+
+
+<p>As a next step, let's look more closely at the computational approach. <a href="new_page3.html"><img src="images/right_arrow.png"style="width:10px;height:10px;"></a></p>
+
+</div>
+</div>
+</body>
+</html>
