@@ -1,0 +1,80 @@
+---
+layout: default
+---
+
+<html>
+<style>
+#content {
+  float: left;
+  width: 800px;
+  margin: 0;
+}
+text {
+  font: 11px "Proxima Nova",sans-serif;
+  text-anchor: left;
+}
+.column {
+  float: left;
+  width: 45%;
+  padding: 10px;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+</style>
+<head>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+</head>
+<body>
+ <header>
+    <h1>Introduction to reinforcement learning</h1>
+    <h3>5/5 From gridworld to the real world <a href="page5.html"><img src="images/right_arrow.png"style="width:10px;height:15px;"></a></h3>
+  </header>
+<div id="content">
+<div id="" style="overflow-y:scroll; height:600px;">
+<p> In 2015, DeepMind <a href="https://deepmind.com/research/dqn/">published a paper</a> demonstrating a breakthrough in reinforcement learning research. The team had developed a new algorithm, the Deep-Q Learning Network (DQN), which could train on 46 different Atari games and had reached/exceeded human performance on 29 games. DQN is a modified version of the Q-learning algorithm described in the supplementary tutorial.</p>
+<p>
+DQN was a first demonstration of a generalisable or general-purpose agent – the same algorithm could be trained on a diverse set of environments without modification (this does not mean that a DQN agent trained to play Pong will perform well in a game of Breakout; the agent must train in the environment which it will play). DQN could also take RGB video-feed as input, a step closer to the complex sensory visual input that humans use,  and a step closer to agents in a 'real world' environment. 
+</p>
+<p>
+In the last section, we considered the exploration/exploitation dilemma through two environments: a 20 x 20 grid, and the Atari game Breakout. We used many core  reinforcement learning concepts when learning with the grid environment, and we can extend these to the Atari game Pong. 
+</p>
+<div align="center">
+<video width="320" height="240" controls>
+  <source src="images/pong_orig.mp4"  type="video/mp4">
+</video>
+<br><b><i>DQN-trained agent on right</b></i>
+</div>
+<p>
+<ul><li> The <b>state</b> is the input perceived by the agent. While our 4 x 4 grid had 17 states, Pong's state space is far greater. For simplicity, envision that a state is a frame from the video input. Every possible permutation of pixels (which includes all possible pixel configurations for the positions of two paddles and the ball) make up the possible states.</li></ul> 
+<ul><li> The <b>actions</b> are the legal actions available in Pong (move the agent's paddle up, down, no movement)</li></ul> 
+<ul><li>The <b> reward signal</b> is +1 or -1, depending on whether the agent or the opponent scores. </ul>
+<ul><li>The <b>policy</b> is the mapping of states to actions. Let's use a human player as an analogy. When a human sees a ball cresting towards her, she selects a series of actions to move the paddle in preparation for the shot and - based on an assessment of her opponent's position – angles the paddle to best score. The policy is the sequence of actions based on the changing states (which represent the positions of the player, opponent and ball). </li></ul>
+<ul><li>We can also intuit a state's <b>value function</b>. A state where the opponent is about to score (e.g. the agent's paddle is at the top right corner, while as the ball is about to reach the bottom right corner) is an undesirable or low-value state. Conversely, a state where the agent's paddle is about to strike the ball is a high-value state. </li></ul>
+</p>
+Through Pong, we can identify some of the challenges related to reinforcement learning in more complex environments.
+<ul><li><b>Large state-action spaces: </b>In the grid environments, it was possible to experience, compute and store $Q(s,a)$ values for each state-action pair. But, as states grow more complex, this is computationally infeasible. Consider Go, the Chinese board game, which has a board with $10^{170}$ possible states. Instead, we need to find ways to approximate value functions. With DQN, a neural network is used to predict $Q(s,a)$ values.</li></ul>
+<ul><li><b>Uncertainty:</b> In the grid environment, the agent's action completely determines the next state $(S_{t+1})$. In Pong, the agent's action is only one of several lever that impact the next state– there is also the motion of the ball (depending on where and how it is introduced), and the opponent's actions. </li></ul>
+<ul><li><b>Reward assignment:</b> The reward signal is only received when a point is scored – for a maximum of $+21$ per game. This is sparse when compared to the number of actions taken per game, and it is delayed feedback – the agent must learn to correctly assign a reward to the relevant sequence of states and actions.</li></ul>
+<p>
+</p>
+</div>
+</div>
+</body>
+</html>

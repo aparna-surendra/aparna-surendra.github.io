@@ -19,7 +19,7 @@ function gridData2() {
 				height: height,
 				click: click,
 				activate:0,
-				text: "blue",
+				text: "#3090C7",
 				column: column,
 				row: row
 			})}
@@ -31,7 +31,7 @@ function gridData2() {
 				height: height,
 				click: click,
 				activate:0,
-				text: "blue",
+				text: "#3090C7",
 				column: column,
 				row: row
 			})}
@@ -149,7 +149,7 @@ var column = row.selectAll(".square")
        if (((d.x) >= x_start-10 & d.x <=x_start+10) & ((d.y) >= y_start-10 & (d.y) <= y_start+10) & total_moves <300){
 	       //if ((d.click)%2 == 0) { d3.select(this).style("fill", "white");}
 	       	// text(function (d) { return d.name; }).style("font-color","#2C93E8"); }
-		   if ((d.text) == "blue") { d3.select(this).style("fill","blue"); if ((d.activate)== 0) {blue_counter ++;}}
+		   if ((d.text) == "#3090C7") { d3.select(this).style("fill",d.text); if ((d.activate)== 0) {blue_counter ++;}}
 		   if ((d.text) == "orange") {d3.select(this).style("fill","orange"); if ((d.activate)== 0) {yellow_counter ++;}}
 		   if (d.activate == 0){d.activate ++;}
 		  // d3.selectAll(".selected1").style("fill", function(d) {return d.text;})

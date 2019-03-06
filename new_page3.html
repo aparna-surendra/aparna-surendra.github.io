@@ -24,6 +24,21 @@ text {
   clear: both;
   display: table;
 }
+td {
+border-left: solid 0.5px black;
+text-align: center;
+font: 9px "Proxima Nova",sans-serif;
+} 
+
+th {
+text-align: center;
+font: 9px "Proxima Nova", sans-serif;
+font-weight: bold;
+} 
+
+td:nth-last-child(2) {text-align:left;}
+td:nth-last-child(1) {text-align:left;}
+
 
 </style>
 <head>
@@ -48,7 +63,10 @@ text {
 <div id="content">
 <div id="" style="overflow-y:scroll; height:600px;">
 <h3> i. Introducing values </h3>
-<p> We will introduce one new reinforcement learning term: each state has a <b> value</b>. A state's reward can be considered an indication of how 'good' it is immediately, while its value indicates how 'good' it is in the long-term. If State A has a higher value than State B, the agent will select State A. 
+<p> We will introduce one new reinforcement learning term: each state has a <b> value</b>. A state's reward can be considered an indication of how 'good' it is immediately, while its value indicates how 'good' it is in the long-term. 
+
+<p> There are different types of reinforcement learning algorithms, but this primer focuses on one – <b>value-based methods</b>. An agent learns the value of states and corresponding actions, which then guides the agent's policies. If State A has a higher value than State B, the agent will select State A. 
+</p>
 
 <p>To provide more intuition on the distinction between a state's reward and its value, consider a revised environment (below) with all its +1 rewards revealed. Identify the optimal policy.</p>
 <ul><li>The game must be completed within 4 moves.</li> </ul>
@@ -84,11 +102,26 @@ Policy #2 is the optimal policy for the game.
 </div>
 </div>
 <p>
-There are different methods to calculate value, but we will use one called <b> Q-value</b>, which is: the value of the optimal policy that begins with a state.
-<ul><li>The Q-value for State 3, within the constraints of this game, is $+2$. <ul><li>The optimal policy beginning with State 3 is: State 3-2-5, which yields a cumulative reward of $+2$. </li></ul> </li> </ul> 
-<ul><li>The Q-value for State 5, within the constraints of this game, is $+3$. <ul><li>The optimal policy beginning with State 5 is: State 5-10-15, which yields a cumulative reward of $+3$. </li></ul> </li> </ul> 
+There are different methods to calculate value, but we will use one called <b> Q-value</b>, represented by $Q(s,a)$, which is the value function of the optimal policy that begins with a state and action. </p>
+<p> For every state ($s$), there are typically multiple legal actions ($a$). To make this more concrete: </p>
+<ul><li>The maximum $Q(s,a)$ value for State 3 is $+2$.
+<ul><li>There are 3 Q-values for State 3 (one Q-value for each legal action), within the constraints of this game. 
+<ul><li>$Q(s = 3, a = $ right$),$ The optimal policy is: State 3-2-5, which yields a cumulative reward of $+2$. </li></ul>
+<ul><li>$Q(s = 3, a = $ down$),$ The optimal policy can be any one of: State 3-7-6, or 3-7-11 or 3-7-10, each which yields a cumulative reward of $0$. </li></ul> 
+<ul><li>$Q(s = 3, a = $ right-down diagonal$),$ The optimal policy is State 3-6-5, which yields a cumulative reward of $+1$. </li></ul> </li></ul>
+</li> </ul> 
+</li></ul>
+
+<ul><li>The maximum $Q(s,a)$ value for State 5 is $+3$.
+<ul><li>There are 8 Q-values for State 5 (one Q-value for each legal action), within the constraints of this game. 
+<ul><li>$Q(s = 5, a = $ right-down-diagonal$),$ The optimal policy is: State 5-10-15, which yields a cumulative reward of $+3$. </li></ul>
+<ul><li>$Q(s = 5, a = $ down$),$ The optimal policy is: State 9-10-15, which yields a cumulative reward of $+2$. </li></ul> 
+<ul><li>And so on... </li></ul> </li></ul>
+</li> </ul> 
+</li></ul>
 </p>
-<p>When given the option of moving to State 3 (Q-value: $2$) State 5 (Q-value: $3$), the agent will select State 5.</p>
+<p>Let's consider a trained agent approaching the grid. The first move has been made, and the agent is in State 2. When assessing whether to move to State 3 (max. Q-value: $+2$) or State 5 (max. Q-value: $+3$), the agent will select State 5 – the state with the highest possible Q-value.</p>
+<p><i>This section does not focus on training (how the agent learns Q-values), but click here for a supplementary page that details one learning algorithm known as Q-learning.</i> </p>
 <header>
 <h3> iii. Discounting </h3>
 </header>
@@ -103,9 +136,9 @@ We can express this preference mathematically by introducing two additional term
 </header>
 <p> There is no external notion of time in this game – there is no clock runnning down in the background. But we can consider each action taken to represent some time period or <b>time-step</b>. All states, actions, and rewards are represented by the time-step in which they are experienced (states  \(s\)), taken (actions \(a\)), or received (rewards \(r\)). If we were to introduce clock-time, we could consider each minute a time-step or, alternatively, each second a time-step (depending on the game) </p>
 
-<p> To apply this new language, let's consider the following sequence: The game begins at time-step 0, and I move from Square 0 to Square 1 and receive reward $-1$. In time-step 1, I move from Square 1 to Square 5 and receive reward $+1$. </p>
-<ul><li> \(s_t\ =\) Square 0 ,   \(a_t\ = \) left ,   \(r_t = \) -1 ,  \(s_{t+1} = \) Square 1 </li> </ul>
-<ul> <li>\(s_{t+1}\ =\) Square 1 , \(a_{t+1}\ = \) down, \(r_{t+1} = \) +1 , \(s_{t+2} = \) Square 5 </li></ul>
+<p> To apply this new language, let's consider the following sequence:
+<ul><li> The game begins at time-step 0, and I move from Square 0 to Square 1 and receive reward $-1$.</li> </ul> 
+<ul><li> In time-step 1, I move from Square 1 to Square 5 and receive reward $+1$. </li></ul> </p>
 
 <header>
 <h4>b. Discount Factor</h4>
@@ -115,8 +148,11 @@ We can express this preference mathematically by introducing two additional term
 <p>Let's return to the question posed at the beginning of Section iii:</p>
 <ul><li>If the discount factor ($\gamma$) = 1, then future rewards are weighted the same as immediate rewards. <ul><li>Policy A \(=\) Policy B  \(= 100\).</li></ul></li></ul>
 <ul><li>If $\gamma$ = 0.8, then Policy A has a cumulative discounted reward of $100$, while Policy B has one of $5$ (and is much less desirable). 
-<ul><li><i>Calculations:</i> Policy A $ = 100*0.8^0$; Policy B =  $1*0.8^0+ 1*0.8^1 + 1*0.8^2...1*0.80^{99}$ </li></ul></li> </ul>
-<ul><li>If $\gamma$ = 0.5, then Policy A has a cumulative discounted reward of $100$, while Policy B has one of $2$ (and is even less desirable).<ul><li> <i>Calculations:</i> Policy A $ = 100*0.5^0$; Policy B =  $1*0.5^0+ 1*0.5^1 + 1*0.5^2...1*0.50^{99}$</li></ul></li></ul>
+<ul><li><i>Calculations:</i> Policy A $ = 100*0.8^0$; Policy B =  $1*0.8^0+ 1*0.8^1 + 1*0.8^2...1*0.80^{99} \approx 5$ </li></ul></li> </ul>
+<ul><li>If $\gamma$ = 0.5, then Policy A has a cumulative discounted reward of $100$, while Policy B has one of $2$ (and is even less desirable).<ul><li> <i>Calculations:</i> Policy A $ = 100*0.5^0$; Policy B =  $1*0.5^0+ 1*0.5^1 + 1*0.5^2...1*0.50^{99} = 2$</li></ul></li></ul>
+</p>
+<p>To gain more fluency with discounted rewards, interact with the grid below. Move the slider to adjust the discount factor, and click on any square to construct different policies and evaluate the total discounted reward.
+<ul><li> Note: The total discounted reward is not always the same as the state-action's Q-value. This because the Q-value is based on a (known or estimated) <b>optimal</b> policy, not just any policy. </li></ul>
 </p>
 <div class = "row">
 <div class="column">
@@ -129,7 +165,6 @@ We can express this preference mathematically by introducing two additional term
   <input type="range" min="0" max="1" step="0.1" id="nRadius">
 </p>
 <div class = "text_label">
-<p><b><i>Adjust discount factor and estimate values of policies</b></i></p>
 </div>
 </div>
 <div class="column">
@@ -139,13 +174,7 @@ We can express this preference mathematically by introducing two additional term
 </div>
 </div>
 
-
-
-
-<p> There are different types of reinforcement learning algorithms, but this primer focuses on one – <b>value-based methods</b>.</p>
-
-
-<p>As a next step, let's look more closely at the computational approach. <a href="new_page3.html"><img src="images/right_arrow.png"style="width:10px;height:10px;"></a></p>
+<p>...<a href="new_page3.html"><img src="images/right_arrow.png"style="width:10px;height:10px;"></a></p>
 
 </div>
 </div>

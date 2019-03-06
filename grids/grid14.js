@@ -69,7 +69,8 @@ function color(transition, fill) {
 }
 function build_grid3(gridData, grid, table){
 var blue_counter = 0;
-var yellow_counter = 1; 
+//var yellow_counter = 1;
+var yellow_counter = 0; 
 var total_counter = blue_counter - yellow_counter; 
 var x_start = 101; 
 var y_start = 1; 
@@ -125,12 +126,12 @@ var column = row.selectAll(".square")
 	.attr("width", function(d) { return d.width; })
 	.attr("height", function(d) { return d.height; })
 	.attr("class", "active")
-    .attr("class", function(d){
-    	if ((d.row == 0) & (d.column ==2)){
-    	color(d3.select(this).attr("class", "selected").transition(), "#686868")
-    	return "selected"}
-    	else {return "active"}
-    })
+   // .attr("class", function(d){
+   // 	if ((d.row == 0) & (d.column ==2)){
+   // 	color(d3.select(this).attr("class", "selected").transition(), "#686868")
+   // 	return "selected"}
+   // 	else {return "active"}
+  //  })
 	.attr("font-family", "sans-serif")
     .attr("font-size", "20px")
 	.style("stroke", "#222")
@@ -143,6 +144,7 @@ var column = row.selectAll(".square")
     })
     .on('click', function(d) {
        d.click ++;
+       if (total_clicks ==0) {x_start = d.x; y_start = d.y} 
        if (((d.x) >= x_start-50 & d.x <=x_start+50) & ((d.y) >= y_start-50 & (d.y) <= y_start+50)){
 	       //if ((d.text) == "#3090C7") { d3.select(this).style("fill",d.text); if ((d.activate)== 0) {blue_counter ++;}}
 	       if ((d.text) == "#3090C7") { d3.select(this).style("fill",d.text); if (d3.select(this).classed("active")) {blue_counter ++;}}
@@ -227,7 +229,7 @@ var discount_factor = 0.5;
 
 var grid3 = d3.select("#grid3")
 	.append("svg")
-	.attr("width","600px")
+	.attr("width","800px")
 	.attr("height","205px");
 
 grid3.append("circle")

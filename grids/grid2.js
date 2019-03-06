@@ -19,7 +19,7 @@ function gridData() {
 				height: height,
 				click: click,
 				activate:0,
-				text: "blue",
+				text: "#3090C7",
 				row: row,
 				column: column
 			})}
@@ -95,10 +95,11 @@ var column = row.selectAll(".square")
 	.attr("width", function(d) { return d.width; })
 	.attr("height", function(d) { return d.height; })
 	.style("fill", "#D3D3D3")
+	.attr("class", "active")
 	.attr("class", function(d){
     	if ((d.row == 0) & (d.column ==0)){
-    	color(d3.select(this).attr("class", "selected").transition(), "#686868")
-    	return "selected"}
+    	color(d3.select(this).attr("class", "selected").transition(), "#686868"); return "selected"}
+    	else {return "active"}
     })
 	.style("stroke", "#222")
 	.on("mouseover", function(d) {   
@@ -114,9 +115,9 @@ var column = row.selectAll(".square")
        if (((d.x) >= x_start-10 & d.x <=x_start+10) & ((d.y) >= y_start-10 & (d.y) <= y_start+10)){
 	       //if ((d.click)%2 == 0) { d3.select(this).style("fill", "white");}
 	       	// text(function (d) { return d.name; }).style("font-color","#2C93E8"); }
-		   if ((d.text) == "blue") { d3.select(this).style("fill","blue"); if ((d.activate)== 0) {blue_counter ++;}}
-		   if ((d.text) == "orange") {d3.select(this).style("fill","orange"); if ((d.activate)== 0) {yellow_counter ++;}}
-		   if (d.activate == 0){d.activate ++;}
+		   if ((d.text) ==  "#3090C7") { d3.select(this).style("fill",d.text); if (d3.select(this).classed("active")) {blue_counter ++;}}
+		   if ((d.text) == "orange") {d3.select(this).style("fill","orange"); if (d3.select(this).classed("active")) {yellow_counter ++;}}
+		   d3.select(this).classed("active", false)
 		   d3.selectAll(".selected").style("fill", function(d) {return d.text;})
 		   d3.selectAll(".selected").classed("selected", false)
            color(d3.select(this).attr("class", "selected").transition(), "#686868")
