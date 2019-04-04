@@ -1,8 +1,8 @@
 ---
 layout: default
 ---
-A reinforcement learning primer.
 
+<h1> A REINFORCEMENT LEARNING PRIMER </h1>
 – [1/5: Introduction to reinforcement learning](page1.html)
 
 – [2/5: From intuition to reinforcement learning basics](new_page2.html)
