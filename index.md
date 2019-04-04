@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<h1> A REINFORCEMENT LEARNING PRIMER </h1>
+<h3> A REINFORCEMENT LEARNING PRIMER </h3>
 – [1/5: Introduction to reinforcement learning](page1.html)
 
 – [2/5: From intuition to reinforcement learning basics](new_page2.html)
