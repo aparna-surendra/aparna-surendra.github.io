@@ -14,4 +14,4 @@ An overview of project work:
 
 – [5/5: From gridworld to the real world ](new_page5.html)
 
-- [Optional:Introducing an RL algorithm] (page7.html)
+- [Optional:Introducing an RL algorithm](page7.html)
