@@ -1,8 +1,7 @@
 ---
 layout: default
 ---
-An overview of project work: 
-
+A reinforcement learning primer.
 
 – [1/5: Introduction to reinforcement learning](page1.html)
 
@@ -14,4 +13,4 @@ An overview of project work:
 
 – [5/5: From gridworld to the real world ](new_page5.html)
 
-- [Optional:Introducing an RL algorithm](page7.html)
+- [Optional: Introducing an RL algorithm](page7.html)
