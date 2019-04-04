@@ -58,7 +58,7 @@ td:nth-last-child(1) {text-align:left;}
 <body>
  <header>
     <h1>Introduction to reinforcement learning</h1>
-    <h3><a href="new_page1.html"><img src="images/left_arrow.png"style="width:8px;height:13px;"></a> 3/5 Value Functions <a href="new_page3.html"><img src="images/right_arrow.png"style="width:10px;height:15px;"></a></h3>
+    <h3><a href="new_page2.html"><img src="images/left_arrow.png"style="width:8px;height:13px;"></a> 3/5 Value Functions <a href="new_page4.html"><img src="images/right_arrow.png"style="width:10px;height:15px;"></a></h3>
   </header>
 <div id="content">
 <div id="" style="overflow-y:scroll; height:600px;">
@@ -86,7 +86,7 @@ td:nth-last-child(1) {text-align:left;}
 <header>
 <h3> ii. Rewards, Values, and Q-values </h3>
 </header>
-<p><u>When in State 2: Do you move right to State 3 or down to State 5? </u> </p>
+<p><u>Q: When in State 2: Do you move right to State 3 or down to State 5? </u> </p>
 <p> Based on their rewards, State 3 and State 5 are equally desirable (they each return $+1$). But we know they are not equivalent – a policy that moves from State 2 to State 5 returns a higher total reward.  
 <ul><li>Policy #1 displays the optimal policy for the game when moving from State 2 to State 3 –  a cumulative reward of $+1$. </li> </ul>
 <ul> <li> Policy #2 displays the optimal policy for the game when moving from State 2 to State 5 – a cumulative reward of $+2$. </li> </ul>
@@ -121,7 +121,7 @@ There are different methods to calculate value, but we will use one called <b> Q
 </li></ul>
 </p>
 <p>Let's consider a trained agent approaching the grid. The first move has been made, and the agent is in State 2. When assessing whether to move to State 3 (max. Q-value: $+2$) or State 5 (max. Q-value: $+3$), the agent will select State 5 – the state with the highest possible Q-value.</p>
-<p><i>This section does not focus on training (how the agent learns Q-values), but click here for a supplementary page that details one learning algorithm known as Q-learning.</i> </p>
+<p><i>This section does not focus on training (how the agent learns Q-values), but click <a href="new_page1.html">here</a> for a supplementary page that details a learning algorithm known as Q-learning.</i> </p>
 <header>
 <h3> iii. Discounting </h3>
 </header>
@@ -173,9 +173,6 @@ We can express this preference mathematically by introducing two additional term
 <script src="grids/grid14.js" type="text/javascript"></script>
 </div>
 </div>
-
-<p>...<a href="new_page3.html"><img src="images/right_arrow.png"style="width:10px;height:10px;"></a></p>
-
 </div>
 </div>
 </body>
