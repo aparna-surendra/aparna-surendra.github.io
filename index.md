@@ -14,3 +14,6 @@ layout: default
 – [5/5: From gridworld to the real world ](new_page5.html)
 
 – [Optional: Introducing an RL algorithm](page7.html)
+
+
+All concepts in this tutorial draw from Rich Sutton and Andrew Barto's [Reinforcement learning: An introduction (2017)](http://incompleteideas.net/book/bookdraft2017nov5.pdf). 
