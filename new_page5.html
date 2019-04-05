@@ -48,6 +48,9 @@ text {
   </header>
 <div id="content">
 <div id="" style="overflow-y:scroll; height:600px;">
+<header>
+<h3> i. Overview </h3>
+</header>
 <p> In 2015, DeepMind <a href="https://deepmind.com/research/dqn/">published a paper</a> demonstrating a breakthrough in reinforcement learning research. The team had developed a new algorithm, the Deep-Q Learning Network (DQN), which could train on 46 different Atari games and had reached/exceeded human performance on 29 games. DQN is a modified version of the Q-learning algorithm described in the supplementary tutorial.</p>
 <p>
 DQN was a first demonstration of a generalisable or general-purpose agent – the same algorithm could be trained on a diverse set of environments without modification (this does not mean that a DQN agent trained to play Pong will perform well in a game of Breakout; the agent must train in the environment which it will play). DQN could also take RGB video-feed as input, a step closer to the complex sensory visual input that humans use,  and a step closer to agents in a 'real world' environment. 
@@ -62,6 +65,9 @@ In the last section, we considered the exploration/exploitation dilemma through 
 <br><b><i>DQN-trained agent on right</b></i>
 </div>
 <p>
+<header>
+<h3> ii. Mapping grid concepts to Atari games </h3>
+</header>
 <ul><li> The <b>state</b> is the input perceived by the agent. While our 4 x 4 grid had 17 states, Pong's state space is far greater. For simplicity, envision that a state is a frame from the video input. Every possible permutation of pixels (which includes all possible pixel configurations for the positions of two paddles and the ball) make up the possible states.</li></ul> 
 <ul><li> The <b>actions</b> are the legal actions available in Pong (move the agent's paddle up, down, no movement)</li></ul> 
 <ul><li>The <b> reward signal</b> is +1 or -1, depending on whether the agent or the opponent scores. </ul>
@@ -74,6 +80,33 @@ Through Pong, we can identify some of the challenges related to reinforcement le
 <ul><li><b>Reward assignment:</b> The reward signal is only received when a point is scored – for a maximum of $+21$ per game. This is sparse when compared to the number of actions taken per game, and it is delayed feedback – the agent must learn to correctly assign a reward to the relevant sequence of states and actions.</li></ul>
 <p>
 </p>
+<header>
+<h3> iii. AI in the real world </h3>
+</header>
+We now have the conceptual understanding to consider two key real-world policy challenges – reward hacking and safe exploration. <p></p>
+This section is a brief excerpt of examples drawn from  <a href="https://arxiv.org/pdf/1606.06565.pdf">‘Concrete Problems in AI safety’</a> a research paper by Google Brain and OpenAI, which provides a more comprehensive overview of problems and potential solutions. <p></p>
+
+<ul><li><b>Reward Hacking</b></li></ul>
+<i>“How can we ensure that the cleaning robot won’t game its
+reward function? For example, if we reward the robot for achieving an environment free of
+messes, it might disable its vision so that it won’t find any messes, or cover over messes with
+materials it can’t see through, or simply hide when humans are around so they can’t tell it
+about new types of messes.”</i><p></p>
+
+As an agent looks to maximise its reward, it may identify policies that were not per the designer’s intent. In a video game, reward hacking can look like the OpenAI agent trained to play the video game Coastrunners. <p></p> From <a href = "https://openai.com/blog/faulty-reward-functions/">OpenAI</a> – “Despite repeatedly catching on fire, crashing into other boats, and going the wrong way on the track, our agent manages to achieve a higher score using this strategy than is possible by completing the course in the normal way. Our agent achieves a score on average 20 percent higher than that achieved by human players.”
+<p></p>
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/tlOIHko8ySg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<ul><li><b>Safe exploration</b></li></ul>
+<i>“How do we ensure that the cleaning robot doesn’t make exploratory moves with very bad repercussions? For example, the robot should experiment with mopping strategies, but putting a wet mop in an electrical outlet is a very bad idea.” </i><p></p>
+
+As an agent looks for the optimal policy in a new (or little-explored) environment, how can it safely explore an environment it doesn’t know very well? <p></p>
+
+We discussed the $\epsilon$-greedy strategy – selecting a random action with $\epsilon$-probability during the training process– which does not factor in the potential for harm. One way to potentially mitigate this is through training an agent in a simulated environment before releasing it in the real-world.  <p></p>
+Learn more: <a href="https://arxiv.org/pdf/1606.06565.pdf">‘Concrete Problems in AI safety’</a> 
+</div>
 </div>
 </div>
 </body>
