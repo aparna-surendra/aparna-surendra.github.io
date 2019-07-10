@@ -22,24 +22,24 @@ text {
 <body>
  <header>
     <h1>A reinforcement learning primer</h1>
-    <h3><a href="page1.html"><img src="images/left_arrow.png"style="width:8px;height:13px;"></a> 2/5 From Intuition to Reinforcement Learning basics <a href="new_page3.html"><img src="images/right_arrow.png"style="width:10px;height:15px;"></a></h3>
+    <h2><a href="page1.html"><img src="images/left_arrow.png"style="width:8px;height:13px;"></a> 2/5 From Intuition to RL Fundamentals <a href="new_page3.html"><img src="images/right_arrow.png"style="width:10px;height:15px;"></a></h2>
   </header>
 <div id="content">
-<!-- Comments go here <div id="" style="overflow-y:scroll; height:600px;"> -->
-
 <header>
-<h3> BASICS - A QUICK INTRODUCTION </h3>
+<h3>1. INTUITION </h3>
 </header>
-<p>
-Let's begin with a simple 3 x 3 grid environment. The goal of the game is simple – to click on squares and collect as high a total reward as possible.  
-<p>With that information...interact with the grid below, and learn how to  play the game that collects the highest reward. </p>
+<p>How does an RL algorithm learn from first principles, through trial-and-error?</p>
+<p> Let’s consider a simple 4 x 4 grid environment. In many respects, the algorithm is doing what a human would do when faced with the following challenge (and no other information):</p>
+<div align="center">
+<p>Interact with the following environment and collect as high a total reward as possible</p>
+</div>
 <div align="center">
 <div id="grid"></div>
 <script src="grids/grid.js" type="text/javascript"></script>
 </div>
-<p>After training with the environment, you should be able to hit ‘reset’ and play the game for +4 (the maximum possible total rewards) using the strategy below. </p>
-<p>
-</p>
+
+<p>After training with the environment, you should be able to hit ‘reset’ and play the game for +4 (the maximum possible total rewards), using the optimal strategy below. Reinforcement learning can be considered a computational approach to what you just did.</p>
+
 <div align="center">
 <div id="grid0"></div>
 <script src="grids/grid27.js" type="text/javascript"></script>
