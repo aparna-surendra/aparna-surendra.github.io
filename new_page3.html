@@ -63,10 +63,10 @@ td:nth-last-child(1) {text-align:left;}
 <div id="" style="overflow-y:scroll;">
 <h3> i. Introducing Values </h3>
 
-<p>A state's reward can be considered an indication of how 'good' it is immediately, while its value indicates how 'good' it is in the long-term. </p>
+<p>A state's <b>reward</b> can be considered an indication of how 'good' it is immediately, while its <b>value</b> indicates how 'good' it will be in the long-term. </p>
 
 
-<p>To provide more intuition on the distinction between a state's reward and its value, consider a revised environment (below) with all its +1 rewards revealed. Identify the optimal policy.</p>
+<p>To provide more intuition on the distinction between a state's reward and its value, consider a revised grid environment (below) with all its +1 rewards revealed. Identify the optimal policy.</p>
 <ul><li>The game must be completed within 4 moves.</li> </ul>
 <ul><li>The game must begin by moving to State 2. This first move has been made for you – you have 3 left. </ul></li>
 </p>
@@ -80,15 +80,16 @@ td:nth-last-child(1) {text-align:left;}
 <script src="grids/grid10.js" type="text/javascript"></script>
 </div>
 </div>
-</p>
-<header>
-<h3> ii. Rewards, Values, and Q-values </h3>
-</header>
-<p><u>Q: When in State 2: Do you move right to State 3 or down to State 5? </u> </p>
+<p><u><i>Q: When in State 2: Do you move right to State 3 or down to State 5? </i></u> </p>
 <p> Based on their rewards, State 3 and State 5 are equally desirable (they each return $+1$). But we know they are not equivalent – a policy that moves from State 2 to State 5 returns a higher total reward.  
 <ul><li>Policy #1 displays the optimal policy for the game when moving from State 2 to State 3 –  a cumulative reward of $+1$. </li> </ul>
 <ul> <li> Policy #2 displays the optimal policy for the game when moving from State 2 to State 5 – a cumulative reward of $+2$. </li> </ul>
 Policy #2 is the optimal policy for the game. 
+</p>
+<header>
+<h3> ii. Rewards, Values, and Q-values </h3>
+</header>
+
 <div class = "row">
 <div class="column">
 <div id="grid4"></div>
