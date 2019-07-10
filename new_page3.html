@@ -6,7 +6,6 @@ layout: default
 <style>
 #content {
   float: left;
-  width: 1100;
   margin: 0;
 }
 text {
@@ -61,12 +60,13 @@ td:nth-last-child(1) {text-align:left;}
     <h3><a href="new_page2.html"><img src="images/left_arrow.png"style="width:8px;height:13px;"></a> 3/5 Value Functions <a href="new_page4.html"><img src="images/right_arrow.png"style="width:10px;height:15px;"></a></h3>
   </header>
 <div id="content">
-<div id="" style="overflow-y:scroll; height:600px;">
-<h3> i. Introducing values </h3>
-<p> We will introduce one new reinforcement learning term: each state has a <b> value</b>. A state's reward can be considered an indication of how 'good' it is immediately, while its value indicates how 'good' it is in the long-term. 
-
-<p> There are different types of reinforcement learning algorithms, but this primer focuses on one – <b>value-based methods</b>. An agent learns the value of states and corresponding actions, which then guides the agent's policies. If State A has a higher value than State B, the agent will select State A. 
+<div id="" style="overflow-y:scroll;">
+<h3> i. Introducing Values </h3>
+<p> This primer focuses on <b>value-based methods</b>, a specific type of RL algorithm. An agent learns the <b>value</b> of states and corresponding actions, which then guides the agent's policies. The agent calculates the value of each state. If State A has a higher value than State B, the agent will select State A. 
 </p>
+
+<p>A state's reward can be considered an indication of how 'good' it is immediately, while its value indicates how 'good' it is in the long-term. </p>
+
 
 <p>To provide more intuition on the distinction between a state's reward and its value, consider a revised environment (below) with all its +1 rewards revealed. Identify the optimal policy.</p>
 <ul><li>The game must be completed within 4 moves.</li> </ul>

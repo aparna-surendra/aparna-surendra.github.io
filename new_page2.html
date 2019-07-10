@@ -27,7 +27,7 @@ text {
 <div id="content">
 <div id="" style="overflow-y:scroll; ">
 <header>
-<h3>1. INTUITION </h3>
+<h3>1. Intuition </h3>
 </header>
 <p><b><i>How does an RL algorithm learn from first principles, through trial-and-error?</i></b></p>
 <p> Let’s consider a simple 4 x 4 grid environment. In many respects, the algorithm is doing what a human would do when faced with the following instructions (and no other detail):</p>
@@ -53,17 +53,17 @@ In many ways, reinforcement learning can be considered the computational approac
 </p>
 
 <header>
-<h3> 2. INTRODUCING RL CONCEPTS</h3>
+<h3> 2. Introducing RL Concepts</h3>
 </header>
 <p> Let's introduce some reinforcement learning terminology: 
-  <ul> <li> Our 4 x 4 grid is an <b>'environment'</b>. A representation of an environment is known as a <b>'state'</b>. For simplicity, we can refer to each square in our grid as a state (this is not quite correct, but serves the purpose of this primer). The concept of a state will soon become clearer, especially when we begin to discuss environments that better-resemble the real world. </li></ul>
+  <ul> <li> Our 4 x 4 grid is an <b>'environment'</b>. A representation of an environment is known as a <b>'state'</b>. For simplicity, we can refer to each square in our grid as a state (this is not quite correct, but serves the purpose of this primer). The concept of a state will soon become clearer, especially when we discuss environments that better-resemble the real world. </li></ul>
   <ul> <li> The move from one square (state) to another is known as an <b>'action'</b>. </ul></li></p>
   <ul> <li> The points received for each state is known as a <b>'reward'</b> </ul></li>
   <ul> <li> The sequence to follow (the mapping of states to actions) is known as the <b>'policy'</b> </ul></li>
 </p>
 <p>
-To make it more concrete, let's frame our optimal <b>policy</b> using these new terms:</p>
-<p> our first <b>action</b> is to move (from the off-the-grid <b>state</b>) to State 0 <b>state</b>, receiving a <b>reward</b> of +1. We then follow a <b> policy</b> from State 0 to 5, 10, and then 15. In reinforcement learning, we will train an <b>'agent'</b> to do the same. </p>
+To make it more concrete, let's frame our optimal strategy using these new terms:</p>
+<p> Our first <b>action</b> is to move (from the off-the-grid <b>state</b>) to State 0 <b>state</b>, receiving a <b>reward</b> of +1. We then follow a <b> policy</b> from State 0 to 5,froom State 5 to 10, and State 10 to 15. In reinforcement learning, we will train an <b>agent</b> to do the same. </p>
 <p>
 
 </div>
