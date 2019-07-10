@@ -6,13 +6,17 @@ layout: default
 <style>
 #content {
   float: left;
-  width: 800;
   margin: 0;
 }
 text {
   font: 11px "Proxima Nova",sans-serif;
   text-anchor: left;
 }
+
+#fixed_header {
+  position: fixed;
+}
+
 
 </style>
 <head>
@@ -22,18 +26,20 @@ text {
 </script>
 </head>
 <body>
+ <div id = 'fixed_header'> 
  <header>
     <h1>A reinforcement learning primer </h1>
     <h2>1/5 Introduction <a href="new_page2.html"><img src="images/right_arrow.png"style="width:10px;height:15px;"></a></h2>
   </header>
+</div>
 <div id="content">
-<div id="" style="overflow-y:scroll; height:800px; width: 900px; ">
+<div id="" style="overflow-y:scroll; ">
 <p><i>A reinforcement learning (RL) primer for those looking to build intuition around RL technical fundamentals with interactive grids (with an optional page on the Q-learning algorithm), and an initial discussion of how this relates to AI research. </i></p>
 <p><i>It does not assume any prior specialised knowledge. </i></p>
 
 </p>
 <header>
-<h3> BASICS - A QUICK INTRODUCTION </h3>
+<h3> BASICS - A QUICK OVERVIEW </h3>
 </header>
 <p><b>1. What is artificial intelligence (AI)?</b></p>
 <p>There is no consensus around the definition of AI, or making machines intelligent. Today, much of the enthusiasm around AI’s potential focuses on two key characteristics: <b>learning</b> and <b>generality</b>.</p>
