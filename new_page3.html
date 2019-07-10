@@ -115,6 +115,9 @@ This can be written mathematically as:
 $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
 </p>
 
+<header>
+<h5>Q-value Calculation: Example 1 </h5>
+</header>
 <p>To be more explicit, let's work through the steps to calculate $Q(s,a)$ for moving to State 2 to 3 ($s$ =  2  and $a$ = right). </p>
 $$Q(3, \text{right}) = 1 + max[1, 0, 0] $$
 $$Q(3, \text{right})= 1 + 1$$
@@ -128,6 +131,9 @@ $$Q(3, \text{right}) =2$$
 </li> </ul> 
 </li></ul>
 
+<header>
+<h5>Q-value Calculation: Example 2</h5>
+</header>
 <p>And, to be thorough, let's work through the steps to calculate $Q(s,a)$ for moving to State 2 to 5 ($s$ =  5  and $a$ = right-down-diagonal). </p>
 $$Q(s = 3, a = $ right$) = 1 + max[1, 0, 0] $$
 $$Q(s = 3, a = $ right$)= 1 + 1$$
