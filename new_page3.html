@@ -108,11 +108,11 @@ The Q-value can be decomposed into: the immediate reward of moving to the new st
 This can be written mathematically as: 
 $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
 </p>
-We have already calculated the Q-values for $Q(2, to\3)$ and $Q(2, to\5)$, which are the maximum cumulative game rewards ($1$ and $2$)*. 
+We have already calculated the Q-values for $Q(2, \text{to 3})$ and $Q(2,\text{to 5})$, which are the maximum cumulative game rewards ($1$ and $2$)*. 
 
 <p>To be more explicit, let's work through the steps to calculate $Q(s,a)$ for State 2 to 3. </p>
 $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
-$$Q(2,to\3) = -1 + max[$2$, $0$, $1$] $$
+$$Q(2,to\3) = -1 + max[2, 0, 1] $$
 $$Q(2,to\3)= -1 + 2$$
 $$Q(2,to\3) = 1$$
 
