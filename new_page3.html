@@ -120,8 +120,8 @@ $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
 </header>
 <p>To be more explicit, let's work through the steps to calculate the $Q(s,a)$ of moving from State 2 to 3 ($s$ =  2  and $a$ = right). </p>
 $$Q(2, \text{right}) = 1 + max[1, 0, 0] $$
-$$= 1 + 1$$
-$$= 2$$
+$$                   = 1 + 1$$
+$$                   = 2$$
 
 <ul><li>$r_{t}$ is the reward received by selecting the action and moving to State 3: $+1$</ul></li>
 <ul><li>$max[(Q(s_{t+1},a_{t+1})]$ is the maximum Q-value beginning in State 3. </p>There are 3 Q-values for State 3 (one Q-value for each legal action), within the constraints of this particular game. 
