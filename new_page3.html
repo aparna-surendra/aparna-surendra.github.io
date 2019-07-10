@@ -109,14 +109,15 @@ There are different methods to calculate value, but we will use one called <b> Q
 </p>
 </p>
 These are the Q-values!
-</p> The Q-value can be decomposed into: the immediate reward of moving to the new state + the cumulative reward of pursuing the optimal policy from there-on-out.
+</p> The Q-value can be decomposed into two parts: 
+$$Q(s,a) = /text {the immediate reward from the new state} + {the cumulative reward of pursuing the optimal policy from the new state} $$
 </p>
 This can be written mathematically as: 
 $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
 </p>
 
 <header>
-<h4>Q-value Calculation: Example 1 </h4>
+<h4>Q-value calculation: Example 1 </h4>
 </header>
 <p>To be more explicit, let's work through the steps to calculate the $Q(s,a)$ of moving from State 2 to 3 ($s$ =  2  and $a$ = right). </p>
 $$Q(2, \text{right}) = 1 + max[1, 0, 0] $$
@@ -124,7 +125,7 @@ $$                   = 1 + 1$$
 $$                   = 2$$
 
 <ul><li>$r_{t}$ is the reward received by selecting the action and moving to State 3: $+1$</ul></li>
-<ul><li>$max[(Q(s_{t+1},a_{t+1})]$ is the maximum Q-value beginning in State 3. </p>There are 3 Q-values for State 3 (one Q-value for each legal action), within the constraints of this particular game. 
+<ul><li>$max[(Q(s_{t+1},a_{t+1})]$ is the maximum Q-value beginning in State 3. </p>There are 3 Q-values for State 3 (one Q-value for each legal action). 
 <ul><li>$Q(3, a = $right$),$ The optimal policy from here is: State 2-5, which yields a cumulative reward of $0 + 1 = +1$. </li></ul>
 <ul><li>$Q(3, a = $ down$),$ The optimal policy from here is: State 7-10, each which yields a cumulative reward of $-1 + 1 = 0$. </li></ul> 
 <ul><li>$Q(3, a = $ right-down diagonal$),$ The optimal policy from here is either State 6-5 or 6-10, both which yield a cumulative reward of $-1+1 = 0$. </li></ul> </li></ul>
@@ -132,15 +133,15 @@ $$                   = 2$$
 </li></ul>
 
 <header>
-<h4>Q-value Calculation: Example 2</h4>
+<h4>Q-value calculation: Example 2</h4>
 </header>
-<p>Let's work through the steps to calculate $Q(s,a)$ for moving to State 2 to 5 ($s$ =  5  and $a$ = right-down-diagonal). </p>
+<p>Let's work through the steps to calculate $Q(s,a)$ for moving to State 2 to State 5. </p>
 $$Q(s = 2, a = \text{right-down-diagonal}) = 1 + max[2, 1,...] $$
 $$= 1 + 2$$
 $$=3$$
 
-l><li>$r_{t}$ is the reward received by selecting the action and moving to State 5: $+1$</ul></li>
-<ul><li>There are 8 Q-values for State 5 (one Q-value for each legal action), within the constraints of this game. </p>
+<ul><li>$r_{t}$ is the reward received by selecting the action and moving to State 5: $+1$</ul></li>
+<ul><li>There are 8 Q-values for State 5 (one Q-value for each legal action). </p>
 <ul><li>$Q(s = 5, a = $ right-down-diagonal$)$ The optimal policy from here is:  State 10-15, which yields a cumulative reward of $+2$. </li></ul>
 <ul><li>$Q(s = 5, a = $ down$),$ The optimal policy from here is:  State 9-10, which yields a cumulative reward of $+1$. </li></ul> 
 <ul><li>And so on... </li></ul> </li></ul>
