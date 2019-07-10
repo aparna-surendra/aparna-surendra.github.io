@@ -62,8 +62,6 @@ td:nth-last-child(1) {text-align:left;}
 <div id="content">
 <div id="" style="overflow-y:scroll;">
 <h3> i. Introducing Values </h3>
-<p> This primer focuses on <b>value-based methods</b>, a specific type of RL algorithm. An agent learns the <b>value</b> of states and corresponding actions, which then guides the agent's policies. The agent calculates the value of each state. If State A has a higher value than State B, the agent will select State A. 
-</p>
 
 <p>A state's reward can be considered an indication of how 'good' it is immediately, while its value indicates how 'good' it is in the long-term. </p>
 
@@ -102,6 +100,8 @@ Policy #2 is the optimal policy for the game.
 </div>
 </div>
 <p>
+<p> This primer focuses on <b>value-based methods</b>, a specific type of RL algorithm. An agent learns the <b>value</b> of states and corresponding actions, which then guides the agent's policies. (Loosely, the agent calculates the value of each state and selects the higher-value state.)
+</p>
 There are different methods to calculate value, but we will use one called <b> Q-value</b>, represented by $Q(s,a)$, which is the value function of the optimal policy that begins with a state and action. </p>
 <p> For every state ($s$), there are typically multiple legal actions ($a$). To make this more concrete: </p>
 <ul><li>The maximum $Q(s,a)$ value for State 3 is $+2$.
