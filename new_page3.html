@@ -116,20 +116,22 @@ $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
 </p>
 
 <p>To be more explicit, let's work through the steps to calculate $Q(s,a)$ for moving to State 2 to 3 ($s$ =  2  and $a$ = right). </p>
-$$Q(s = 3, a = $ right$) = 1 + max[1, 0, 0] $$
-$$Q(s = 3, a = $ right$)= 1 + 1$$
-$$Q(s = 3, a = $ right$) =2$$
+$$Q(s = 3, a = \text{right}) = 1 + max[1, 0, 0] $$
+$$Q(s = 3, a = \text{right})= 1 + 1$$
+$$Q(s = 3, a = \text{right}) =2$$
 
-<ul><li>$r_{t}$ is the reward received in State 3: $+1$</ul></li>
-<ul><li>$max[(Q(s_{t+1},a_{t+1})]$ is the maximum Q-value beginning in State 3. There are 3 Q-values for State 3 (one Q-value for each legal action), within the constraints of this particular game. 
-<ul><li>$Q(s = 3, a = $ right$),$ The optimal policy from here is: State 2-5, which yields a cumulative reward of $0 + 1 = +1$. </li></ul>
+<ul><li>$r_{t}$ is the reward received by selecting the action and moving to State 3: $+1$</ul></li>
+<ul><li>$max[(Q(s_{t+1},a_{t+1})]$ is the maximum Q-value beginning in State 3. </p>There are 3 Q-values for State 3 (one Q-value for each legal action), within the constraints of this particular game. 
+<ul><li>$Q(s = 3, a = $right$),$ The optimal policy from here is: State 2-5, which yields a cumulative reward of $0 + 1 = +1$. </li></ul>
 <ul><li>$Q(s = 3, a = $ down$),$ The optimal policy from here is: State 7-10, each which yields a cumulative reward of $-1 + 1 = 0$. </li></ul> 
 <ul><li>$Q(s = 3, a = $ right-down diagonal$),$ The optimal policy from here is either State 6-5 or 6-10, both which yield a cumulative reward of $-1+1 = 0$. </li></ul> </li></ul>
 </li> </ul> 
 </li></ul>
 
-
-
+<p>And, to be thorough, let's work through the steps to calculate $Q(s,a)$ for moving to State 2 to 5 ($s$ =  5  and $a$ = right-down-diagonal). </p>
+$$Q(s = 3, a = $ right$) = 1 + max[1, 0, 0] $$
+$$Q(s = 3, a = $ right$)= 1 + 1$$
+$$Q(s = 3, a = $ right$) =2$$
 
 <ul><li>The maximum $Q(s,a)$ value for State 5 is $+3$.
 <ul><li>There are 8 Q-values for State 5 (one Q-value for each legal action), within the constraints of this game. 
