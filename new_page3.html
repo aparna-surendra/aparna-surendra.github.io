@@ -80,7 +80,7 @@ td:nth-last-child(1) {text-align:left;}
 <script src="grids/grid10.js" type="text/javascript"></script>
 </div>
 </div>
-<p><u><i>Q: When in State 2: Do you move right to State 3 or down to State 5? </i></u> </p>
+<p><u><i>Q: When in State 2, do you move right to State 3 or down-left-diagonal to State 5? </i></u> </p>
 <p> Based on their rewards, State 3 and State 5 are equally desirable (they each return $+1$). But we know they are not equivalent – a policy that moves from State 2 to State 5 returns a higher total reward.  
 <div class = "row">
 <div class="column">
@@ -118,10 +118,10 @@ $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
 <header>
 <h4>Q-value Calculation: Example 1 </h4>
 </header>
-<p>To be more explicit, let's work through the steps to calculate $Q(s,a)$ for moving to State 2 to 3 ($s$ =  2  and $a$ = right). </p>
-$$Q(3, \text{right}) = 1 + max[1, 0, 0] $$
-$$Q(3, \text{right})= 1 + 1$$
-$$Q(3, \text{right}) =2$$
+<p>To be more explicit, let's work through the steps to calculate the $Q(s,a)$ of moving from State 2 to 3 ($s$ =  2  and $a$ = right). </p>
+$$Q(2, \text{right}) = 1 + max[1, 0, 0] $$
+$$Q(2, \text{right})= 1 + 1$$
+$$Q(2, \text{right}) =2$$
 
 <ul><li>$r_{t}$ is the reward received by selecting the action and moving to State 3: $+1$</ul></li>
 <ul><li>$max[(Q(s_{t+1},a_{t+1})]$ is the maximum Q-value beginning in State 3. </p>There are 3 Q-values for State 3 (one Q-value for each legal action), within the constraints of this particular game. 
@@ -134,15 +134,15 @@ $$Q(3, \text{right}) =2$$
 <header>
 <h4>Q-value Calculation: Example 2</h4>
 </header>
-<p>And, to be thorough, let's work through the steps to calculate $Q(s,a)$ for moving to State 2 to 5 ($s$ =  5  and $a$ = right-down-diagonal). </p>
-$$Q(s = 3, a = $ right$) = 1 + max[1, 0, 0] $$
-$$Q(s = 3, a = $ right$)= 1 + 1$$
-$$Q(s = 3, a = $ right$) =2$$
+<p>Let's work through the steps to calculate $Q(s,a)$ for moving to State 2 to 5 ($s$ =  5  and $a$ = right-down-diagonal). </p>
+$$Q(s = 2, a = $ \text{right-down-diagonal}) = 1 + max[2, 1,...] $$
+$$Q(s = 2, a = $ \text{right-down-diagonal})= 1 + 2$$
+$$Q(s = 2, a = $ \text{right-down-diagonal}) =3$$
 
-<ul><li>The maximum $Q(s,a)$ value for State 5 is $+3$.
-<ul><li>There are 8 Q-values for State 5 (one Q-value for each legal action), within the constraints of this game. 
-<ul><li>$Q(s = 5, a = $ right-down-diagonal$),$ The optimal policy is: State 5-10-15, which yields a cumulative reward of $+3$. </li></ul>
-<ul><li>$Q(s = 5, a = $ down$),$ The optimal policy is: State 9-10-15, which yields a cumulative reward of $+2$. </li></ul> 
+l><li>$r_{t}$ is the reward received by selecting the action and moving to State 5: $+1$</ul></li>
+<ul><li>There are 8 Q-values for State 5 (one Q-value for each legal action), within the constraints of this game. </p>
+<ul><li>$Q(s = 5, a = $ right-down-diagonal$)$ The optimal policy from here is:  State 10-15, which yields a cumulative reward of $+2$. </li></ul>
+<ul><li>$Q(s = 5, a = $ down$),$ The optimal policy from here is:  State 9-10, which yields a cumulative reward of $+1$. </li></ul> 
 <ul><li>And so on... </li></ul> </li></ul>
 </li> </ul> 
 </li></ul>
