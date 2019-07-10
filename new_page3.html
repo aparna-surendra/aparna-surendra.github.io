@@ -101,15 +101,27 @@ Policy #2 is the optimal policy for the game.
 </header>
 <p> This primer focuses on <b>value-based methods</b>, a specific type of RL algorithm. An agent learns the <b>value</b> of states and corresponding actions, which then guides the agent's policies. 
 </p>
-There are different methods to calculate value, but we will use one called <b> Q-value</b>, represented by $Q(s,a)$, where $s$ represents the current state and $a$ represents the selected action. Imagine a grid where each state is labelled with the score of the highest-value game that can be played if the state is selected at that point in the game. That 'value' is what the Q-value aims to represent. 
+There are different methods to calculate value, but we will use one called <b> Q-value</b>, represented by $Q(s,a)$, where $s$ represents the current state and $a$ represents the selected action. A Q-value can be considered the highest cumulative reward possible by selecting a given action in a given state.  
 </p>
-The Q-value can be decomposed into: the immediate reward of moving to the new state + the cumulative reward of pursuing the optimal policy from there-on-out.
+The highest value possible by choosing to move to State 3 is $+1$ (by following this policy:  State 2- State 5). this is its Q-value. 
+</p>
+</p>
+The highest value possible by choosing to move to State 5 is $3$ (by following this policy: State 10-15). 
+</p>
+These are the Q-values!
+</p> The Q-value can be decomposed into: the immediate reward of moving to the new state + the cumulative reward of pursuing the optimal policy from there-on-out.
 </p>
 This can be written mathematically as: 
 $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
 </p>
 
 <p>To be more explicit, let's work through the steps to calculate $Q(s,a)$ for State 2 to 3. </p>
+$$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
+$$Q(2,\text{to 3}) = 1 + max[1, 0, 0] $$
+$$Q(2,\text{to 3})= 1 + 1$$
+$$Q(2,\text{to 3}) =2$$
+
+
 <ul><li>$r_{t}$ is the reward received in State 3: $+1$</ul></li>
 <ul><li>$max[(Q(s_{t+1},a_{t+1})]$ is the maximum Q-value beginning in State 3. There are 3 Q-values for State 3 (one Q-value for each legal action), within the constraints of this particular game. 
 <ul><li>$Q(s = 3, a = $ right$),$ The optimal policy from here is: State 2-5, which yields a cumulative reward of $0 + 1 = +1$. </li></ul>
@@ -117,10 +129,6 @@ $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
 <ul><li>$Q(s = 3, a = $ right-down diagonal$),$ The optimal policy from here is either State 6-5 or 6-10, both which yield a cumulative reward of $-1+1 = 0$. </li></ul> </li></ul>
 </li> </ul> 
 </li></ul>
-$$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
-$$Q(2,\text{to 3}) = 1 + max[1, 0, 0] $$
-$$Q(2,\text{to 3})= 1 + 1$$
-$$Q(2,\text{to 3}) =2$$
 
 
 
