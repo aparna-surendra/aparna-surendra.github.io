@@ -6,7 +6,6 @@ layout: default
 <style>
 #content {
   float: left;
-  width: 800px;
   margin: 0;
 }
 text {
@@ -23,16 +22,52 @@ text {
 </head>
 <body>
  <header>
-    <h2>A reinforcement learning primer</h2>
-    <h3>1/5 Introduction <a href="new_page2.html"><img src="images/right_arrow.png"style="width:10px;height:15px;"></a></h3>
+    <h1>A reinforcement learning primer</h1>
+    <h2>1/5 Introduction <a href="new_page2.html"><img src="images/right_arrow.png"style="width:10px;height:15px;"></a></h2>
   </header>
 <div id="content">
 <div id="" style="overflow-y:scroll; height:600px;">
 <p>
-<b>i. What is reinforcement learning?</b>
+<i>A reinforcement learning (RL) primer for those looking to build greater intuition around RL technical fundamentals, and an introduction to how they relate to AI research. It does not assume any prior specialised knowledge. </i></p>
+<p><i>It provides a quick overview of AI, build intuition and terminology around key concepts (with a supplementary page outlining one algorithm), and provides an initial discussion of how these concepts relate to AI research, including AI safety research.</i> </p>
+</i>
+</p>
+<header>
+<h3> BASICS - A QUICK INTRODUCTION </h3>
+</header>
+<p><b>1. What is artificial intelligence (AI)?</b></p>
+<p>There is no consensus around the definition of AI, or making machines intelligent. Today, much of the enthusiasm around AI’s potential focuses on two key characteristics: <b>learning</b> and <b>generality</b>.</p>
+
+<p>
+<ul><li>A <b>learning algorithm</b> is one that is not explicitly programmed to find a solution.</li></ul>
+<ul><li>A <b>general-purpose algorithm</b> is one that is flexible enough to be applied to new environments and new tasks.</li></ul>
 </p>
 <p>
-Reinforcement learning is a method of learning that relies on interaction with an environment. It can be considered a computational approach to how a child learns – we learn how to walk without an explicit teacher, and instead learn which actions to take through trial-and-error, and identifying cause and effect in relation to our physical movement and the environment. Through experience, we improve performance. </p>
+Humans do this naturally: we can learn without explicit instruction (children are not taught to walk with explicit commands – place your foot at this angle, while moving at this speed– rather, they develop this through experience), and we have general-purpose intelligence (we can learn how to swim, and but we can also learn a variety of other tasks – how to drive, or to speak a new language). 
+</p>
+<p>
+Learning and generality are not the only two characteristics of intelligence (the description of a child walking is fairly simplistic), but this primer uses them to frame a working definition of AI. 
+</p>
+<p>
+Consider what types of machines are now excluded from the AI umbrella. Imagine if I entered every possible sequence of chess moves into a machine (extend your imagination to consider this computationally feasible and efficient), and the machine would simply search its database to identify the next move. This would doubtless provide a winning machine. But it would neither be a learning machine (it relies on human input data) or a general-purpose one (it would not be versatile enough to play another game, such as scrabble). 
+</p>
+
+<p><i>Further resources:</i></p>
+<p>[1] Demis Hassabis, Royal Society lecture.</p>
+
+<p><b>2. What is reinforcement learning?</b></p>
+<p>
+Reinforcement learning is one type of learning algorithm, and its study is one of the most active areas of AI research. RL can be considered a computational approach to learning from interaction – the learner is not told which actions to take, but instead must interact with the environment, and discover which actions yield the most reward by trying them [2].
+</p>
+
+<p>
+Let’s return to the example of a child learning to walk: the child (or ‘learner’) can be considered an agent who is trying to maximise a reward signal. There are negative rewards for falling (the immediate pain of the fall), and positive rewards for balancing and – eventually– walking (the absence of pain; the benefits of increased mobility). 
+</p>
+<p><i>Further resources:</i></p>
+<p>[2] Sutton and Barto </p>
+
+
+</p>
 <p>
 How does this translate to a computational approach? The child (or ‘learner’) can be considered an agent who is trying to maximise a reward signal – there are negative rewards for falling (the immediate pain of the fall), and positive rewards for balancing and – eventually– walking (the absence of pain; the benefits of increased mobility). 
 </p>
