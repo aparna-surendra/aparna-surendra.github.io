@@ -116,10 +116,9 @@ $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
 </p>
 
 <p>To be more explicit, let's work through the steps to calculate $Q(s,a)$ for State 2 to 3. </p>
-$$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
-$$Q(2,\text{to 3}) = 1 + max[1, 0, 0] $$
-$$Q(2,\text{to 3})= 1 + 1$$
-$$Q(2,\text{to 3}) =2$$
+$$Q(\text{State 2},\text{to State 3}) = 1 + max[1, 0, 0] $$
+$$Q(\text{State 2},\text{to State 3})= 1 + 1$$
+$$Q(\text{State 2},\text{to State 3}) =2$$
 
 <ul><li>$r_{t}$ is the reward received in State 3: $+1$</ul></li>
 <ul><li>$max[(Q(s_{t+1},a_{t+1})]$ is the maximum Q-value beginning in State 3. There are 3 Q-values for State 3 (one Q-value for each legal action), within the constraints of this particular game. 
