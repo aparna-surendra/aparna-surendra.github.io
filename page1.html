@@ -26,7 +26,7 @@ text {
     <h2>1/5 Introduction <a href="new_page2.html"><img src="images/right_arrow.png"style="width:10px;height:15px;"></a></h2>
   </header>
 <div id="content">
-<div id="" style="overflow-y:scroll; height:600px;">
+<div id="" style="overflow-y:scroll;">
 <p>
 <i>A reinforcement learning (RL) primer for those looking to build greater intuition around RL technical fundamentals, and an introduction to how they relate to AI research. It does not assume any prior specialised knowledge. </i></p>
 <p><i>It provides a quick overview of AI, build intuition and terminology around key concepts (with a supplementary page outlining one algorithm), and provides an initial discussion of how these concepts relate to AI research, including AI safety research.</i> </p>
@@ -66,39 +66,13 @@ Let’s return to the example of a child learning to walk: the child (or ‘lear
 <p><i>Further resources:</i></p>
 <p>[2] Sutton and Barto </p>
 
+<p><b>3. TL;DR - The issues </b></p>
+<p>The conversation around AI is charged by its potential for groundbreaking human advancement. Could AI, coupled with domain-specific knowledge, accelerate discoveries in cancer research or climate change? But the flip of this enthusiasm is the need for careful, ethical AI development, and the anticipation and close monitoring of the impacts of AI-based systems. </p>
 
-</p>
-<p>
-How does this translate to a computational approach? The child (or ‘learner’) can be considered an agent who is trying to maximise a reward signal – there are negative rewards for falling (the immediate pain of the fall), and positive rewards for balancing and – eventually– walking (the absence of pain; the benefits of increased mobility). 
-</p>
-<p>
-<b>ii. But what does this mean?</b>
-</p>
-<p>
-To make this more concrete, we can simplify this using game based on a simple 3 x 3 grid environment. The goal of the game is simple – to click on squares and collect as high a total reward as possible.  
-Through interaction with the game, the user will learn:
-<ul> 1. Constraints: The game must start on a specific square; movement from one square to another is based on certain conditions. </ul>
-<ul> 2. Reward details: Some squares have a positive reward (+1), others have a negative reward (-1). </ul>
-</p>
-<div align="center">
-<div id="grid"></div>
-<script src="grids/grid.js" type="text/javascript"></script>
-</div>
-<p>
-After training with the environment, you should be able to hit ‘reset’ and play the game for maximum cumulative reward, which is +3 points, by traversing the diagonal. Through interaction, you would have learned the constraints – the game must begin at the top-left corner, and you can only move along adjacent squares, and the rewards – each square along the diagonal has a positive reward (+1), and all other squares have a negative reward (-1). </p>
+<p>There are already active conversations around the need for fairness and explainability around algorithms (are certain communities disproportionately impacted by the system; why does the algorithm take a certain action/make a certain prediction). All of these issues are relevant to reinforcement learning, along with a set of RL-specific challenges. These are often bucketed as topics in ‘AI safety’, which is an active area of technical research.</p>
 
-<p>These are the basics of reinforcement learning!</p> 
-<b>iii. Why is reinforcement learning important within the field of AI?</b>
-</p>
-<p>Research in reinforcement learning has demonstrated terrific advances, showcasing the power and versatility of a single algorithm to learn a variety of tasks across a range of envirnonments. This is, in loose terms, similar to how human intelligence operates –  humans use the same learning methods to learn a variety of routines, including to walk, to swim, and to drive. </p>
-<p> More on general principles, from  Sutton and Barto (2017):  
-</p>
-"Since the late 1960’s, many artificial intelligence researchers presumed that there are no general principles to be discovered, that intelligence is instead due to the possession of a vast number of special purpose tricks, procedures, and heuristics. It was sometimes said that if we could just get enough relevant facts into a machine, say one million, or one billion, then it would become intelligent. Methods based on general principles, such as search or learning, were characterized as “weak methods,” whereas those based on specific knowledge were called “strong methods.” This view is still common today, but not dominant.
-<p>
-</p>
-From our point of view, it was simply premature: too little effort had been put into the search for general principles to conclude that there were none. Modern artificial intelligence now includes much research looking for general principles of learning, search, and decision making, as well as trying to incorporate vast amounts of domain knowledge. It is not clear how far back the pendulum will swing, but reinforcement learning research is certainly part of the swing back toward simpler and fewer general principles of artificial intelligence".
 
-</div>
-</div>
+
+
 </body>
 </html>
