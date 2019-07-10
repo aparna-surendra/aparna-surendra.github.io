@@ -103,16 +103,18 @@ Policy #2 is the optimal policy for the game.
 </p>
 There are different methods to calculate value, but we will use one called <b> Q-value</b>, represented by $Q(s,a)$, where $s$ represents the current state and $a$ represents the selected action. 
 </p>
-The Q-value can be decomposed into: the immediate reward of moving to the new state + the cumulative reward of pursuing the optimal policy from there-on out. This can be written mathematically as: 
+The Q-value can be decomposed into: the immediate reward of moving to the new state + the cumulative reward of pursuing the optimal policy from there-on out.
+</p>
+This can be written mathematically as: 
 $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
 </p>
-We have already calculated the Q-values for $Q(2, to 3)$ and $Q(2, to 5)$, which are the cumulative game rewards ($1$ and $2$, respectively*). 
+We have already calculated the Q-values for $Q(2, to\3)$ and $Q(2, to\5)$, which are the maximum cumulative game rewards ($1$ and $2$)*. 
 
-<p>To be more explicit, le's work through the steps to calculate $Q(s,a)$ for moving to State 3 (from State 2). </p>
+<p>To be more explicit, let's work through the steps to calculate $Q(s,a)$ for State 2 to 3. </p>
 $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
-$$Q(2,to 3) = -1 + max[$2$, $0$, $1$] $$
-$$Q(2,to 3)= -1 + 2$$
-$$Q(2,to 3) = 1$$
+$$Q(2,to\3) = -1 + max[$2$, $0$, $1$] $$
+$$Q(2,to\3)= -1 + 2$$
+$$Q(2,to\3) = 1$$
 
 
 <ul><li>T$r_{t}$ is the reward received in State 3: $-1$</ul></li>
