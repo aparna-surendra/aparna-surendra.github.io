@@ -150,8 +150,8 @@ $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
 $$Q(\text{s = off-grid}, \text{a = right}) = 1 + max[1,-1,0]$$
 $$                                         = 1 + 1 = 2$$ 
 
-And update the Q-value of State 0 (shorthand for the Q-value of moving <i>to</i> State 0) to $2$. 
-<b>Time Steps 2 - 4</b><p></p>
+We update the Q-value of State 0 (shorthand for the Q-value of moving <i>to</i> State 0) to $2$. <p></p>
+<b>Time Steps 2,3, 4</b><p></p>
 We follow the greedy policy (move from State 5 - State 10 - State 15) and update the Q-values accordingly.<p></p> 
  
 <p>For State 5, update the $max. Q(s_{t+1}, a_{t+1})$ value to 1 : $Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+1 = 2$ </p>
