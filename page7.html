@@ -141,16 +141,18 @@ $$                                  = -1$$
 <h4>3. Training Episode 2</h4>
 </header>
 <b>Time Step 1</b> <p></p> 
-By following a 'greedy' policy (selecting the highest value state-actions without exploring further), we elect to move to Square 0 (which has a $Q(s_t, a_t) = 1$, and is the only legal action) and receive +1. Let's update the Q-value of moving to State 1 – $r_{t}$ is the same, but the maximum Q-value of the possible next states has changed ($max. Q(s_{t+1}, a_{t+1}) = 1$. <p></p>
+By following a 'greedy' policy (selecting the highest value state-actions without exploring further), we elect to move to Square 0 (which has a $Q(s_t, a_t) = 1$, and is the only legal action) and receive +1. Let's update the Q-value of moving to State 1 – $r_{t}$ is the same, but the $max. Q(s_{t+1}, a_{t+1})$ values have changed: moving right to State 1 has a Q-value of $-1$, moving diagonally to State 5 has one of $+1$, while moving down to State 4 has the same Q-value of $0$. <p></p>
 $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
 $$Q(\text{s = off-grid}, \text{a = right}) = 1 + max[1,-1,0]$$
 $$                                         = 1 + 1 = 2$$ 
 
-<b>We move from Square 5 - Square 10 - Square 15.</b><p></p> 
+And update the Q-value of State 0 (shorthand for the Q-value of moving <i>to</i> State 0) to $2$. 
+
+<b>We follow the greedy policy </b> (move from State 5 - State 10 - State 15) and update the Q-values accordingly.<p></p> 
  
-<p>For Square 5, update the $max. Q(s_{t+1}, a_{t+1})$ value to 1 : $Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+1 = 2$ </p>
-<p>For Square 10, update the $max. Q(s_{t+1}, a_{t+1})$ value to 1 : $Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+1 = 2$ </p>
-<p>For Square 15, the update does not change the previous Q value : $Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+0 = 1$ </p>
+<p>For State 5, update the $max. Q(s_{t+1}, a_{t+1})$ value to 1 : $Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+1 = 2$ </p>
+<p>For State 10, update the $max. Q(s_{t+1}, a_{t+1})$ value to 1 : $Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+1 = 2$ </p>
+<p>For State 15, the update does not change the previous Q value : $Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+0 = 1$ </p>
 
 <b>Training Episode 3</b><p></p> Select Square 0 (which has a $Q(s_t, a_t) = 2$), as it is the only legal action, and receive +1. The maximum $Q(s_{t+1}, a_{t+1})$ is higher than it was in the previous training episode. <p></p>
 For Square 0, update the $max. Q(s_{t+1}, a_{t+1})$ value to 1: <p></p>
