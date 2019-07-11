@@ -130,18 +130,24 @@ $$                                  = -1$$
 </div>
 
 
-<p><b>And so on, </b> until the end of the training episode. This produces the updated Q-values below</p><p></p>
+<p><b>And so on, </b> until the end of the training episode. This produces the updated Q-values below.</p><p></p>
 
 <div align="center">
 <div id="grid5"></div>
 <script src="grids/grid17.js" type="text/javascript"></script>
 </div>
 
-<b>Training Episode 2 </b><p></p> We follow a 'greedy' policy, which means we select the highest value states without exploring further. I select Square 0 (which has a $Q(s_t, a_t) = 1$), as it is the only legal action. I  receive +1. The maximum $Q(s_{t+1}, a_{t+1})$ is higher than it was in the previous training episode. <p></p>
+<header>
+<h4>3. Training Episode 2</h4>
+</header>
+<b>Time Step 1</b> <p></p> 
+We follow a 'greedy' policy, which means we select the highest value state-actions without exploring further. I first elect to move to Square 0 (which has a $Q(s_t, a_t) = 1$), as it is the only legal action. I  receive +1.  <p></p>
 For Square 0, update the $max. Q(s_{t+1}, a_{t+1})$ value to 1: <p></p>
 <p>$Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+1 = 2$</p>
+The Q-value increases further (even though r_{t} is the same as in episode 1) because the Q-values of adjacent states have increased! 
 
-By following the policy, we move from Square 5 - Square 10 - Square 15. 
+<b>We move from Square 5 - Square 10 - Square 15.</b><p></p> 
+ 
 <p>For Square 5, update the $max. Q(s_{t+1}, a_{t+1})$ value to 1 : $Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+1 = 2$ </p>
 <p>For Square 10, update the $max. Q(s_{t+1}, a_{t+1})$ value to 1 : $Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+1 = 2$ </p>
 <p>For Square 15, the update does not change the previous Q value : $Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+0 = 1$ </p>
