@@ -6,6 +6,9 @@ layout: default
 <style>
 #content {
   float: left;
+  width: 800px;
+  margin: 0;
+
 }
 text {
   font: 11px "Proxima Nova",sans-serif;
@@ -109,7 +112,8 @@ There are different methods to calculate value, but we will use one called <b> Q
 </p>
 These are the Q-values! When assessing whether to move to State 3 (Q-value $= 2$) or State 5 (Q-value $= 3$), the agent will select State 5 – the state with the highest Q-value.</p>
 
-<p>Note: A Q-value is not the same as the total cumulative reward for a policy (the total cumulative reward for Policy 2 is $+2$, while the Q-value of moving to State 3 from State 2 is $+3$. A Q-value is specific to a state- action pair, and includes a calculation of the <b>optimal</b> policy pursued from the next state oon – not just any policy </p>
+<p>Note: A Q-value is not necessarily the same as the total cumulative reward for a given policy. A Q-value is specific to a state- action pair, and includes a calculation of the <b>optimal</b> policy pursued from the next state on. </p>
+<ul><li>The total cumulative reward for Policy 2 is $+2$ (rewards from State 2 -5-10-15). The  Q-value of State 2, moving to State 5 is $+3$ (the rewards from State 5-10-15). </li></ul>
 
 <header>
 <h4>The Q-value, mathematically</h4>
@@ -159,6 +163,7 @@ $$=3$$
 </header>
 <p><u><i>Q: Consider two policies: Policy A yields +100 over 1 time step, while Policy B yields +100 in cumulative reward over 100 time steps. Which policy do you pursue? </i></u> </p>
 We can express this preference mathematically by introducing two additional terms: <b>time step ($t$)</b> and <b>discount factor ($\gamma$)</b> and, for ease, some mathematical notation. 
+</p>
 
 <header>
 <h4>a. Time Steps</h4>
@@ -174,9 +179,9 @@ We can express this preference mathematically by introducing two additional term
 <header>
 <h4>b. Discount Factor</h4>
 </header>
-<p>We can weight rewards received in the future, so that they are less valuable than rewards received immediately. If time step $t$ begins at 0, the reward is discounted at discount factor ($\gamma^t$). 
+<p>We can weight rewards received in the future, so that they are less valuable than rewards received immediately. If time step $t$ begins at 0, the reward is discounted at discount factor ($\gamma^t$). All the calculations so far have not been discounted ($\gamma^t$ = 1). If $\gamma = 0$, future rewards are discounted completely – only immediate rewards matter. If $\gamma = 1$, future rewards are weighted the same as those received immediately.
 <ul><li>At $t_0$, the reward $r_0$ is discounted at $\gamma^0$; at $t_1$, the reward $r_1$ is discounted at $\gamma^1$ and so on. </ul></li> 
-If $\gamma = 0$, future rewards are discounted completely – only immediate rewards matter. If $\gamma = 1$, future rewards are weighted the same as those received immediately (as in all previous examples in this primer).</p>
+</p>
 
 <p>Let's return to the question posed at the beginning of Section iii:</p>
 <ul><li>If the discount factor ($\gamma$) = 1, then future rewards are weighted the same as immediate rewards. <ul><li>Policy A \(=\) Policy B  \(= 100\).</li></ul></li></ul>
@@ -207,7 +212,9 @@ If $\gamma = 0$, future rewards are discounted completely – only immediate rew
 <header>
 <h4>c. Discounted Q-values</h4>
 </header>
-The total discounted reward for any policy is not (always) the same as a Q-value.
+To include the discount factor in our Q-value calculation, we simply discount Q-values for future time-steps. 
+$$Q(s,a) = r_{t} + \gamma.max[(Q(s_{t+1},a_{t+1})]$$
+
 </div>
 </div>
 </div>
