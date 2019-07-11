@@ -48,7 +48,7 @@ text {
 <header>
 <h3> 1. Introducing game environments </h3>
 </header>
-<p> In 2015, DeepMind <a href="https://deepmind.com/research/dqn/">published a breakthrough</a> in reinforcement learning research. The team had developed a new algorithm, the Deep-Q Learning Network (DQN), which could train on 46 different Atari games and had reached/exceeded human performance on 29 games. At its core, DQN is an algorithm that learns Q-values (and is a modified version of the Q-learning algorithm, which is included in the <a href="new_page1.html">supplementary tutorial</a>.</p>
+<p> In 2015, DeepMind <a href="https://deepmind.com/research/dqn/">published a breakthrough</a> in reinforcement learning research. The team had developed a new algorithm, the Deep-Q Learning Network (DQN), which could train on 46 different Atari games and had reached/exceeded human performance on 29 games. At its core, DQN is an algorithm that learns Q-values (and is a modified version of the Q-learning algorithm, which is included in the <a href="page7.html">supplementary tutorial</a>.</p>
 <p>
 DQN was a first demonstration of a generalisable or general-purpose agent – the same algorithm could be trained on a diverse set of environments without modification (this does not mean that a DQN agent trained to play Pong will perform well in a game of Breakout; the agent must train in the environment which it will play). DQN could also take RGB video-feed as input, a step closer to the complex sensory visual input that humans use,  and a step closer to agents in a 'real world' environment. Game environments provide well-defined domains for AI research, and recent publications focus on new, increasingly sophisticated game challenge domains. 
 
@@ -81,7 +81,7 @@ Through Pong, we can identify some of the challenges related to reinforcement le
 <h3> 3. AI in the real world </h3>
 </header>
 We now have the conceptual understanding to consider two key real-world policy challenges – reward hacking and safe exploration. <p></p>
-This section is a brief excerpt of examples drawn from  <a href="https://arxiv.org/pdf/1606.06565.pdf">‘Concrete Problems in AI safety’</a> a research paper by Google Brain and OpenAI, which provides a more comprehensive overview of problems and potential solutions. <p></p>
+This section is a brief excerpt of examples drawn from  <a href="https://arxiv.org/pdf/1606.06565.pdf">‘Concrete Problems in AI safety’</a> a research paper by Google Brain and OpenAI. <p></p>
 
 <ul><li><b>Reward Hacking</b></li></ul>
 <i>“How can we ensure that the cleaning robot won’t game its
@@ -102,16 +102,15 @@ As an agent looks to maximise its reward, it may identify policies that were not
 As an agent looks for the optimal policy in a new (or little-explored) environment, how can it safely explore an environment it doesn’t know very well? <p></p>
 
 We discussed the $\epsilon$-greedy strategy – selecting a random action with $\epsilon$-probability during the training process– which does not factor in the potential for harm. One way to potentially mitigate this is through training an agent in a simulated environment before releasing it in the real-world.  <p></p>
-Learn more: <a href="https://arxiv.org/pdf/1606.06565.pdf">‘Concrete Problems in AI safety’</a> 
 <p></p>
 </div>
 </div>
 <header>
 <h3> 3. Next Steps</h3>
 </header>
-This primer was intended to provide a soft introduction to RL technical fundamentals, and some initial discussion that links them to RL research. For additional detail, consider reading the supplement on the Q-learning algorithm (if you know some Python, it includes an implementation of the DQN with the OpenAI environment). 
-
-To delve more deeply into RL concepts, David Silver's <a href='https://www.youtube.com/watch?v=2pWv7GOvuf0'>RL lecture series </a> is available on YouTube and and Rich Sutton and Andrew Barto's seminal textbook 'Reinforcement Learning: An Introduction' is available <a href="http://incompleteideas.net/book/bookdraft2017nov5.pdf">free on-line</a> .
+This primer was intended to provide a soft introduction to RL technical fundamentals, and some initial discussion that connects them to RL research. For additional technical detail, consider reading the supplement on the Q-learning algorithm (if you know some Python, it includes an implementation of the DQN with the OpenAI environment). 
+<p></p>
+To delve more deeply into RL concepts, David Silver's <a href='https://www.youtube.com/watch?v=2pWv7GOvuf0'>RL lecture series </a> is available on YouTube, and Rich Sutton and Andrew Barto's seminal textbook 'Reinforcement Learning: An Introduction' is available <a href="http://incompleteideas.net/book/bookdraft2017nov5.pdf">free on-line</a> .
 
 </div>
 </body>
