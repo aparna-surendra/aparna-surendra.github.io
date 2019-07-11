@@ -186,7 +186,7 @@ In all subsequent training episodes, the Q-values stay the same. This is known a
 <script src="grids/grid21.js" type="text/javascript"></script>
 </div>
 </div>
-<p></p><b>Learning Rate </b> <p></p>
+<h3>Learning Rate</h3>
 The illustration above has several simplifying assumptions that allow us to 'update' Q-values by replacing them with the most recent calculation (e.g. we find the optimal policy in the first training episode, and we always follow a greedy policy). But this  doesn't allow for any randomness in the grid. For example – what if Square 15 has a reward of +10 with 50% probability, and -100 with 50% probability? In the method above, our Q-value for Square 15 would swing to capture the most recent reward, and wouldn't indicate the average behaviour. In addition, the values wouldn't converge. <p></p>
 
 We manage this with a learning rate $\alpha$, which controls the speed of learning. 
