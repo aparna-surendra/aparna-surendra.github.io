@@ -44,19 +44,19 @@ text {
 <body>
  <header>
     <h1>A reinforcement learning primer</h1>
-    <h3><a href="new_page4.html"><img src="images/left_arrow.png"style="width:8px;height:13px;"></a> 5/5 From gridworld to the real world <a href="page7.html"><img src="images/right_arrow.png"style="width:10px;height:15px;"></a></h3>
+    <h2><a href="new_page4.html"><img src="images/left_arrow.png"style="width:8px;height:13px;"></a> 5/5 From gridworld to the real world <a href="page7.html"><img src="images/right_arrow.png"style="width:10px;height:15px;"></a></h2>
   </header>
 <div id="content">
 <div id="" style="overflow-y:scroll; height:600px;">
 <header>
-<h3> i. Overview </h3>
+<h3> 1. AI research </h3>
 </header>
 <p> In 2015, DeepMind <a href="https://deepmind.com/research/dqn/">published a paper</a> demonstrating a breakthrough in reinforcement learning research. The team had developed a new algorithm, the Deep-Q Learning Network (DQN), which could train on 46 different Atari games and had reached/exceeded human performance on 29 games. DQN is a modified version of the Q-learning algorithm described in the supplementary tutorial.</p>
 <p>
 DQN was a first demonstration of a generalisable or general-purpose agent – the same algorithm could be trained on a diverse set of environments without modification (this does not mean that a DQN agent trained to play Pong will perform well in a game of Breakout; the agent must train in the environment which it will play). DQN could also take RGB video-feed as input, a step closer to the complex sensory visual input that humans use,  and a step closer to agents in a 'real world' environment. 
 </p>
 <p>
-In the last section, we considered the exploration/exploitation dilemma through two environments: a 20 x 20 grid, and the Atari game Breakout. We used many core  reinforcement learning concepts when learning with the grid environment, and we can extend these to the Atari game Pong. 
+In the last section, we considered the exploration/exploitation dilemma through two environments: a 20 x 20 grid, and the Atari game Breakout. We used many core reinforcement learning concepts when learning with the grid environment, and we can extend these to the Atari game Pong. 
 </p>
 <div align="center">
 <video width="320" height="240" controls>
@@ -66,13 +66,13 @@ In the last section, we considered the exploration/exploitation dilemma through 
 </div>
 <p>
 <header>
-<h3> ii. Mapping grid concepts to Atari games </h3>
+<h3> 2. Mapping grid concepts to Atari games </h3>
 </header>
-<ul><li> The <b>state</b> is the input perceived by the agent. While our 4 x 4 grid had 17 states, Pong's state space is far greater. For simplicity, envision that a state is a frame from the video input. Every possible permutation of pixels (which includes all possible pixel configurations for the positions of two paddles and the ball) make up the possible states.</li></ul> 
+<ul><li> The <b>state</b> is the input perceived by the agent. Pong's state space is far greater than grid's. For simplicity, envision that a Pong state is a frame from the video input. Every possible permutation of pixels (which includes all possible pixel configurations for the positions of two paddles and the ball) make up the possible states.</li></ul> 
 <ul><li> The <b>actions</b> are the legal actions available in Pong (move the agent's paddle up, down, no movement)</li></ul> 
 <ul><li>The <b> reward signal</b> is +1 or -1, depending on whether the agent or the opponent scores. </ul>
 <ul><li>The <b>policy</b> is the mapping of states to actions. Let's use a human player as an analogy. When a human sees a ball cresting towards her, she selects a series of actions to move the paddle in preparation for the shot and - based on an assessment of her opponent's position – angles the paddle to best score. The policy is the sequence of actions based on the changing states (which represent the positions of the player, opponent and ball). </li></ul>
-<ul><li>We can also intuit a state's <b>value function</b>. A state where the opponent is about to score (e.g. the agent's paddle is at the top right corner, while as the ball is about to reach the bottom right corner) is an undesirable or low-value state. Conversely, a state where the agent's paddle is about to strike the ball is a high-value state. </li></ul>
+<ul><li>The state's <b>value</b> represents how desirable or 'good' it is. A state where the opponent is about to score (e.g. the agent's paddle is at the top right corner, while as the ball is about to reach the bottom right corner) is an undesirable or low-value state. Conversely, a state where the agent's paddle is about to strike the ball is a high-value state. </li></ul>
 </p>
 Through Pong, we can identify some of the challenges related to reinforcement learning in more complex environments.
 <ul><li><b>Large state-action spaces: </b>In the grid environments, it was possible to experience, compute and store $Q(s,a)$ values for each state-action pair. But, as states grow more complex, this is computationally infeasible. Consider Go, the Chinese board game, which has a board with $10^{170}$ possible states. Instead, we need to find ways to approximate value functions. With DQN, a neural network is used to predict $Q(s,a)$ values.</li></ul>
@@ -81,7 +81,7 @@ Through Pong, we can identify some of the challenges related to reinforcement le
 <p>
 </p>
 <header>
-<h3> iii. AI in the real world </h3>
+<h3> 3. AI in the real world </h3>
 </header>
 We now have the conceptual understanding to consider two key real-world policy challenges – reward hacking and safe exploration. <p></p>
 This section is a brief excerpt of examples drawn from  <a href="https://arxiv.org/pdf/1606.06565.pdf">‘Concrete Problems in AI safety’</a> a research paper by Google Brain and OpenAI, which provides a more comprehensive overview of problems and potential solutions. <p></p>
