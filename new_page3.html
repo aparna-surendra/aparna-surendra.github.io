@@ -107,7 +107,7 @@ There are different methods to calculate value, but we will use one called <b> Q
 </p>
 </p>
 </p>
-These are the Q-values! When assessing whether to move to State 3 (Q-value: $+2$) or State 5 (Q-value: $+3$), the agent will select State 5 – the state with the highest Q-value.</p>
+These are the Q-values! When assessing whether to move to State 3 (Q-value $= 2$) or State 5 (Q-value $= 3$), the agent will select State 5 – the state with the highest Q-value.</p>
 
 </p> The Q-value can be decomposed into two parts: 
 $$Q(s,a) = \text{the immediate reward from the new state} + \text{the cumulative reward of pursuing the optimal policy from the new state} $$
@@ -179,8 +179,7 @@ If $\gamma = 0$, future rewards are discounted completely – only immediate rew
 <ul><li><i>Calculations:</i> Policy A $ = 100*0.8^0$; Policy B =  $1*0.8^0+ 1*0.8^1 + 1*0.8^2...1*0.80^{99} \approx 5$ </li></ul></li> </ul>
 <ul><li>If $\gamma$ = 0.5, then Policy A has a cumulative discounted reward of $100$, while Policy B has one of $2$ (and is even less desirable).<ul><li> <i>Calculations:</i> Policy A $ = 100*0.5^0$; Policy B =  $1*0.5^0+ 1*0.5^1 + 1*0.5^2...1*0.50^{99} = 2$</li></ul></li></ul>
 </p>
-<p>To gain more fluency with discounted rewards, interact with the grid below. Move the slider to adjust the discount factor, and click on any square to construct different policies and evaluate the total discounted reward.
-<ul><li> Note: The total discounted reward is not always the same as the state-action's Q-value. This because the Q-value is based on a (known or estimated) <b>optimal</b> policy, not just any policy. </li></ul>
+<p>To gain more fluency with discounted rewards, interact with the grid below. Move the slider to adjust the discount factor, and click on any square to construct different policies and evaluate the total discounted reward for the whole policy.
 </p>
 <div class = "row">
 <div class="column">
@@ -199,6 +198,8 @@ If $\gamma = 0$, future rewards are discounted completely – only immediate rew
 <table id="table"></table>
 </div>
 <script src="grids/grid14.js" type="text/javascript"></script>
+<ul><li> Note: The total discounted reward is not always the same as the state-action's Q-value. This because the Q-value is based on an <b>optimal</b> policy, not just any policy. In addt </li></ul>
+
 </div>
 </div>
 </div>
