@@ -15,7 +15,7 @@ text {
 
 .column {
   float: left;
-  width: 45%;
+  width: 30%;
   padding: 10px;
 }
 .row::after {
@@ -108,11 +108,12 @@ There are different methods to calculate value, but we will use one called <b> Q
 </p>
 </p>
 </p>
-These are the Q-values!
+These are the Q-values! When assessing whether to move to State 3 (Q-value: $+2$) or State 5 (Q-value: $+3$), the agent will select State 5 – the state with the highest Q-value.</p>
+
 </p> The Q-value can be decomposed into two parts: 
 $$Q(s,a) = \text{the immediate reward from the new state} + \text{the cumulative reward of pursuing the optimal policy from the new state} $$
 </p>
-This can be written mathematically as: 
+This can be expressed mathematically as: 
 $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
 </p>
 
@@ -148,15 +149,11 @@ $$=3$$
 </li> </ul> 
 </li></ul>
 </p>
-<p>Let's consider a trained agent approaching the grid. The first move has been made, and the agent is in State 2. When assessing whether to move to State 3 (max. Q-value: $+2$) or State 5 (max. Q-value: $+3$), the agent will select State 5 – the state with the highest possible Q-value.</p>
 <p><i>This section does not focus on training (how the agent learns Q-values), but click <a href="new_page1.html">here</a> for a supplementary page that details a learning algorithm known as Q-learning.</i> </p>
 <header>
 <h3> iii. Discounting </h3>
 </header>
-<p> 
-Consider two policies: Policy A yields +100 over 1 time step, while Policy B yields +100 in cumulative reward over 100 time steps. Are both policies equivalent, or would you prefer Policy 2? 
-</p>
-<p>
+<p><u><i>Q: Consider two policies: Policy A yields +100 over 1 time step, while Policy B yields +100 in cumulative reward over 100 time steps. Which policy do you choose? </i></u> </p>
 We can express this preference mathematically by introducing two additional terms: <b>time step ($t$)</b> and <b>discount factor ($\gamma$)</b> and, for ease, some mathematical notation. 
 
 <header>
@@ -165,13 +162,17 @@ We can express this preference mathematically by introducing two additional term
 <p> There is no external notion of time in this game – there is no clock runnning down in the background. But we can consider each action taken to represent some time period or <b>time-step</b>. All states, actions, and rewards are represented by the time-step in which they are experienced (states  \(s\)), taken (actions \(a\)), or received (rewards \(r\)). If we were to introduce clock-time, we could consider each minute a time-step or, alternatively, each second a time-step (depending on the game) </p>
 
 <p> To apply this new language, let's consider the following sequence:
-<ul><li> The game begins at time-step 0, and I move from Square 0 to Square 1 and receive reward $-1$.</li> </ul> 
-<ul><li> In time-step 1, I move from Square 1 to Square 5 and receive reward $+1$. </li></ul> </p>
+<ul><li> In time-step 0, move from Square 0  to Square 1  and receive reward $-1$. </li> </ul> 
+<ul><li> In time-step 1, move from Square 1 to Square 5  and receive reward $+1$. </li></ul> </p>
+
+<p>Instead of using numbers, we can use relative indexing for ease. $_{t}$ denotes the current time-step, $_{t+1}$ denotes the next one, and $_{t-1}$ the previous one.</p>
 
 <header>
 <h4>b. Discount Factor</h4>
 </header>
-<p>We can weight rewards received in the future, so that they are less valuable than rewards received immediately. If time step $t$ begins at 0, the reward is discounted at discount factor ($\gamma^t$). At $t_0$, the reward $r_0$ is discounted at $\gamma^0$; at $t_1$, the reward $r_1$ is discounted at $\gamma^1$ and so on. If $\gamma = 0$, future rewards are discounted completely – only immediate rewards matter. If $\gamma = 1$, future rewards matter the same as those received immediately (as in all the previous examples).</p>
+<p>We can weight rewards received in the future, so that they are less valuable than rewards received immediately. If time step $t$ begins at 0, the reward is discounted at discount factor ($\gamma^t$). 
+<ul><li>At $t_0$, the reward $r_0$ is discounted at $\gamma^0$; at $t_1$, the reward $r_1$ is discounted at $\gamma^1$ and so on. </ul></li> 
+If $\gamma = 0$, future rewards are discounted completely – only immediate rewards matter. If $\gamma = 1$, future rewards are weighted the same as those received immediately (as in all previous examples in this primer).</p>
 
 <p>Let's return to the question posed at the beginning of Section iii:</p>
 <ul><li>If the discount factor ($\gamma$) = 1, then future rewards are weighted the same as immediate rewards. <ul><li>Policy A \(=\) Policy B  \(= 100\).</li></ul></li></ul>
