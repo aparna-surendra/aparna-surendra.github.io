@@ -141,10 +141,10 @@ $$                                  = -1$$
 <h4>3. Training Episode 2</h4>
 </header>
 <b>Time Step 1</b> <p></p> 
-We follow a 'greedy' policy, which means we select the highest value state-actions without exploring further. I first elect to move to Square 0 (which has a $Q(s_t, a_t) = 1$), as it is the only legal action. I  receive +1.  <p></p>
-For Square 0, update the $max. Q(s_{t+1}, a_{t+1})$ value to 1: <p></p>
-<p>$Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+1 = 2$</p>
-The Q-value increases further (even though r_{t} is the same as in episode 1) because the Q-values of adjacent states have increased! 
+By following a 'greedy' policy (selecting the highest value state-actions without exploring further), we elect to move to Square 0 (which has a $Q(s_t, a_t) = 1$, and is the only legal action) and receive +1. Let's update the Q-value of moving to State 1 – $r_{t}$ is the same, but the maximum Q-value of the possible next states has changed. <p></p>
+$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
+$$Q(\text{s = off-grid}, \text{a = right}) = 1 + max[1,-1,0]$$
+$$                                         = 1 + 1 = 2$$ 
 
 <b>We move from Square 5 - Square 10 - Square 15.</b><p></p> 
  
