@@ -79,6 +79,11 @@ border-left: solid 1px black;
 <p></p>
 <i>An introduction to the Q-learning algorithm</i> <p></p>
 <p>Let's return to a 4 x 4 grid with $+1$ rewards along the diagonal.</p>
+<p>This tutorial will walk through (with manual calculations) how Q-values are updated through each training episode. It makes several simplifying assumptions, but these serve the purpose of a soft introduction. </p>
+<p>Recall the Q-value calculation: $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$</p>
+
+<h3>Q-learning algorithm</h3>
+<h4>1. Initialize Q-values</h4>
 <p> If we were to approach the grid with no prior knowledge, we consider each state the same – no one state is better or worse than the other. We initialize all $Q(s,a)$ values to $0$, as displayed below.</p>
 <div class="row">
 <div class = "column">
@@ -90,18 +95,16 @@ border-left: solid 1px black;
 <script src="grids/grid15.js" type="text/javascript"></script>
 </div>
 </div>
-<p>This tutorial will walk through (with manual calculations) how Q-values are updated through each training episode. It makes several simplifying assumptions, but these serve the purpose of a soft introduction. 
-<p>Recall the Q-value calculation: $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$</p>
 <header>
-<h3>Training Episode 1</h3>
+<h4>2. Begin Training – Training Episode 1</h4>
 </header>
-<p> Training episode 1 selects actions randomly (as all states are equally desirable), and terminates after 7 steps (this is to simplify the problem, there are no game constraints that require this).</p>
+<p> Training episode 1 selects actions randomly (as all states are equally desirable/have the same Q-value), and terminates after 7 steps (this is to simplify the problem, there are no game constraints that require this).</p>
 
 <div class="row">
 <div class="column">
 
-<b>Time Step 1 </b> <p></p> is to move off-the-grid to Square 0. We receive a reward ($r_t$) of +1 and can update our Q-values. 
-<p> For Square 0: We update the $r_t$ value: $Q(s_t,a_t) = 1 + 0 = 1$ </p>
+<b>Step 1 </b> <p></p> moves off-the-grid to Square 0. We receive a reward ($r_t$) of +1 and can update our Q-value for moving to State 0. 
+<p> We update the $r_t$ value: $Q(s_t,a_t) = 1 + 0 = 1$ </p>
 </div>
 <div class="column" style = "padding-left: 50px">
 <div id="grid4"></div>
@@ -116,7 +119,7 @@ border-left: solid 1px black;
 </div>
 <div class="column" style = "padding-top: 20px">
 <b>Time Step 2</b> <p></p> Assessing next steps, all actions ${a_t}$ (right, down, right-diagonal) seem to lead to equally desirable $s_{t+1}$ (squares 1, 4, and 5)  – each potential $s_{t+1}$ has a Q-value of 0. <p></p>
- is to move to Square 1 and receive a reward ($r_t$) of -1. We can update the Q-value for Square 1. 
+ is to move to Square 1 and receive a reward ($r_t$) of -1. We can update the Q-value for State 1. 
 <p> For Square 1: We update the $r_t$ value: $Q(s_t,a_t) = -1 + 0 = -1$ </p>
 </div>
 </div>
