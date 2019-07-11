@@ -51,9 +51,9 @@ text {
 <header>
 <h3> i. Intuition </h3>
 </header>
-<p>The <b>exploration-exploitation dilemma</b> is specific to reinforcement learning: should the agent <b>'explore'</b> the environment further, by selecting new state-action combinations or should it pursue (<b>'exploit'</b>) known policies that it found effective in the past?</p>
-<p> We have not yet encountered this dilemma because we have been able to comprehensively explore our grid, often in a single training episode. To introduce some intuition, let's use a larger 20 x 20 grid game with one new rule: the game will end after 300 moves or 5 minutes. </p>
-<p>All other constraints are the same: the game begins at the top-left square; movement must take place along neighboring squares on the grid; and a reward can only be received once per square per episode.
+<p>The <b>exploration-exploitation dilemma</b> is specific to reinforcement learning: should the agent <b>'explore'</b> the environment further, by selecting new state-action combinations or should it <b>'exploit'</b> known policies that it found effective in the past?</p>
+<p> We have not yet encountered this dilemma because we have been able to comprehensively explore our grid, often in a single training episode. To introduce some intuition, let's use a larger 20 x 20 grid game with one new constraint: the game will end after 300 moves or 5 minutes. </p>
+<p>All other constraints are the same: the game begins at the top-left square; movement must take place along neighboring squares on the grid; and one reward is received per square per episode.
 </li></ul> 
 </p>
 <p>The first move has been made for you. Interact with the environment, and try to find the optimal policy. </p>
@@ -61,7 +61,7 @@ text {
 <div id="grid"></div>
 <script src="grids/grid2.js" type="text/javascript"></script>
 </div>
-<p> This is not as easy as with a 4 x 4 grid: the 20 x 20 grid has 401 states, compared to the 17 states in the 4 x 4.</p>
+<p> This is not as easy as with a 4 x 4 grid: the 20 x 20 grid has far more states.</p>
 <p>You play two games to 300 moves and reveal the following rewards.</p>
 <div class = "row">
 <div class="column">
@@ -87,13 +87,13 @@ text {
 <script src="grids/grid7.js" type="text/javascript"></script>
 </div>
 </div>
-<p>If you pursued the known optimal policy (exploitation), you would not have learned the optimal policy for the game – which yields $+238$ (the policy* is visualised above) by selecting the cluster of $+1$ blue states on the right-hand side of the grid. But this is a trade-off! In instances where an agent has sufficient experience, additional exploration will delay learning. Balancing exploitation and exploration is key to successful reinforcement learning. </p>
+<p>If you pursued the known optimal policy (exploitation), you would not have learned the optimal policy for the game – which yields $+238$ (the policy* is visualised above) by selecting the cluster of $+1$ blue states on the right-hand side of the grid. </p> <p>But this is a trade-off! In instances where an agent has sufficient experience, additional exploration will delay learning. Balancing exploitation and exploration is key to successful reinforcement learning. </p>
 <i>*Note: This is one of several optimal policies that lead to $+238$, as there is: 1) no penalty for re-selecting states and 2) no incentive to finish the game as quickly as possible. If we were to introduce one or both considerations, this would be the sole optimal policy. </i>
 <header>
 <h3> ii. Implementation </h3>
 </header>
 <p> We can implement exploration/exploitation programmatically using an $\epsilon$ - greedy strategy during the training period. With some probability $\epsilon$ the agent will select a random action, otherwise the agent will select a 'greedy' strategy (the action per the known optimal policy). <ul><li>When $\epsilon = 0.3$: There is a $30\%$ probability that the agent selects a random action, and a $70\%$ probability the agent selects the greedy action. </li></ul> In a popular implementation of $\epsilon$-greedy, $\epsilon$ decays with time – we assume that an agent with more experience requires less exploration. We can watch outcomes from $\epsilon$ - greedy strategy in the following WIRED/DeepMind video, which snapshots an agent's behaviour at various stages of training. </p>
- <p>With 600 training episodes (0.38s into the video), the agent learns a new optimal strategy to play the Atari game 'Breakout' (one that a casual human player, such as myself, did not know beforehand). Without exploration, the agent would not have necessarily learned this new optimal strategy – it would most likely have continued to exploit its previous strategy.</p>
+ <p>With 600 training episodes (0.38s into the video), the agent learns a new optimal strategy to play the Atari game 'Breakout' (one that a casual human player would not know). Without exploration, the agent would not have necessarily learned this new optimal strategy – it would most likely have continued to exploit its previous strategy.</p>
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Q70ulPJW3Gk" frameborder="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
