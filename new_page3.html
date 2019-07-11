@@ -14,7 +14,7 @@ text {
 
 .column {
   float: left;
-  width: 43%;
+  width: 45%;
   padding: 5px;
 }
 .row::after {
@@ -60,7 +60,7 @@ td:nth-last-child(1) {text-align:left;}
   </header>
 <div id="content">
 <div id="" style="overflow-y:scroll;">
-<h3> i. Introducing Values </h3>
+<h3> 1. Introducing Values </h3>
 
 <p>A state's <b>reward</b> can be considered an indication of how 'good' it is immediately, while its <b>value</b> indicates how 'good' it will be in the long-term. </p>
 
@@ -96,7 +96,7 @@ td:nth-last-child(1) {text-align:left;}
 Policy #2 is the optimal policy for the game. 
 </p>
 <header>
-<h3> ii. Rewards, Values, and Q-values </h3>
+<h3> 2. Rewards, Values, and Q-values </h3>
 </header>
 <p> This primer focuses on <b>value-based methods</b>, a specific type of RL algorithm. An agent learns the <b>value</b> of states and corresponding actions, which then guides the agent's policies. 
 </p>
@@ -148,9 +148,9 @@ $$=3$$
 </li> </ul> 
 </li></ul>
 </p>
-<p><i>This section does not focus on training (how the agent learns Q-values), but click <a href="new_page1.html">here</a> for a supplementary page that details a learning algorithm known as Q-learning.</i> </p>
+<p><i>This section does not focus on how an agent learns Q-values, but click <a href="new_page1.html">here</a> for a supplementary page that details the Q-learning algorithm.</i> </p>
 <header>
-<h3> iii. Discounting </h3>
+<h3> 3. Discounting </h3>
 </header>
 <p><u><i>Q: Consider two policies: Policy A yields +100 over 1 time step, while Policy B yields +100 in cumulative reward over 100 time steps. Which policy do you choose? </i></u> </p>
 We can express this preference mathematically by introducing two additional terms: <b>time step ($t$)</b> and <b>discount factor ($\gamma$)</b> and, for ease, some mathematical notation. 
