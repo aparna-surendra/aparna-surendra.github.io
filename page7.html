@@ -141,8 +141,8 @@ $$                                  = -1$$
 <h4>3. Training Episode 2</h4>
 </header>
 <b>Time Step 1</b> <p></p> 
-By following a 'greedy' policy (selecting the highest value state-actions without exploring further), we elect to move to Square 0 (which has a $Q(s_t, a_t) = 1$, and is the only legal action) and receive +1. Let's update the Q-value of moving to State 1 – $r_{t}$ is the same, but the maximum Q-value of the possible next states has changed. <p></p>
-$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
+By following a 'greedy' policy (selecting the highest value state-actions without exploring further), we elect to move to Square 0 (which has a $Q(s_t, a_t) = 1$, and is the only legal action) and receive +1. Let's update the Q-value of moving to State 1 – $r_{t}$ is the same, but the maximum Q-value of the possible next states has changed ($max. Q(s_{t+1}, a_{t+1}) = 1$. <p></p>
+$$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
 $$Q(\text{s = off-grid}, \text{a = right}) = 1 + max[1,-1,0]$$
 $$                                         = 1 + 1 = 2$$ 
 
