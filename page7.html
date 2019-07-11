@@ -159,7 +159,7 @@ We follow the greedy policy (move from State 5 - State 10 - State 15) and update
 <p>For State 15, the update does not change the previous Q value : $Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+0 = 1$ </p>
 
 <header>
-<h4>4. Training Episode 4</h4>
+<h4>4. Training Episode 3</h4>
 </header>
 Follow the greedy policy, and move from State 0 - State 5 - State 10 - State 15. 
 <p>For Square 0, update the $max. Q(s_{t+1}, a_{t+1})$ value to 1: $Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+2 = 3$</p>
@@ -167,10 +167,10 @@ Follow the greedy policy, and move from State 0 - State 5 - State 10 - State 15.
 <p>For Squares 10 and 15, the update does not change the previous Q-values</p>
 
 <header>
-<h4>5. Training Episode 4 on </h4>
+<h4>5. Training Episode 4 and convergence </h4>
 </header>
 Follow the greedy policy again, and move from State 0 - State 5 - State 10 - State 15. This time there is only one update: the Q-value of moving to Square 0 is updated to 4. 
-In all subsequent training episodes, the Q-values stay the same. This is known as <b>'convergence' </b>. The trained agent has learned the Q-values of the state-action pairs. <p></p>
+<p></p> In subsequent training episodes, the Q-values stay the same.This is known as <b>'convergence' </b>. The agent has learned the Q-values, and 'learning' is complete . <p></p>
 
 <div class = "row">
 <div class = "column2" >
