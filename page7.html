@@ -102,7 +102,7 @@ border-left: solid 1px black;
 <div class="row">
 <div class="column">
 
-<b>Step 1 </b><p></p> moves off-the-grid to Square 0. We receive a reward ($r_t$) of +1 and can update our Q-value for moving to State 0. 
+<b>Time Step 1 </b><p></p> moves off-the-grid to Square 0. We receive a reward ($r_t$) of +1 and can update our Q-value for moving to State 0. 
 $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
 $$Q(\text{s = off-grid}, \text{a = right}) = 1 + 0$$
 $$                                          = 1$$ 
@@ -121,17 +121,16 @@ To simplify our grid, we label State 0 with the updated Q-value. This is the Q-v
 <script src="grids/grid18.js" type="text/javascript"></script>
 </div>
 <div class="column" style = "padding-top: 20px">
-<b>Time Step 2</b> <p></p> Assessing next steps, all actions ${a_t}$ (right, down, right-diagonal) seem to lead to equally desirable $s_{t+1}$ (squares 1, 4, and 5)  – each potential $s_{t+1}$ has a Q-value of 0. <p></p>
- is to move to Square 1 and receive a reward ($r_t$) of -1. We can update the Q-value for State 1. 
-<p> For Square 1: We update the $r_t$ value: </p>
+<b>Time Step 2</b> <p></p> From State 0, all actions ${a_t}$ (right, down, right-diagonal) seem to lead to equivalent $s_{t+1}$ (States 1, 4, and 5). <p></p>
+We randomly elect to move to State 1 and receive a reward ($r_t$) of -1. We can update the Q-value for moving to State 1. 
 $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
-$Q(s_t,a_t) = -1 + 0 = -1$ </p>
+$$Q(\text{s = 0}, \text{a = right}) = -1 + 0$$
+$$                                  = -1$$ 
 </div>
 </div>
 
 
-<p><b>And so on, until the end of the training episode.</b></p><p> For the following policy: Square 0 - 1 - 5 - 9 - 10 - 14 - 15
-we get the values. </p>
+<p><b>And so on, </b> until the end of the training episode. This produces the updated Q-values below</p><p></p>
 
 <div align="center">
 <div id="grid5"></div>
