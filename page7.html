@@ -98,13 +98,15 @@ border-left: solid 1px black;
 <header>
 <h4>2. Begin Training – Training Episode 1</h4>
 </header>
-<p> Training episode 1 selects actions randomly (as all states are equally desirable/have the same Q-value), and terminates after 7 steps (this is to simplify the problem, there are no game constraints that require this).</p>
+<p> In Training episode 1, we select actions randomly (as all states are equally desirable/have the same Q-value), and terminate the episode after 7 steps (this is to simplify the problem, there are no game constraints that require this).</p>
 
 <div class="row">
 <div class="column">
 
 <b>Step 1 </b> <p></p> moves off-the-grid to Square 0. We receive a reward ($r_t$) of +1 and can update our Q-value for moving to State 0. 
-<p> We update the $r_t$ value: $Q(s_t,a_t) = 1 + 0 = 1$ </p>
+<p> We update the $r_t$ value: $Q(s = off-grid, a = right) = 1 + 0 = 1$ </p>
+<p> To simplify our grid, we label State 0 with the Q-value. This is the Q-value for moving <b>to</b> State 0 </p>.
+
 </div>
 <div class="column" style = "padding-left: 50px">
 <div id="grid4"></div>
