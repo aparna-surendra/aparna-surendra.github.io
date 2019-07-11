@@ -151,22 +151,26 @@ $$Q(\text{s = off-grid}, \text{a = right}) = 1 + max[1,-1,0]$$
 $$                                         = 1 + 1 = 2$$ 
 
 We update the Q-value of State 0 (shorthand for the Q-value of moving <i>to</i> State 0) to $2$. <p></p>
-<b>Time Steps 2,3, 4</b><p></p>
+<b>Time Steps 2,3,4</b><p></p>
 We follow the greedy policy (move from State 5 - State 10 - State 15) and update the Q-values accordingly.<p></p> 
  
 <p>For State 5, update the $max. Q(s_{t+1}, a_{t+1})$ value to 1 : $Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+1 = 2$ </p>
 <p>For State 10, update the $max. Q(s_{t+1}, a_{t+1})$ value to 1 : $Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+1 = 2$ </p>
 <p>For State 15, the update does not change the previous Q value : $Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+0 = 1$ </p>
 
-<b>Training Episode 3</b><p></p> Select Square 0 (which has a $Q(s_t, a_t) = 2$), as it is the only legal action, and receive +1. The maximum $Q(s_{t+1}, a_{t+1})$ is higher than it was in the previous training episode. <p></p>
-For Square 0, update the $max. Q(s_{t+1}, a_{t+1})$ value to 1: <p></p>
-<p>$Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+2 = 3$</p>
-
-Follow the policy again, and move from Square 5 - Square 10 - Square 15. 
+<header>
+<h4>4. Training Episode 4</h4>
+</header>
+Follow the greedy policy, and move from State 0 - State 5 - State 10 - State 15. 
+<p>For Square 0, update the $max. Q(s_{t+1}, a_{t+1})$ value to 1: $Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+2 = 3$</p>
 <p>For Square 5, update the $max. Q(s_{t+1}, a_{t+1})$ value to 2 : $Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+1 = 3$ </p>
-<p>For Squares 10 and 15, the update does not change the previous Q value</p>
+<p>For Squares 10 and 15, the update does not change the previous Q-values</p>
 
-In <b>training episode 4</b><p></p> the Q-value of Square 0 is updated to 4. In all subsequent training episodes, the Q-values stay the same. This is known as <b>'convergence' </b>. The trained agent has learned the Q-values, and will know how to follow the optimal policy <p></p>
+<header>
+<h4>5. Training Episode 4 on </h4>
+</header>
+Follow the greedy policy again, and move from State 0 - State 5 - State 10 - State 15. This time there is only one update: the Q-value of moving to Square 0 is updated to 4. 
+In all subsequent training episodes, the Q-values stay the same. This is known as <b>'convergence' </b>. The trained agent has learned the Q-values of the state-action pairs. <p></p>
 
 <div class = "row">
 <div class = "column2" >
