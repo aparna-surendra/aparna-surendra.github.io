@@ -109,6 +109,8 @@ There are different methods to calculate value, but we will use one called <b> Q
 </p>
 These are the Q-values! When assessing whether to move to State 3 (Q-value $= 2$) or State 5 (Q-value $= 3$), the agent will select State 5 – the state with the highest Q-value.</p>
 
+<p>Note: A Q-value is not the same as the total cumulative reward for a policy (the total cumulative reward for Policy 2 is $+2$, while the Q-value of moving to State 3 from State 2 is $+3$. A Q-value is specific to a state- action pair, and includes a calculation of the <b>optimal</b> policy pursued from the next state oon – not just any policy </p>
+
 </p> The Q-value can be decomposed into two parts: 
 $$Q(s,a) = \text{the immediate reward from the new state} + \text{the cumulative reward of pursuing the optimal policy from the new state} $$
 </p>
@@ -152,7 +154,7 @@ $$=3$$
 <header>
 <h3> 3. Discounting </h3>
 </header>
-<p><u><i>Q: Consider two policies: Policy A yields +100 over 1 time step, while Policy B yields +100 in cumulative reward over 100 time steps. Which policy do you choose? </i></u> </p>
+<p><u><i>Q: Consider two policies: Policy A yields +100 over 1 time step, while Policy B yields +100 in cumulative reward over 100 time steps. Which policy do you pursue? </i></u> </p>
 We can express this preference mathematically by introducing two additional terms: <b>time step ($t$)</b> and <b>discount factor ($\gamma$)</b> and, for ease, some mathematical notation. 
 
 <header>
@@ -179,7 +181,7 @@ If $\gamma = 0$, future rewards are discounted completely – only immediate rew
 <ul><li><i>Calculations:</i> Policy A $ = 100*0.8^0$; Policy B =  $1*0.8^0+ 1*0.8^1 + 1*0.8^2...1*0.80^{99} \approx 5$ </li></ul></li> </ul>
 <ul><li>If $\gamma$ = 0.5, then Policy A has a cumulative discounted reward of $100$, while Policy B has one of $2$ (and is even less desirable).<ul><li> <i>Calculations:</i> Policy A $ = 100*0.5^0$; Policy B =  $1*0.5^0+ 1*0.5^1 + 1*0.5^2...1*0.50^{99} = 2$</li></ul></li></ul>
 </p>
-<p>To gain more fluency with discounted rewards, interact with the grid below. Move the slider to adjust the discount factor, and click on any square to construct different policies and evaluate the total discounted reward for the whole policy.
+<p>To gain more fluency with discounted rewards, interact with the grid below. Move the slider to adjust the discount factor, and click on any square to construct different policies and evaluate the total discounted reward for the entire policy.
 </p>
 <div class = "row">
 <div class="column">
@@ -198,8 +200,10 @@ If $\gamma = 0$, future rewards are discounted completely – only immediate rew
 <table id="table"></table>
 </div>
 <script src="grids/grid14.js" type="text/javascript"></script>
-<ul><li> Note: The total discounted reward is not always the same as the state-action's Q-value. This because the Q-value is based on an <b>optimal</b> policy, not just any policy. In addt </li></ul>
-
+<header>
+<h4>c. Discounted Q-values</h4>
+</header>
+The total discounted reward for any policy is not (always) the same as a Q-value. . </li></ul>
 </div>
 </div>
 </div>
