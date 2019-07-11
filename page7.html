@@ -141,7 +141,11 @@ $$                                  = -1$$
 <h4>3. Training Episode 2</h4>
 </header>
 <b>Time Step 1</b> <p></p> 
-By following a 'greedy' policy (selecting the highest value state-actions without exploring further), we elect to move to Square 0 (which has a $Q(s_t, a_t) = 1$, and is the only legal action) and receive +1. Let's update the Q-value of moving to State 1 – $r_{t}$ is the same, but the $max. Q(s_{t+1}, a_{t+1})$ values have changed: moving right to State 1 has a Q-value of $-1$, moving diagonally to State 5 has one of $+1$, while moving down to State 4 has the same Q-value of $0$. <p></p>
+By following a 'greedy' policy (selecting the highest value state-actions without exploring further), we move to Square 0 and receive +1. <p></p>
+Let's update the Q-value of moving to State 1:
+<ul><li> $r_{t}$ is the same, it equals $1$. </li></ul>
+<ul><li> But $max. Q(s_{t+1}, a_{t+1})$ values have changed – moving right to State 1 has a Q-value of $-1$, moving diagonally to State 5 has one of $+1$, while moving down to State 4 has the same Q-value of $0$. </li></ul>
+ <p></p>
 $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
 $$Q(\text{s = off-grid}, \text{a = right}) = 1 + max[1,-1,0]$$
 $$                                         = 1 + 1 = 2$$ 
