@@ -78,7 +78,8 @@ border-left: solid 1px black;
 <b>How does an agent 'learn' values? </b> <p></p>
 <p></p>
 <i>An introduction to the Q-learning algorithm</i> <p></p>
-Let's return to a 4 x 4 grid with $+1$ rewards along the diagonal. If we were to approach the grid with no prior knowledge, we consider each state the same – no one state is better or worse than the other. We initialize all $Q(s,a)$ values to $0$, as displayed below.
+<p>Let's return to a 4 x 4 grid with $+1$ rewards along the diagonal.</p>
+<p> If we were to approach the grid with no prior knowledge, we consider each state the same – no one state is better or worse than the other. We initialize all $Q(s,a)$ values to $0$, as displayed below.</p>
 <div class="row">
 <div class = "column">
 <div id="grid"></div>
@@ -90,12 +91,14 @@ Let's return to a 4 x 4 grid with $+1$ rewards along the diagonal. If we were to
 </div>
 </div>
 <p>This tutorial will walk through (with manual calculations) how Q-values are updated through each training episode. It makes several simplifying assumptions, but these serve the purpose of a soft introduction. 
-<p>Recall the equation to calculate Q-values: $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$</p>
+<p>Recall the Q-value calculation: $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$</p>
+<header>
+<h3>Training Episode 1</h3>
+</header>
+<p> Training episode 1 selects actions randomly (as all states are equally desirable), and terminates after 7 steps (this is to simplify the problem, there are no game constraints that require this).</p>
+
 <div class="row">
 <div class="column">
-
- <h3>Training Episode 1</h3>
- Training episode 1 selects actions randomly (as all states are equally desirable), and terminates after 7 steps (this is to simplify the problem, there are no game constraints that require this).
 
 <b>Time Step 1 </b> <p></p> is to move off-the-grid to Square 0. We receive a reward ($r_t$) of +1 and can update our Q-values. 
 <p> For Square 0: We update the $r_t$ value: $Q(s_t,a_t) = 1 + 0 = 1$ </p>
