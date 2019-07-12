@@ -175,7 +175,8 @@ Follow the greedy policy again, and move from State 0 - State 5 - State 10 - Sta
 <header>
 <h4>A comment on exploration/exploitation </h4>
 </header>
-This illustration makes several simplifying assumptions – including that we find the optimal policy in the first training episode, and we always follow a greedy policy. If we were to explore during learning, we would see higher Q-values for the states adjacent to the diagonal (as they are 'better' than those further away). As discussed in <a href = ="new_page4.html">Section 4 - Exploration/Exploitation</a>, exploration would increase the likelihood of identifying the optimal policy, but increase training time (to frame it in terms of concept introduced in this section, it would take longer for the Q-values to <b>converge</b>). 
+This illustration makes several simplifying assumptions – including that we find the optimal policy in the first training episode, and we always follow a greedy policy. If we were to explore during learning, we would see higher Q-values for the states adjacent to the diagonal (as they are 'better' than those further away). <p></p>
+As discussed in <a href = ="new_page4.html">Section 4 - Exploration/Exploitation</a>, exploration would increase the likelihood of identifying the optimal policy, but increase training time (to frame it in terms of concept introduced in this section, it would take longer for the Q-values to <b>converge</b>). 
 
 <div class = "row">
 <div class = "column2" >
@@ -192,16 +193,16 @@ This illustration makes several simplifying assumptions – including that we f
 </div>
 </div>
 <h3>Introducing Learning Rate</h3>
-The illustration above has several simplifying assumptions that allow us to 'update' Q-values by replacing them with the most recent calculation. But this assumes there's no chance in rewards. What if State 15 alternates between rewards of  +10 and -100 ?  <p></p>
-In the method we've outlined, our Q-value for Square 15 would swing to capture the most recent reward, and wouldn't indicate the average behaviour. In addition, the values wouldn't converge. <p></p>
+The illustration above has several simplifying assumptions that allow us to 'update' Q-values by replacing them with the most recent calculation. But what happens if rewards are not static – e.g. if State 15 alternates between rewards of  +10 and -100?  <p></p>
+In the method we've outlined, our Q-value for Square 15 would swing to capture the most recent reward, and wouldn't indicate the average behaviour. As a consequence, the Q-values wouldn't converge.<p></p>
 
-We manage this by introducing a learning rate $\alpha$, which controls the speed of learning. 
+We address this by introducing a learning rate $\alpha$, which controls the speed of learning. 
 
-Instead of what we were doing before: 
+We can update the method we were using before: 
 $$Q(s,a) = Q(s,a)_{new}$$
 Which can be represented as $$Q(s,a) =  Q(s,a)_{old} + [Q(s,a)_{new} - Q(s,a)_{old}] $$
 
-We now include the learning rate $\alpha$.
+And now include the learning rate $\alpha$.
 $$Q(s,a) =  Q(s,a)_{old} + \alpha[Q(s,a)_{new} - Q(s,a)_{old}]$$
 
 When $\alpha = 1$, we are learning by completely replacing the old Q-value with the new Q-value (as in the previous examples). If $\alpha = 0$, we are not learning at all. 
