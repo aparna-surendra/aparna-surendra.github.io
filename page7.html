@@ -106,7 +106,7 @@ border-left: solid 1px black;
 $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
 $$Q(\text{s = off-grid}, \text{a = right}) = 1 + 0$$
 $$                                          = 1$$ 
-To simplify our grid, we label State 0 with the updated Q-value. This is the Q-value for moving <i>to</i> State 0 </p>.
+To simplify our grid, we label State 0 with the updated Q-value. This is the Q-value for moving <i>to</i> State 0 </p>. (Note - Q-values are only updated upon moving to the new state).
 
 </div>
 <div class="column" style = "padding-left: 50px">
@@ -198,7 +198,7 @@ As discussed in <a href = ="new_page4.html">Section 4 - Exploration/Exploitation
 The illustration above has several simplifying assumptions that allow us to 'update' Q-values by replacing them with the most recent calculation. But what happens if rewards are not static – e.g. if State 15 alternates between rewards of  +10 and -100?  <p></p>
 In the method we've outlined, our Q-value for Square 15 would swing to capture the most recent reward, and wouldn't indicate the average behaviour. As a consequence, the Q-values wouldn't converge.<p></p>
 
-We address this by introducing a learning rate $\alpha$, which controls the speed of learning. 
+We address this by introducing a learning rate $\alpha$, which controls the speed of learning. <p></p>
 
 We can update the method we were using before: 
 $$Q(s,a) = Q(s,a)_{new}$$
@@ -207,7 +207,7 @@ Which can be represented as $$Q(s,a) =  Q(s,a)_{old} + [Q(s,a)_{new} - Q(s,a)_{o
 And now include the learning rate $\alpha$.
 $$Q(s,a) =  Q(s,a)_{old} + \alpha[Q(s,a)_{new} - Q(s,a)_{old}]$$
 
-When $\alpha = 1$, we are learning by completely replacing the old Q-value with the new Q-value (as in the previous examples). If $\alpha = 0$, we are not learning at all. 
+When $\alpha = 1$, we are learning by completely replacing the old Q-value with the new Q-value (as in the previous examples). If $\alpha = 0$, we are not learning at all. <p></p>
 
 To make this more concrete, let us consider the example where Square 15 has a 50% probability of +10, and 50% probability of -100. <p></p>
 <b>Option 1: $\alpha = 1$, which is equivalent to: $Q(s,a) = Q(s,a)_{new}$ </b> <p></p>
@@ -233,7 +233,7 @@ Now, let's follow the same sequence. In the first step, we move from off-the-gri
 <p>$Q(s,a)_{old} = 0$ </p> 
 <p>$Q(s,a)_{new} = r_t + max[(Q(s_{t+1}), a_{t+1})] = 1 + 0 = 1$ </p> 
 <p>$Q(s,a) =  Q(s,a)_{old} + 0.5[Q(s,a)_{new} - Q(s,a)_{old}] = 0 + 0.5[1-0] = 0.5$ </p>
-And so on. As can be seen, the Q-values will not converge in the 4th training episode, but -eventually - they will begin to tend towards the expected value for Square 15, which is -45 $[(0.50*-100) + (0.50*10)]$, representing that -on-average- it is not a desirable state. 
+And so on. As can be seen, the Q-values will not converge in the 4th training episode, but – eventually - they will tend towards the expected value for Square 15, which is -45 $[(0.50*-100) + (0.50*10)]$, representing that -on-average- it is not a desirable state. 
 <div class = "row">
 <div class = "column">
 <div id="grid13"></div>
