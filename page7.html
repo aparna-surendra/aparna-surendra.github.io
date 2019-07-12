@@ -172,11 +172,6 @@ Follow the greedy policy, and move from State 0 - State 5 - State 10 - State 15.
 Follow the greedy policy again, and move from State 0 - State 5 - State 10 - State 15. This time there is only one update: the Q-value of moving to Square 0 is updated to 4. 
 <p></p> In subsequent training episodes, the Q-values stay the same.This is known as <b>'convergence' </b>. The agent has learned the Q-values, and 'learning' is complete . <p></p>
 
-<header>
-<h4>A comment on exploration/exploitation </h4>
-</header>
-This illustration makes several simplifying assumptions – including that we find the optimal policy in the first training episode, and we always follow a greedy policy. If we were to explore during learning, we would see higher Q-values for the states adjacent to the diagonal (as they are 'better' than those further away). <p></p>
-As discussed in <a href = ="new_page4.html">Section 4 - Exploration/Exploitation</a>, exploration would increase the likelihood of identifying the optimal policy, but increase training time (to frame it in terms of concept introduced in this section, it would take longer for the Q-values to <b>converge</b>). 
 
 <div class = "row">
 <div class = "column2" >
@@ -192,6 +187,13 @@ As discussed in <a href = ="new_page4.html">Section 4 - Exploration/Exploitation
 <script src="grids/grid21.js" type="text/javascript"></script>
 </div>
 </div>
+
+<header>
+<h4>A comment on exploration/exploitation </h4>
+</header>
+This illustration makes several simplifying assumptions,  including: we find the optimal policy in the first training episode; we always follow a greedy policy. If we were to explore during learning, there would be higher Q-values for the states adjacent to the diagonal (as they are 'better' than those further away). <p></p>
+As discussed in <a href = ="new_page4.html">Section 4 - Exploration/Exploitation</a>, exploration would increase the likelihood of identifying the optimal policy, but increase training time (to frame it with a new concept, it would take longer for the Q-values to <b>converge</b>). 
+
 <h3>Introducing Learning Rate</h3>
 The illustration above has several simplifying assumptions that allow us to 'update' Q-values by replacing them with the most recent calculation. But what happens if rewards are not static – e.g. if State 15 alternates between rewards of  +10 and -100?  <p></p>
 In the method we've outlined, our Q-value for Square 15 would swing to capture the most recent reward, and wouldn't indicate the average behaviour. As a consequence, the Q-values wouldn't converge.<p></p>
