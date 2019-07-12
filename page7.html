@@ -106,7 +106,7 @@ border-left: solid 1px black;
 $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
 $$Q(\text{s = off-grid}, \text{a = right}) = 1 + 0$$
 $$                                          = 1$$ 
-To simplify our grid, we label State 0 with the updated Q-value. This is the Q-value for moving <i>to</i> State 0 </p>. (Note - Q-values are only updated upon moving to the new state).
+To simplify our grid, we label State 0 with the updated Q-value. This is the Q-value for moving <i>to</i> State 0 </p>. (Note - Q-values are only updated when the state is visited).
 
 </div>
 <div class="column" style = "padding-left: 50px">
@@ -130,7 +130,7 @@ $$                                  = -1$$
 </div>
 
 
-<p><b>And so on, </b> until the end of the training episode. This produces the updated Q-values below.</p><p></p>
+<p><b>And so on,</b> until the end of the training episode. These are the Q-values after visiting States 0-1-5-9-10-14-15.</p><p></p>
 
 <div align="center">
 <div id="grid5"></div>
@@ -211,7 +211,8 @@ When $\alpha = 1$, we are learning by completely replacing the old Q-value with 
 
 To make this more concrete, let us consider the example where Square 15 has a 50% probability of a +10 reward, and 50% probability of -100. <p></p>
 <b>Option 1: </b> $\alpha = 1$, which is equivalent to: $Q(s,a) = Q(s,a)_{new}$ <p></p>
-Here, we learn in the same fashion as the previous example. In the first training episode, Square 15 reveals a reward of +10. In the second, -100. In the third, +10. Look at the Q-values as they update over the three episodes. Unlike in the previous example, the values will not converge in the 4th training episode – they will continue to swing back-and-forth. <p></p>
+Here, we learn in the same fashion as the previous example. In the first episode,  From Episode 2, we follow a greedy policy: State 0 - State 5 - State 10 - State 1. <p></p>
+In the first training episode, Square 15 reveals a reward of +10. In the second, -100. In the third, +10. Look at the Q-values as they update over the three episodes. Unlike in the previous example, the values will not converge in the 4th training episode – they will continue to swing back-and-forth. <p></p>
 <div class = "row">
 <div class = "column2">
 <div id="grid10"></div>
