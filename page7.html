@@ -79,7 +79,7 @@ border-left: solid 1px black;
 <p></p>
 <i>An introduction to the Q-learning algorithm</i> <p></p>
 <p>Let's return to a 4 x 4 grid with $+1$ rewards along the diagonal.</p>
-<p>This tutorial will walk through (with manual calculations) how Q-values are updated through each training episode. It makes several simplifying assumptions, but these serve the purpose of a soft introduction. </p>
+<p>This tutorial will walk through how Q-values are updated through each training episode (with manual calculations). It makes several simplifying assumptions, but these serve the purpose of a soft introduction. </p>
 
 <h3>Q-learning algorithm</h3>
 <h4>1. Initialize Q-values</h4>
@@ -172,6 +172,11 @@ Follow the greedy policy, and move from State 0 - State 5 - State 10 - State 15.
 Follow the greedy policy again, and move from State 0 - State 5 - State 10 - State 15. This time there is only one update: the Q-value of moving to Square 0 is updated to 4. 
 <p></p> In subsequent training episodes, the Q-values stay the same.This is known as <b>'convergence' </b>. The agent has learned the Q-values, and 'learning' is complete . <p></p>
 
+<header>
+<h4>A comment on exploration/exploitation </h4>
+</header>
+This illustration makes several simplifying assumptions – including that we find the optimal policy in the first training episode, and we always follow a greedy policy. If we were to explore during learning, we would see higher Q-values for the states adjacent to the diagonal (as they are 'better' than those further away). As discussed in <a href = ="new_page4.html">Section 4 - Exploration/Exploitation</a>, exploration would increase the likelihood of identifying the optimal policy, but increase training time (to frame it in terms of concept introduced in this section, it would take longer for the Q-values to <b>converge</b>). 
+
 <div class = "row">
 <div class = "column2" >
 <div id="grid7"></div> 
@@ -186,8 +191,8 @@ Follow the greedy policy again, and move from State 0 - State 5 - State 10 - Sta
 <script src="grids/grid21.js" type="text/javascript"></script>
 </div>
 </div>
-<h3>Learning Rate</h3>
-The illustration above has several simplifying assumptions that allow us to 'update' Q-values by replacing them with the most recent calculation (e.g. we find the optimal policy in the first training episode, and we always follow a greedy policy). But this  doesn't allow for any randomness in the grid. For example – what if Square 15 has a reward of +10 with 50% probability, and -100 with 50% probability? In the method above, our Q-value for Square 15 would swing to capture the most recent reward, and wouldn't indicate the average behaviour. In addition, the values wouldn't converge. <p></p>
+<h3>Intrdocing Learning Rate</h3>
+The illustration above has several simplifying assumptions that allow us to 'update' Q-values by replacing them with the most recent calculation. But this assumes there's no chance in rewards. What if State 15 alternates between rewards of  +10 and -100 ? In the method above, our Q-value for Square 15 would swing to capture the most recent reward, and wouldn't indicate the average behaviour. In addition, the values wouldn't converge. <p></p>
 
 We manage this with a learning rate $\alpha$, which controls the speed of learning. 
 
