@@ -193,7 +193,7 @@ Follow the greedy policy again, and move from State 0 - State 5 - State 10 - Sta
 <h4>Comments</h4>
 </header>
 <b>Exploration/Exploitation</b>: This example makes several simplifying assumptions,  including: we find the optimal policy in the first training episode; we always follow a greedy policy. If we were to explore during learning, there would be higher Q-values for the states adjacent to the diagonal (as they are 'better' than those further away). <p></p>
-As discussed in <a href = ="new_page4.html">Section 4 - Exploration/Exploitation</a>, exploration would increase the likelihood of identifying the optimal policy, but increase training time (to frame it with a new concept, it would take longer for the Q-values to <b>converge</b>). 
+As discussed in <a href = ="new_page4.html">Section 4 - Exploration/Exploitation</a>, exploration would increase the likelihood of identifying the optimal policy, but increase training time (to frame it with a new concept, it would take longer for the Q-values to <b>converge</b>). <p></p>
 
 <b>Discount Factor</b>: In this example, the discount factor ($\gamma$) is $1$ - future rewards are weighted the same as immediate rewards. As discussed in <a href = ="new_page3.html">Section 3 - Value Functions </a>, we can lower the $\gamma$, which will make the agent prefer immediate rewards over future ones. 
 
@@ -248,9 +248,6 @@ And so on. As can be seen, the Q-values will not converge in the 4th training ep
 <script src="grids/grid26.js" type="text/javascript"></script>
 </div> 
 </div>  
-<p><b>Introducing Exploration and Discounting</b> <p></p>
-<p>As described previously, we can include exploration (using the $\epsilon$-greedy strategy - described in <a href = ="new_page4.html">Section 4</a>), and include discount factor in our value calculations (described in <a href = ="new_page3.html">Section 3</a>).</p>
-</p>
 </div>
 </body>
 </html>
