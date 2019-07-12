@@ -80,8 +80,9 @@ border-left: solid 1px black;
 <i>An introduction to the Q-learning algorithm</i> <p></p>
 <p>Let's return to a 4 x 4 grid with $+1$ rewards along the diagonal.</p>
 <p>This tutorial will walk through how Q-values are updated through each training episode (with manual calculations). It makes several simplifying assumptions, but these serve the purpose of a soft introduction. </p>
-
-<h3>Q-learning algorithm</h3>
+<header>
+<h3><u>Q-learning algorithm</u></h3>
+</header>
 <h4>1. Initialize Q-values</h4>
 <p> If we were to approach the grid with no prior knowledge, we consider each state the same – no one state is better or worse than the other. We initialize all $Q(s,a)$ values to $0$, as displayed below.</p>
 <div class="row">
@@ -189,12 +190,14 @@ Follow the greedy policy again, and move from State 0 - State 5 - State 10 - Sta
 </div>
 
 <header>
-<h4>A comment on exploration/exploitation </h4>
+<h4>Comments</h4>
 </header>
-This illustration makes several simplifying assumptions,  including: we find the optimal policy in the first training episode; we always follow a greedy policy. If we were to explore during learning, there would be higher Q-values for the states adjacent to the diagonal (as they are 'better' than those further away). <p></p>
+<b>Exploration/Exploitation</b>: This example makes several simplifying assumptions,  including: we find the optimal policy in the first training episode; we always follow a greedy policy. If we were to explore during learning, there would be higher Q-values for the states adjacent to the diagonal (as they are 'better' than those further away). <p></p>
 As discussed in <a href = ="new_page4.html">Section 4 - Exploration/Exploitation</a>, exploration would increase the likelihood of identifying the optimal policy, but increase training time (to frame it with a new concept, it would take longer for the Q-values to <b>converge</b>). 
 
-<h3>Introducing Learning Rate</h3>
+<b>Discount Factor</b>: In this example, the discount factor ($\gamma$) is $1$ - future rewards are weighted the same as immediate rewards. As discussed in <a href = ="new_page3.html">Section 3 - Value Functions </a>, we can lower the $\gamma$, which will make the agent prefer immediate rewards over future ones. 
+
+<h3><u>Introducing Learning Rate</u></h3>
 The illustration above has several simplifying assumptions that allow us to 'update' Q-values by replacing them with the most recent calculation. But what happens if rewards are not static – e.g. if State 15 alternates between rewards of  +10 and -100?  <p></p>
 In the method we've outlined, our Q-value for Square 15 would swing to capture the most recent reward, and wouldn't indicate the average behaviour. As a consequence, the Q-values wouldn't converge.<p></p>
 
