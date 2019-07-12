@@ -208,7 +208,7 @@ $$Q(s,a) =  Q(s,a)_{old} + \alpha[Q(s,a)_{new} - Q(s,a)_{old}]$$
 When $\alpha = 1$, we are learning by completely replacing the old Q-value with the new Q-value (as in the previous examples). If $\alpha = 0$, we are not learning at all. 
 
 To make this more concrete, let us consider the example where Square 15 has a 50% probability of +10, and 50% probability of -100. <p></p>
-<b>Option 1: $\alpha = 1$ or $Q(s,a) = Q(s,a)_{new}$ </b> <p></p>
+<b>Option 1: $\alpha = 1$, which is equivalent to: $Q(s,a) = Q(s,a)_{new}$ </b> <p></p>
 Here, we learn in the same fashion as the previous example. In the first training episode, Square 15 reveals a reward of +10. In the second, -100. In the third, +10. Look at the Q-values as they update over the three episodes. Unlike in the previous example, the values will not converge in the 4th training episode – they will continue to swing back-and-forth. <p></p>
 <div class = "row">
 <div class = "column2">
@@ -225,7 +225,7 @@ Here, we learn in the same fashion as the previous example. In the first trainin
 </div>  
 </div>
 <p></p>
-<b>Option 2: $\alpha = 0.9$</b> <p></p>
+<b>Option 2: $\alpha = 0.5$</b> <p></p>
 When $\alpha = 0.5$, the update rule is: $$Q(s,a) =  Q(s,a)_{old} + 0.5[Q(s,a)_{new} - Q(s,a)_{old}]$$ 
 Now, let's follow the same sequence. In the first step, we move from off-the-grid to Square 0. We update the Q-value of Square 0 as follows:<p></p>
 <p>$Q(s,a)_{old} = 0$ </p> 
