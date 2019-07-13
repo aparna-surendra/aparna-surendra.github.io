@@ -72,7 +72,10 @@ border-left: solid 1px black;
 <body>
  <header>
     <h1>A reinforcement learning primer</h1>
-    <h2><a href="new_page5.html"><img src="images/left_arrow.png"style="width:8px;height:13px;"></a>OPTIONAL: Introducing an RL algorithm</h2>
+    <h2><a href="new_page5.html"><img src="images/left_arrow.png"style="width:8px;height:13px;"></a>Calculations 2/2: Q-learning</h2>
+  </header>
+ <header>
+    <h4>The Q-</h2>
   </header>
 <div id="content">
 <b>How does an agent 'learn' values? </b> <p></p>
@@ -255,7 +258,7 @@ And so on. As can be seen, the Q-values will not converge in the 4th training ep
 </header>
 The DeepMind DQN algorithm is an adaptation of Q-learning with neural networks. Neural networks allow the agent to: take high-dimensional input (video feed), and generalize between experienced states and new states. In other words, the agent does not need to have 'experienced' the whole state-space and assigned Q-values throughout – instead, it can approximate the Q-values for a new state based on previous experience. <p></p>
 
-At its core, the steps to train a DQN ar similar to what we just learned: 
+At its core, the steps to train a DQN are similar to the steps we just learned: 
 
 <ul><li>The neural network takes as input a representation of the Atari video feed (the state) </li></ul>
 <ul><li> It predicts the Q-values for each available action.</li></ul>
@@ -270,6 +273,12 @@ For those of you who are familar with Python, here is some code that implements 
 
 The following video was trained with that code: 
 
+<div align="center">
+<video width="320" height="240" controls>
+  <source src="images/pong_orig.mp4"  type="video/mp4">
+</video>
+<br><b><i>DQN-trained agent on right</b></i>
+</div>
 
 
 </body>
