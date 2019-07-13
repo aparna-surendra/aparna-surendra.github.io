@@ -76,16 +76,14 @@ Through Pong, we can identify some of the challenges related to reinforcement le
 <ul><li><b>Uncertainty:</b> In the grid environment, the agent's action completely determines the next state $(S_{t+1})$. In Pong, the agent's action is only one of several lever that impact the next state– there is also the motion of the ball (depending on where and how it is introduced), and the opponent's actions. </li></ul>
 <ul><li><b>Reward assignment:</b> The reward signal is only received when a point is scored – for a maximum of $+21$ per game. This is sparse when compared to the number of actions taken per game, and it is delayed feedback – the agent must learn to correctly assign a reward to the relevant sequence of states and actions.</li></ul>
 <p></p>
-At its core, the DeepMind DQN algorithm 'learns' Q-values, using neural networks. Neural networks allow the agent to: take high-dimensional input (video feed), and generalize between experienced states and new states. In other words, the agent does not need to have 'experienced' the whole state-space and assigned Q-values throughout – instead, it can approximate the Q-values for a new state based on previous experience. <p></p>
+The DQN algorithm 'learns' Q-values, using neural networks. Neural networks allow the agent to: take high-dimensional input (video feed), and generalize between experienced states and new states. In other words, the agent does not need to have 'experienced' the whole state-space and assigned Q-values throughout – instead, it can approximate the Q-values for a new state based on previous experience. <p></p>
 
 At its core, the steps to train a DQN are: 
 <ul><li>The neural network takes as input a representation of the Atari video feed (the state) </li></ul>
 <ul><li> It predicts the Q-values for each available action.</li></ul>
-<ul><li> Based on an $\epsilon$-greedy policy, it either: selects the action with highest Q-value (with probability $1 - $$\epsilon$); or selects a random action (with probability $\epsilon).</li></ul> 
+<ul><li> Based on an $\epsilon$-greedy policy, it either: selects the action with highest Q-value (with probability $1 - $$\epsilon$); or selects a random action (with probability $\epsilon$).</li></ul> 
 <ul><li>The Q-value is updated based on received reward and the (predicted) max. Q-value of the next state. </li></ul>
 <p></p>
-
-
 <header>
 <h3> 3. AI in the real world </h3>
 </header>
@@ -117,7 +115,7 @@ We discussed the $\epsilon$-greedy strategy – selecting a random action with 
 <header>
 <h3> 3. Next Steps</h3>
 </header>
-This primer was intended to provide a soft introduction to RL technical fundamentals, and some initial discussion that connects them to RL research. For additional technical detail, consider reading the supplement on the Q-learning algorithm (if you know some Python, it includes an implementation of the DQN with the OpenAI environment). 
+For additional detail on Q-values and a learning algorithm, continue to the 'Calculation' pages, which will take 30+ minutes to work through. 
 <p></p>
 To delve more deeply into RL concepts, David Silver's <a href='https://www.youtube.com/watch?v=2pWv7GOvuf0'>RL lecture series </a> is available on YouTube, and Rich Sutton and Andrew Barto's seminal textbook 'Reinforcement Learning: An Introduction' is available <a href="http://incompleteideas.net/book/bookdraft2017nov5.pdf">free on-line</a> .
 
