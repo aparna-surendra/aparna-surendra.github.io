@@ -229,7 +229,7 @@ var discount_factor = 0.5;
 
 var grid3 = d3.select("#grid3")
 	.append("svg")
-	.attr("width","800px")
+	.attr("width","600px")
 	.attr("height","205px");
 
 grid3.append("circle")
