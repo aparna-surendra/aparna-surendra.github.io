@@ -75,12 +75,21 @@ Through Pong, we can identify some of the challenges related to reinforcement le
 <ul><li><b>Large state-action spaces: </b>In the grid environments, it was possible to experience, compute and store $Q(s,a)$ values for each state-action pair. But, as states grow more complex, this is computationally infeasible. Consider Go, the Chinese board game, which has a board with $10^{170}$ possible states. Instead, we need to find ways to approximate value functions. With DQN, a neural network is used to predict $Q(s,a)$ values.</li></ul>
 <ul><li><b>Uncertainty:</b> In the grid environment, the agent's action completely determines the next state $(S_{t+1})$. In Pong, the agent's action is only one of several lever that impact the next state– there is also the motion of the ball (depending on where and how it is introduced), and the opponent's actions. </li></ul>
 <ul><li><b>Reward assignment:</b> The reward signal is only received when a point is scored – for a maximum of $+21$ per game. This is sparse when compared to the number of actions taken per game, and it is delayed feedback – the agent must learn to correctly assign a reward to the relevant sequence of states and actions.</li></ul>
-<p>
-</p>
+<p></p>
+At its core, the DeepMind DQN algorithm 'learns' Q-values, using neural networks. Neural networks allow the agent to: take high-dimensional input (video feed), and generalize between experienced states and new states. In other words, the agent does not need to have 'experienced' the whole state-space and assigned Q-values throughout – instead, it can approximate the Q-values for a new state based on previous experience. <p></p>
+
+At its core, the steps to train a DQN are: 
+<ul><li>The neural network takes as input a representation of the Atari video feed (the state) </li></ul>
+<ul><li> It predicts the Q-values for each available action.</li></ul>
+<ul><li> Based on an $\epsilon$-greedy policy, it either: selects the action with highest Q-value (with probability $1 - $$\epsilon$); or selects a random action (with probability $\epsilon).</li></ul> 
+<ul><li>The Q-value is updated based on received reward and the (predicted) max. Q-value of the next state. </li></ul>
+<p></p>
+
+
 <header>
 <h3> 3. AI in the real world </h3>
 </header>
-We now have the conceptual understanding to consider two key real-world policy challenges – reward hacking and safe exploration. <p></p>
+We now have the conceptual understanding to consider two key real-world challenges – reward hacking and safe exploration. <p></p>
 This section is a brief excerpt of examples drawn from  <a href="https://arxiv.org/pdf/1606.06565.pdf">‘Concrete Problems in AI safety’</a> a research paper by Google Brain and OpenAI. <p></p>
 
 <ul><li><b>Reward Hacking</b></li></ul>
