@@ -188,7 +188,7 @@ var column = row.selectAll(".square")
 	  	   grid.append("text")
 	  			.attr("class", "text_remove")
 		    	.attr("x", 215)
-		    	.attr("y", 248)
+		    	.attr("y", 137)
 		    	.text(function(d,i){return  "CUMULATIVE DISCOUNTED REWARD: " + cumulative_disc_reward;})
 		    	.style("font-weight", "bold")
 
