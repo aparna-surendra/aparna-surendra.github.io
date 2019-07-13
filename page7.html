@@ -253,7 +253,7 @@ And so on. As can be seen, the Q-values will not converge in the 4th training ep
 </header>
 The DeepMind DQN algorithm is an adaptation of Q-learning with neural networks. Neural networks allow the agent to: take high-dimensional input (video feed), and generalize between experienced states and new states. In other words, the agent does not need to have 'experienced' the whole state-space and assigned Q-values throughout – instead, it can approximate the Q-values for a new state based on previous experience. <p></p>
 
-At its core, the steps to train a DQN are similar to the steps we just learned: 
+At its core, the steps to train a DQN are similar to the steps we just learned. To re-cap: 
 
 <ul><li>The neural network takes as input a representation of the Atari video feed (the state) </li></ul>
 <ul><li> It predicts the Q-values for each available action.</li></ul>
@@ -264,7 +264,10 @@ At its core, the steps to train a DQN are similar to the steps we just learned:
 
 There are other features around DQN implementation, including: the pre-processing required for video frames; the use of two neural networks to assist with convergence (network 1 is updated with target values at given intervals, while network 2 is used to predict Q-values and is updated with network 1's weights at less frequent intervals); and many others. Nonetheless, you now have a core understanding of what takes place within the algorithm, and the foundation to dive more deeply into the DQN Nature paper. <p></p>
 
-For those of you who are familar with Python, here is some code that implements DQN with <a href = "https://gym.openai.com/"">OpenAI's Gym environment</a>. It's written with a view to readability (not programmatic efficiency). Pay attention to lines 140 - 155 (where an action is selected based on an $\epsilon$-greedy policy) and lines 78 - 96 (where the neural network is updated). <p></p>
+<header>
+<h3> 4. Additional Resources</h3>
+</header>
+If you're familar with Python, here is <a href="pong_code/train_pong_DQN.py">code</a> that implements DQN with <a href = "https://gym.openai.com/"">OpenAI's Gym environment</a>. It's written with a view to readability (not programmatic efficiency). Pay attention to lines 140 - 155 (where an action is selected based on an $\epsilon$-greedy policy) and lines 78 - 96 (where the neural network is updated). <p></p>
 
 The following video was trained with that code: <p></p>
 
@@ -274,7 +277,7 @@ The following video was trained with that code: <p></p>
 </video>
 <br><b><i>DQN-trained agent on right</b></i>
 </div>
-
-
+<p></p>
+And, as mentioned previously,  David Silver's <a href='https://www.youtube.com/watch?v=2pWv7GOvuf0'>RL lecture series </a> is available on YouTube, and Rich Sutton and Andrew Barto's seminal textbook 'Reinforcement Learning: An Introduction' is available <a href="http://incompleteideas.net/book/bookdraft2017nov5.pdf">free on-line</a> .
 </body>
 </html>
