@@ -57,18 +57,18 @@ td:nth-last-child(1) {text-align:left;}
 <body>
  <header>
     <h1>A reinforcement learning primer</h1>
-    <h2><a href="new_page2.html"><img src="images/left_arrow.png"style="width:8px;height:13px;"></a> 3/5 Value Functions <a href="new_page4.html"><img src="images/right_arrow.png"style="width:10px;height:15px;"></a></h2>
+    <h2><a href="new_page2.html"><img src="images/left_arrow.png"style="width:8px;height:13px;"></a> Calculations: The Q-value <a href="new_page4.html"><img src="images/right_arrow.png"style="width:10px;height:15px;"></a></h2>
   </header>
 <div id="content">
 
 <header>
-<h3>The Q-value, mathematically</h3>
+<h3>1. The Q-value, mathematically</h3>
 </header>
 <i>Click <a href="new_page3.html">here</a> to review the introduction to Q-values.</i> <p></p>
 
 <p>Let's return to the 4 x 4 grid from Section 3, which has the following constraints:</p>
 <ul><li>The game must be completed within 4 moves.</li> </ul>
-<ul><li>The game must begin by moving to State 2. This first move has been made for you – you have 3 left. </ul></li>
+<ul><li>The game must begin by moving to State 2. </ul></li>
 </p>
 
 <div align="center">
@@ -77,6 +77,9 @@ td:nth-last-child(1) {text-align:left;}
 </div>
 </div>
 
+<header>
+<h4>Q-value equation</h4>
+</header>
 The Q-value can be decomposed into two parts: 
 $$Q(s,a) = \text{the immediate reward from the new state} + \text{the cumulative reward of pursuing the optimal policy from the new state} $$
 </p>
@@ -118,7 +121,7 @@ $$=3$$
 </p>
 <p><i>This section does not focus on how an agent learns Q-values, but click <a href="new_page1.html">here</a> for a supplementary page that details the Q-learning algorithm.</i> </p>
 <header>
-<h3> 3. Discounting </h3>
+<h3> 2. Discounting </h3>
 </header>
 <p><u><i>Q: Consider two policies: Policy A yields +100 over 1 time step, while Policy B yields +100 in cumulative rewards over 100 time steps. Which policy do you pursue? </i></u> </p>
 We can express this preference by introducing two additional terms: <b>time step ($t$)</b> and <b>discount factor ($\gamma$)</b>. 
