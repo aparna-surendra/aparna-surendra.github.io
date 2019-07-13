@@ -6,6 +6,7 @@ layout: default
 <style>
 #content {
   float: left;
+  width: 1000px;
 
 }
 text {
@@ -86,7 +87,9 @@ td:nth-last-child(1) {text-align:left;}
 <h4>Q-value equation</h4>
 </header>
 The Q-value can be decomposed into two parts: 
-$Q(s,a) = \text{the immediate reward from the new state} + \text{the cumulative reward of pursuing the  optimal policy from the new state} $
+$$Q(s,a) = \text{the immediate reward from the new state}$$
+$$            +                                       $$
+$$\text{the cumulative reward of pursuing the  optimal policy from the new state} $$
 </p>
 This can be expressed mathematically as: 
 $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
@@ -160,34 +163,8 @@ We can express this preference by introducing two additional terms: <b>time step
 </p>
 <p>To gain more fluency with discounted rewards, interact with the grid below. Move the slider to adjust the discount factor, and click on any square to construct different policies and evaluate the total discounted reward for the entire policy.
 </p>
+CHECK 5 
 </div>
-<div>
-CHECK 2
-<div class = "row">
-<div class="column">
-<div id="grid3"></div>
-<p>
-  <label for="nRadius" 
-         style="display: inline-block; width: 180px; text-align: left">
-         Discount Factor ($\gamma$)= <span id="nRadius-value">0.5</span>       
-  </label>
-  <input type="range" min="0" max="1" step="0.1" id="nRadius">
-</p>
-<div class = "text_label">
-</div>
-</div>
-<div class="column">
-<table id="table"></table>
-</div>
-<script src="grids/grid14.js" type="text/javascript"></script>
-</div>
-<header>
-<h4>c. Discounted Q-values</h4>
-</header>
-To include the discount factor in our Q-value calculation, we simply discount Q-values for future time-steps. 
-$$Q(s,a) = r_{t} + \gamma.max[(Q(s_{t+1},a_{t+1})]$$
 
-</div>
-</div>
 </body>
 </html>
