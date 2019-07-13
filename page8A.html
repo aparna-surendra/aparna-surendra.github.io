@@ -61,65 +61,23 @@ td:nth-last-child(1) {text-align:left;}
   </header>
 <div id="content">
 
-<h3> 1. Introducing Values </h3>
+<header>
+<h3>The Q-value, mathematically</h3>
+</header>
+<i>Click <a href="new_page3.html">here</a> to review the introduction to Q-values.</i> <p></p>
 
-<p>A state's <b>reward</b> can be considered an indication of how 'good' it is immediately, while its <b>value</b> indicates how 'good' it will be in the long-term. </p>
-
-
-<p>To provide more intuition on the distinction between a state's reward and its value, consider a revised grid environment (below) with labelled states and all +1 rewards revealed. Identify the optimal policy, with two additional constraints:</p>
+<p>Let's return to the 4 x 4 grid from Section 3, which has the following constraints:</p>
 <ul><li>The game must be completed within 4 moves.</li> </ul>
 <ul><li>The game must begin by moving to State 2. This first move has been made for you – you have 3 left. </ul></li>
 </p>
-<div class = "row">
-<div class="column">
+
+<div align="center">
 <div id="grid2"></div>
 <script src="grids/grid9.js" type="text/javascript"></script>
 </div>
-<div class="column">
-<div id="grid1"></div>
-<script src="grids/grid10.js" type="text/javascript"></script>
 </div>
-</div>
-<p><u><i>Q: When in State 2, do you move right to State 3 or down-diagonal to State 5? </i></u> </p>
-<p> Based on their rewards, State 3 and State 5 are equally desirable (they each return $+1$). But we know they are not equivalent – a policy that moves from State 2 to State 5 can return a higher cumulative reward.  
-<div class = "row">
-<div class="column">
-<div id="grid4"></div>
-<script src="grids/grid11.js" type="text/javascript"></script>
-</div>
-<div class="column">
-<div id="grid5"></div>
-<script src="grids/grid12.js" type="text/javascript"></script>
-</div>
-</div>
-<ul><li>Policy #1 (above) displays the optimal policy followed after moving from State 2 to State 3 –  it yields a cumulative game reward of $+1$. </li> </ul>
-<ul> <li> Policy #2 (above) displays the optimal policy followed after moving from State 2 to State 5 – it yields a cumulative game reward of $+2$. </li> </ul>
-Policy #2 is the optimal policy for the game. 
-</p>
-<header>
-<h3> 2. Rewards, Values, and Q-values </h3>
-</header>
-<p> This primer focuses on <b>value-based methods</b>, a specific type of RL algorithm. An agent learns the <b>value</b> of states and corresponding actions, which then guides the agent's policies. 
-</p>
-There are different methods to calculate value, but we will use one called <b> Q-value</b>, represented by $Q(s,a)$. A Q-value can be considered the highest cumulative reward possible by selecting a given action in a given state.  
-</p>
-<ul><li>The highest cumulative reward possible (beginning in State 2) by choosing to move to State 3 is $+2$ (following this policy: State 3- State 2- State 5). </li></ul>
-<ul><li>The highest cumulative reward possible (beginning in State 2) by choosing to move to State 5 is $+3$ (following this policy: State 5-State 10-15). </li></ul>
-</p>
-</p>
-</p>
-These are the Q-values! When assessing whether to move to State 3 (Q-value $= 2$) or State 5 (Q-value $= 3$), the agent will select State 5 – the state with the highest Q-value.</p>
 
-<p>Note: A Q-value is not necessarily the same as the total cumulative reward for a given policy. A Q-value is specific to a state- action pair, and includes a calculation of the <b>optimal</b> policy pursued from the next state on. </p>
-<ul><li>The total cumulative reward for Policy 2 is:  $+2$ (rewards from State 2 -5-10-15). </li></ul>
-<ul><li>The Q-value of State 2, moving to State 5 is: $+3$ (the rewards from State 5-10-15)</li></ul>
-<ul><li>The cumulative reward of State 2, following a policy of State 5-6-7 is: $1+$. This is not the Q-value, as (from State 5) the optimal policy is not pursued.</li></ul>
-
-
-<header>
-<h4>The Q-value, mathematically</h4>
-</header>
-</p> The Q-value can be decomposed into two parts: 
+The Q-value can be decomposed into two parts: 
 $$Q(s,a) = \text{the immediate reward from the new state} + \text{the cumulative reward of pursuing the optimal policy from the new state} $$
 </p>
 This can be expressed mathematically as: 
