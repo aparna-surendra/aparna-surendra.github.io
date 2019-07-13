@@ -13,31 +13,6 @@ text {
   text-anchor: left;
 }
 
-.column {
-  float: left;
-  width: 45%;
-  padding: 5px;
-}
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-td {
-border-left: solid 0.5px black;
-text-align: center;
-font: 9px "Proxima Nova",sans-serif;
-} 
-
-th {
-text-align: center;
-font: 9px "Proxima Nova", sans-serif;
-font-weight: bold;
-} 
-
-td:nth-last-child(2) {text-align:left;}
-td:nth-last-child(1) {text-align:left;}
-
 
 </style>
 <head>
@@ -115,106 +90,6 @@ These are the Q-values! When assessing whether to move to State 3 (Q-value $= 2$
 <ul><li>The Q-value of State 2, moving to State 5 is: $+3$ (the rewards from State 5-10-15)</li></ul>
 <ul><li>The cumulative reward of State 2, following a policy of State 5-6-7 is: $1+$. This is not the Q-value, as (from State 5) the optimal policy is not pursued.</li></ul>
 
-
-<header>
-<h4>The Q-value, mathematically</h4>
-</header>
-</p> The Q-value can be decomposed into two parts: 
-$$Q(s,a) = \text{the immediate reward from the new state} + \text{the cumulative reward of pursuing the optimal policy from the new state} $$
-</p>
-This can be expressed mathematically as: 
-$$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
-</p>
-
-<header>
-<h4>Q-value calculation: Example 1 </h4>
-</header>
-<p>To be more explicit, let's work through the steps to calculate the $Q(s,a)$ of moving from State 2 to 3 ($s$ =  2  and $a$ = right). </p>
-$$Q(2, \text{right}) = 1 + max[1, 0, 0] $$
-$$                   = 1 + 1$$
-$$                   = 2$$
-
-<ul><li>$r_{t}$ is the reward received by selecting the action and moving to State 3: $+1$</ul></li>
-<ul><li>$max[(Q(s_{t+1},a_{t+1})]$ is the maximum Q-value beginning in State 3. </p>There are 3 Q-values for State 3 (one Q-value for each legal action). 
-<ul><li>$Q(3, a = $right$),$ The optimal policy from here is: State 2-5, which yields a cumulative reward of $0 + 1 = +1$. </li></ul>
-<ul><li>$Q(3, a = $ down$),$ The optimal policy from here is: State 7-10, each which yields a cumulative reward of $-1 + 1 = 0$. </li></ul> 
-<ul><li>$Q(3, a = $ right-down diagonal$),$ The optimal policy from here is either State 6-5 or 6-10, both which yield a cumulative reward of $-1+1 = 0$. </li></ul> </li></ul>
-</li> </ul> 
-</li></ul>
-
-<header>
-<h4>Q-value calculation: Example 2</h4>
-</header>
-<p>Let's work through the steps to calculate $Q(s,a)$ for moving to State 2 to State 5. </p>
-$$Q(s = 2, a = \text{right-down-diagonal}) = 1 + max[2, 1,...] $$
-$$= 1 + 2$$
-$$=3$$
-
-<ul><li>$r_{t}$ is the reward received by selecting the action and moving to State 5: $+1$</ul></li>
-<ul><li>There are 8 Q-values for State 5 (one Q-value for each legal action). </p>
-<ul><li>$Q(s = 5, a = $ right-down-diagonal$)$ The optimal policy from here is:  State 10-15, which yields a cumulative reward of $+2$. </li></ul>
-<ul><li>$Q(s = 5, a = $ down$),$ The optimal policy from here is:  State 9-10, which yields a cumulative reward of $+1$. </li></ul> 
-<ul><li>And so on... </li></ul> </li></ul>
-</li> </ul> 
-</li></ul>
-</p>
-<p><i>This section does not focus on how an agent learns Q-values, but click <a href="new_page1.html">here</a> for a supplementary page that details the Q-learning algorithm.</i> </p>
-<header>
-<h3> 3. Discounting </h3>
-</header>
-<p><u><i>Q: Consider two policies: Policy A yields +100 over 1 time step, while Policy B yields +100 in cumulative rewards over 100 time steps. Which policy do you pursue? </i></u> </p>
-We can express this preference by introducing two additional terms: <b>time step ($t$)</b> and <b>discount factor ($\gamma$)</b>. 
-</p>
-
-<header>
-<h4>a. Time Steps</h4>
-</header>
-<p> There is no external notion of time in this game – there is no clock runnning down in the background. But we can consider each action taken to represent some time period or <b>time-step</b>. All states, actions, and rewards are represented by the time-step in which they are experienced (states  \(s\)), taken (actions \(a\)), or received (rewards \(r\)). If we were to introduce clock-time, we could consider each minute a time-step or, alternatively, each second a time-step (depending on the game) </p>
-
-<p> To apply this new language, let's consider the following sequence:
-<ul><li> In time-step 0, move from Square 0  to Square 1  and receive reward $-1$. </li> </ul> 
-<ul><li> In time-step 1, move from Square 1 to Square 5  and receive reward $+1$. </li></ul> </p>
-
-<p>Instead of using numbers, we can use relative indexing for ease. $t$ denotes the current time-step, ${t+1}$ denotes the next one, and ${t-1}$ the previous one.</p>
-
-<header>
-<h4>b. Discount Factor</h4>
-</header>
-<p>We can weight rewards received in the future, so that they are less valuable than rewards received immediately. If time step $t$ begins at 0, the reward is discounted at discount factor ($\gamma^t$). All the calculations so far have not been discounted, which is the same as setting the discount factor ($\gamma$) to $1$. <p></p> If $\gamma = 0$, future rewards are discounted completely – only immediate rewards matter. If $\gamma = 1$, future rewards are weighted the same as those received immediately.
-<ul><li>At $t_0$, the reward $r_0$ is discounted at $\gamma^0$; at $t_1$, the reward $r_1$ is discounted at $\gamma^1$ and so on. </ul></li> 
-</p>
-
-<p>Let's return to the question posed at the beginning of Section iii:</p>
-<ul><li>If the discount factor ($\gamma$) = 1, then future rewards are weighted the same as immediate rewards. <ul><li>Policy A \(=\) Policy B  \(= 100\).</li></ul></li></ul>
-<ul><li>If $\gamma$ = 0.8, then Policy A has a cumulative discounted reward of $100$, while Policy B has one of $5$ (and is much less desirable). 
-<ul><li><i>Calculations:</i> Policy A $ = 100*0.8^0$; Policy B =  $1*0.8^0+ 1*0.8^1 + 1*0.8^2...1*0.80^{99} \approx 5$ </li></ul></li> </ul>
-<ul><li>If $\gamma$ = 0.5, then Policy A has a cumulative discounted reward of $100$, while Policy B has one of $2$ (and is even less desirable).<ul><li> <i>Calculations:</i> Policy A $ = 100*0.5^0$; Policy B =  $1*0.5^0+ 1*0.5^1 + 1*0.5^2...1*0.50^{99} = 2$</li></ul></li></ul>
-</p>
-<p>To gain more fluency with discounted rewards, interact with the grid below. Move the slider to adjust the discount factor, and click on any square to construct different policies and evaluate the total discounted reward for the entire policy.
-</p>
-<div class = "row">
-<div class="column">
-<div id="grid3"></div>
-<p>
-  <label for="nRadius" 
-         style="display: inline-block; width: 180px; text-align: left">
-         Discount Factor ($\gamma$)= <span id="nRadius-value">0.5</span>       
-  </label>
-  <input type="range" min="0" max="1" step="0.1" id="nRadius">
-</p>
-<div class = "text_label">
-</div>
-</div>
-<div class="column">
-<table id="table"></table>
-</div>
-<script src="grids/grid14.js" type="text/javascript"></script>
-</div>
-<header>
-<h4>c. Discounted Q-values</h4>
-</header>
-To include the discount factor in our Q-value calculation, we simply discount Q-values for future time-steps. 
-$$Q(s,a) = r_{t} + \gamma.max[(Q(s_{t+1},a_{t+1})]$$
 
 </div>
 </div>
