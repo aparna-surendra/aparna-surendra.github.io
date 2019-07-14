@@ -14,7 +14,7 @@ This primer was designed for those with an interest in AI, but without any speci
 On completing it, the reader should be able to engage more deeply with technical AI  – whether it be through deeper understanding of <a href = "https://www.nytimes.com/2019/05/30/science/deep-mind-artificial-intelligence.html">media coverage</a>, or intermediate RL resources.
 
 <h4>CONCEPTS</h4> 
-– [1/5: Introduction to reinforcement learning](page1.html)
+– [1/5: Introduction](page1.html)
 
 – [2/5: From intuition to reinforcement learning basics](new_page2.html)
 
