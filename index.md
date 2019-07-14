@@ -3,14 +3,12 @@ layout: default
 ---
 
 <h3> A REINFORCEMENT LEARNING PRIMER </h3>
-<p>This reinforcement learning (RL) primer introduces RL fundamentals, and explicitly extends them to certain topics in AI research, It hopes to bridge the gap between high-level discussions and technical AI research..</p>
+This reinforcement learning (RL) primer introduces RL fundamentals, and explicitly extends them to certain topics in AI research. It hopes to bridge the gap between high-level discussions and technical AI research.
+It is divided into two sections:
+	Concepts: Introduces RL intuition and terminology through interactive grids and discussion.
+	Calculations: Introduces mathematical notation, additional concepts, and illustrates an algorithm by-hand.
 
-<p>It is divided into two sections:</p> 
-	<ul><li>Concepts: Introduces RL intuition and terminology through interactive grids and discussion.</li></ul>
-	<ul><li>Calculations: Introduces mathematical notation, additional concepts, and illustrates an algorithm by-hand.</li></ul>
-<p>
-
-<p>This primer was designed for those with an interest in AI, but without any specialised knowledge. On completing it, the hope is that the reader will be able to more deeply engagee with technical AI  – whether it be through deeper understanding of <a href = "https://www.nytimes.com/2019/05/30/science/deep-mind-artificial-intelligence.html">media coverage</a>, or as a foundation for future study.</p>
+This primer was designed for those with an interest in AI, but without any specialised knowledge. On completing it, the reader should be able to engage more deeply with technical AI  – whether it be through deeper understanding of <a href = "https://www.nytimes.com/2019/05/30/science/deep-mind-artificial-intelligence.html">media coverage</a>, or as a foundation for  intermediate RL resources.</p>
 
 <h4>CONCEPTS</h4> 
 – [1/5: Introduction to reinforcement learning](page1.html)
@@ -24,6 +22,7 @@ layout: default
 – [5/5: From gridworld to the real world ](new_page5.html)
 
 <h4>CALCULATIONS</h4> 
+
 – [1/2: Q-value, mathematically](page8A.html)
 
 – [2/2: The Q-learning algorithm](page7.html)
