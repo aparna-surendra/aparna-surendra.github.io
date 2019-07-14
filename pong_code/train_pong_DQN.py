@@ -1,5 +1,6 @@
 ####
 #This code trains a deep-Q network to play Atari games with OpenAI's gym environment. 
+#NOTE: This has been written for readability, not efficiency (it is not object-oriented, etc), and is included in the Reinforcement Learning primer here: aparna-surendra.github.io
 ####
 import pandas as pd
 import numpy as np
