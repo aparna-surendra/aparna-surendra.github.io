@@ -3,7 +3,7 @@ layout: default
 ---
 
 <h3> A REINFORCEMENT LEARNING PRIMER </h3>
-This reinforcement learning (RL) primer introduces RL fundamentals, and explicitly extends them to certain topics in AI research. It hopes to bridge the gap between high-level discussions and technical AI research.
+This reinforcement learning (RL) primer introduces RL fundamentals, and explicitly extends them to topics in AI research. It hopes to bridge the gap between high-level discussions and technical AI research.
 It is divided into two sections:
 
 – [Concepts: Introduces RL concepts and terminology through interactive grids and discussion.]
