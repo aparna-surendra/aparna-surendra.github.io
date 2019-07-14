@@ -73,7 +73,7 @@ text {
 </div>
 <p>What policy will you pursue in the next game? </p>
 <ul><li><i>Exploitation</i>: The <b>known optimal policy</b> that yields a $+180$ cumulative reward. <ul><li>Play all the blue $+1$ squares for a total of $+180$ , avoid the orange $-1$ squares, and wait for the clock to run out.</li></ul></li></ul>
-<ul><li><i>Exploration</i>: A <b>new policy</b> that explores unseen state-action combinations, and will yield an unknown reward.</li></ul>
+<ul><li><i>Exploration</i>: A <b>new policy</b> that explores unseen state-action combinations, and will yield an unknown cumulative reward (which could be higher or lower than $+180$).</li></ul>
 <p>As it turns out, you have not yet learned the optimal policy for the game...</p>
 <div class = "row"> 
 <div class="column">
@@ -85,8 +85,9 @@ text {
 <script src="grids/grid7.js" type="text/javascript"></script>
 </div>
 </div>
-<p>If you pursued the known optimal policy (exploitation), you would not have learned the optimal policy for the game – which yields $+238$ (the policy* is visualised above) by selecting the cluster of $+1$ blue states on the right-hand side of the grid. </p> <p>But this is a trade-off! In instances where an agent has sufficient experience, additional exploration will delay learning. Balancing exploitation and exploration is key to successful reinforcement learning. </p>
+<p>If you pursued the known optimal policy (exploitation), you would not have learned the optimal policy for the game – which yields $+238$ by selecting the cluster of $+1$ blue states on the right-hand side of the grid (this policy is visualised above). </p> <p>But this is a trade-off! In instances where an agent has sufficient experience, additional exploration will delay learning. Balancing exploitation and exploration is key to successful reinforcement learning. </p>
 <i>*Note: This is one of several optimal policies that lead to $+238$, as there is: 1) no penalty for re-selecting states and 2) no incentive to finish the game as quickly as possible. If we were to introduce one or both considerations, this would be the sole optimal policy. </i>
+<p></p>
 <header>
 <h3> ii. Implementation </h3>
 </header>

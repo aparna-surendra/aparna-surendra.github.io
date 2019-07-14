@@ -49,12 +49,12 @@ text {
 <header>
 <h3> 1. Introducing game environments </h3>
 </header>
-<p> In 2015, DeepMind <a href="https://deepmind.com/research/dqn/">published a breakthrough</a> in reinforcement learning research. The team had developed a new algorithm, the Deep-Q Learning Network (DQN), which could train on 46 different Atari games and had reached/exceeded human performance on 29 games. At its core, DQN is an algorithm that learns Q-values (and is a modified version of the Q-learning algorithm, which is included in the <a href="page8A.html">'Calculations' section)</a>.</p>
+<p> In 2015, DeepMind <a href="https://deepmind.com/research/dqn/">published a breakthrough</a> in reinforcement learning research. The team had developed a new algorithm, the Deep-Q Learning Network (DQN), which could train on 46 different Atari games and reached/exceeded human performance on 29 games. At its core, DQN is an algorithm that learns Q-values.</p>
 <p>
-DQN was a first demonstration of a generalisable or general-purpose agent – the same algorithm could be trained on a diverse set of environments without modification (this does not mean that a DQN agent trained to play Pong will perform well in a game of Breakout; the agent must train in the environment which it will play). DQN could also take RGB video-feed as input, a step closer to the complex sensory visual input that humans use,  and a step closer to agents in a 'real world' environment. Game environments provide well-defined domains for AI research, and recent publications focus on new, increasingly sophisticated game challenge domains. 
+DQN was a first demonstration of a generalisable or general-purpose agent – the same algorithm could be trained on a diverse set of environments without modification (this does not mean that a DQN agent trained to play Pong performs well in a game of Breakout; the agent must train in the environment which it will play). DQN could also take RGB video-feed as input, a step closer to the complex sensory visual input that humans use,  and a step closer to agents in a 'real world' environment. Game environments provide well-defined domains for AI research, and recent publications focus on new, increasingly sophisticated game challenge domains. 
 
 </p>
-<p>In previous sections of the primer, We introduced many core reinforcement learning concepts with the grid environment. We can extend these to the Atari game Pong. 
+<p>In previous sections of the primer, we introduced core RL concepts with the grid environment. We can extend these to the Atari game Pong. 
 </p>
 <div align="center">
 <video width="320" height="240" controls>
@@ -73,11 +73,11 @@ DQN was a first demonstration of a generalisable or general-purpose agent – t
 <ul><li>The state's <b>value</b> represents how desirable or 'good' it is. A state where the opponent is about to score (e.g. the agent's paddle is at the top right corner, while as the ball is about to reach the bottom right corner) is an undesirable or low-value state. Conversely, a state where the agent's paddle is about to strike the ball is a high-value state. </li></ul>
 </p>
 Through Pong, we can identify some of the challenges related to reinforcement learning in more complex environments.
-<ul><li><b>Large state-action spaces: </b>In the grid environments, it was possible to experience, compute and store $Q(s,a)$ values for each state-action pair. But, as states grow more complex, this is computationally infeasible. Consider Go, the Chinese board game, which has a board with $10^{170}$ possible states. Instead, we need to find ways to approximate value functions. With DQN, a neural network is used to predict $Q(s,a)$ values.</li></ul>
-<ul><li><b>Uncertainty:</b> In the grid environment, the agent's action completely determines the next state $(S_{t+1})$. In Pong, the agent's action is only one of several lever that impact the next state– there is also the motion of the ball (depending on where and how it is introduced), and the opponent's actions. </li></ul>
-<ul><li><b>Reward assignment:</b> The reward signal is only received when a point is scored – for a maximum of $+21$ per game. This is sparse when compared to the number of actions taken per game, and it is delayed feedback – the agent must learn to correctly assign a reward to the relevant sequence of states and actions.</li></ul>
+<ul><li><b>Large state-action spaces: </b>In the grid environments, it was possible to experience, compute and store $Q(s,a)$ values for each state-action pair. But, as states grow more complex, this is computationally infeasible. Instead, we need to find ways to approximate value functions. With DQN, a neural network is used to predict $Q(s,a)$ values.</li></ul>
+<ul><li><b>Uncertainty:</b> In the grid environment, the agent's action completely determines the next state $(S_{t+1})$. In Pong, the agent's action is only one of several levers that impact the next state– there is also the motion of the ball (depending on where and how it is introduced, which is random), and the opponent's actions. </li></ul>
+<ul><li><b>Reward assignment:</b> The reward signal is only received when a point is scored, for a maximum of $+21$ per game. This is sparse when compared to the number of actions taken per game, and it is delayed feedback. The agent must learn to correctly assign a reward to the relevant sequence of states and actions.</li></ul>
 <p></p>
-The DQN algorithm 'learns' Q-values, using neural networks. Neural networks allow the agent to: take high-dimensional input (video feed), and generalize between experienced states and new states. In other words, the agent does not need to have 'experienced' the whole state-space and assigned Q-values throughout – instead, it can approximate the Q-values for a new state based on previous experience. <p></p>
+The DQN algorithm 'learns' Q-values, using neural networks. Neural networks allow the agent to: take high-dimensional input (video feed), and generalise between experienced states and new states. In other words, the agent does not need to have 'experienced' the whole state-space and assigned Q-values throughout – instead, it can approximate the Q-values for a new state based on previous experience. <p></p>
 
 At its core, the steps to train a DQN are: 
 <ul><li>The neural network takes as input a representation of the Atari video feed (the state) </li></ul>
@@ -85,10 +85,12 @@ At its core, the steps to train a DQN are:
 <ul><li> Based on an $\epsilon$-greedy policy, it either: selects the action with highest Q-value (with probability $1 - $$\epsilon$); or selects a random action (with probability $\epsilon$).</li></ul> 
 <ul><li>The Q-value is updated based on received reward and the (predicted) max. Q-value of the next state. </li></ul>
 <p></p>
+For more details on updating Q-values, continue to the 'Calculations' section on the next page.</a>
+<p></p>
 <header>
-<h3> 2. AI in the real world </h3>
+<h3> 3. AI in the real world </h3>
 </header>
-We now have the conceptual understanding to consider two key real-world challenges – reward hacking and safe exploration. <p></p>
+We now have the conceptual understanding to consider two challenges of implementing RL in the real-world – reward hacking and safe exploration. <p></p>
 This section is a brief excerpt of examples drawn from  <a href="https://arxiv.org/pdf/1606.06565.pdf">‘Concrete Problems in AI safety’</a> a research paper by Google Brain and OpenAI. <p></p>
 
 <ul><li><b>Reward Hacking</b></li></ul>
@@ -98,7 +100,7 @@ messes, it might disable its vision so that it won’t find any messes, or cover
 materials it can’t see through, or simply hide when humans are around so they can’t tell it
 about new types of messes.”</i><p></p>
 
-As an agent looks to maximise its reward, it may identify policies that were not per the designer’s intent. In a video game, reward hacking can look like the OpenAI agent trained to play the video game Coastrunners. <p></p> From <a href = "https://openai.com/blog/faulty-reward-functions/">OpenAI</a> – “Despite repeatedly catching on fire, crashing into other boats, and going the wrong way on the track, our agent manages to achieve a higher score using this strategy than is possible by completing the course in the normal way. Our agent achieves a score on average 20 percent higher than that achieved by human players.”
+As an agent looks to maximise its reward, it may identify policies that were not per the designer’s intent. Reward hacking can look like the agent playing the video game Coastrunners. <p></p> From <a href = "https://openai.com/blog/faulty-reward-functions/">OpenAI</a> – “Despite repeatedly catching on fire, crashing into other boats, and going the wrong way on the track, our agent manages to achieve a higher score using this strategy than is possible by completing the course in the normal way. Our agent achieves a score on average 20 percent higher than that achieved by human players.”
 <p></p>
 
 <div align="center">
@@ -109,7 +111,7 @@ As an agent looks to maximise its reward, it may identify policies that were not
 
 As an agent looks for the optimal policy in a new (or little-explored) environment, how can it safely explore an environment it doesn’t know very well? <p></p>
 
-We discussed the $\epsilon$-greedy strategy – selecting a random action with $\epsilon$-probability during the training process– which does not factor in the potential for harm. One way to potentially mitigate this is through training an agent in a simulated environment before releasing it in the real-world.  <p></p>
+We discussed the $\epsilon$-greedy strategy – selecting a random action with $\epsilon$-probability during the training process– which does not factor in the potential for harm. One potential way to mitigate this is by training an agent in a simulated environment before releasing it in the real-world.  <p></p>
 <p></p>
 </div>
 </div>

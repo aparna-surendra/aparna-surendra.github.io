@@ -83,8 +83,8 @@ border-left: solid 1px black;
 </header>
 <p>How does an agent 'learn' values? This section will walk through how Q-values are updated through each training episode (with manual calculations). It makes several simplifying assumptions, but these serve the purpose of a soft introduction. </p>
 <p>Let's return to a 4 x 4 grid with $+1$ rewards along the diagonal.</p>
-<h4>1. Initialize Q-values</h4>
-<p> If we were to approach the grid with no prior knowledge, we consider each state the same – no one state is better or worse than the other. We initialize all $Q(s,a)$ values to $0$, as displayed below.</p>
+<h4>1. Initialise Q-values</h4>
+<p> If we were to approach the grid with no prior knowledge, we consider each state the same – no one state is better or worse than the other. We initialise all $Q(s,a)$ values to $0$, as displayed below.</p>
 <div class="row">
 <div class = "column">
 <div id="grid"></div>
@@ -98,12 +98,12 @@ border-left: solid 1px black;
 <header>
 <h4>2. Begin Training – Training Episode 1</h4>
 </header>
-<p> In Training episode 1, we select actions randomly (as all states are equally desirable/have the same Q-value), and terminate the episode after 7 steps (this is to simplify the problem, there are no game constraints that require this).</p>
+<p> In the first training episode, we select actions randomly (as all states are equally desirable/have the same Q-value), and terminate the episode after 7 steps (this is to simplify the problem, there are no game constraints that require this).</p>
 
 <div class="row">
 <div class="column">
 
-<b>Time Step 1 </b><p></p> moves off-the-grid to Square 0. We receive a reward ($r_t$) of +1 and can update our Q-value for moving to State 0. 
+<b>Time-step 1 </b><p></p> moves off-the-grid to Square 0. We receive a reward ($r_t$) of +1 and can update our Q-value for moving to State 0. 
 $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
 $$Q(\text{s = off-grid}, \text{a = right}) = 1 + 0$$
 $$                                          = 1$$ 
@@ -122,7 +122,7 @@ To simplify our grid, we label State 0 with the updated Q-value. This is the Q-v
 <script src="grids/grid18.js" type="text/javascript"></script>
 </div>
 <div class="column" style = "padding-top: 20px">
-<b>Time Step 2</b> <p></p> From State 0, all actions ${a_t}$ (right, down, right-diagonal) seem to lead to equivalent $s_{t+1}$ (States 1, 4, and 5). <p></p>
+<b>Time-step 2</b> <p></p> From State 0, all actions ${a_t}$ (right, down, right-diagonal) seem to lead to equivalent $s_{t+1}$ (States 1, 4, and 5). <p></p>
 We randomly elect to move to State 1 and receive a reward ($r_t$) of -1. We can update the Q-value for moving to State 1. 
 $$Q(s,a) = r_{t} + max[(Q(s_{t+1},a_{t+1})]$$
 $$Q(\text{s = 0}, \text{a = right}) = -1 + 0$$
@@ -141,7 +141,7 @@ $$                                  = -1$$
 <header>
 <h4>3. Training Episode 2</h4>
 </header>
-<b>Time Step 1</b> <p></p> 
+<b>Time-step 1</b> <p></p> 
 By following a 'greedy' policy (selecting the highest value state-actions without exploring further), we move to Square 0 and receive +1. <p></p>
 Let's update the Q-value of moving to State 1:
 <ul><li> $r_{t}$ is the same, it equals $1$. </li></ul>
@@ -152,7 +152,7 @@ $$Q(\text{s = off-grid}, \text{a = right}) = 1 + max[1,-1,0]$$
 $$                                         = 1 + 1 = 2$$ 
 
 We update the Q-value of State 0 (shorthand for the Q-value of moving <i>to</i> State 0) to $2$. <p></p>
-<b>Time Steps 2,3,4</b><p></p>
+<b>Time-steps 2,3,4</b><p></p>
 We follow the greedy policy (move from State 5 - State 10 - State 15) and update the Q-values accordingly.<p></p> 
  
 <p>For State 5, update the $max. Q(s_{t+1}, a_{t+1})$ value to 1 : $Q(s_t,a_t) = r_{t} + max[(Q(s_{t+1},a_{t+1})] = 1+1 = 2$ </p>
@@ -254,9 +254,10 @@ And so on. As can be seen, the Q-values will not converge in the 4th training ep
 <header>
 <h3><u>From Q-learning to a Deep Q-Network</u></h3>
 </header>
-The DeepMind DQN algorithm is an adaptation of Q-learning with neural networks. Neural networks allow the agent to: take high-dimensional input (video feed), and generalize between experienced states and new states. In other words, the agent does not need to have 'experienced' the whole state-space and assigned Q-values throughout – instead, it can approximate the Q-values for a new state based on previous experience. <p></p>
+The DeepMind DQN algorithm is an adaptation of Q-learning with neural networks. <p></p>
+To re-cap from Section 5: Neural networks allow the agent to: take high-dimensional input (video feed), and generalize between experienced states and new states. In other words, the agent does not need to have 'experienced' the whole state-space and assigned Q-values throughout – instead, it can approximate the Q-values for a new state based on previous experience. <p></p>
 
-At its core, the steps to train a DQN are similar to the steps we just learned. To re-cap: 
+At its core, the steps to train a DQN are similar to the steps we just learned.
 
 <ul><li>The neural network takes as input a representation of the Atari video feed (the state) </li></ul>
 <ul><li> It predicts the Q-values for each available action.</li></ul>
@@ -265,14 +266,14 @@ At its core, the steps to train a DQN are similar to the steps we just learned. 
 <ul><li>the neural network is trained/updated with the new Q-values as target values. </li></ul>  
 <p></p>
 
-There are other features around DQN implementation, including: the pre-processing required for video frames; the use of two neural networks to assist with convergence (network 1 is updated with target values at given intervals, while network 2 is used to predict Q-values and is updated with network 1's weights at less frequent intervals); and many others. Nonetheless, you now have a core understanding of what takes place within the algorithm, and the foundation to dive more deeply into the DQN Nature paper. <p></p>
+There are other features around DQN implementation, including: the pre-processing required for video frames; the use of two neural networks to assist with convergence (network 1 is updated with target values at given intervals, while network 2 is used to predict Q-values and is updated with network 1's weights at less frequent intervals); and many others. Nonetheless, you now have a core understanding of what takes place within the algorithm, and the foundation to dive more deeply into the <a href="https://deepmind.com/research/dqn/">DQN paper</a>. <p></p>
 
 <header>
 <h3> 4. Additional Resources</h3>
 </header>
-If you're familar with Python, here is <a href="pong_code/train_pong_DQN.py">code</a> that implements DQN with <a href = "https://gym.openai.com/"">OpenAI's Gym environment</a>. It's written with a view to readability (not programmatic efficiency). Pay attention to lines 140 - 155 (where an action is selected based on an $\epsilon$-greedy policy) and lines 78 - 96 (where the neural network is updated). <p></p>
+If you're familar with Python, here is a fairly readable code file <a href="https://github.com/aparna-surendra/aparna-surendra.github.io/blob/master/pong_code/train_pong_DQN.py">code</a> that implements a DQN with <a href = "https://gym.openai.com/"">OpenAI's Gym environment</a>. Pay attention to lines 140 - 155 (where an action is selected based on an $\epsilon$-greedy policy) and lines 78 - 96 (where the neural network is updated). If you would like to run the code, you will likely need to set yourself up with a cloud compute service. <p></p>
 
-The following video was trained with that code: <p></p>
+The agent in the following video was trained with that code: <p></p>
 
 <div align="center">
 <video width="320" height="240" controls>
@@ -282,6 +283,7 @@ The following video was trained with that code: <p></p>
 </div>
 <p></p>
 And, as mentioned previously,  David Silver's <a href='https://www.youtube.com/watch?v=2pWv7GOvuf0'>RL lecture series </a> is available on YouTube, and Rich Sutton and Andrew Barto's textbook <a href="http://incompleteideas.net/book/bookdraft2017nov5.pdf">'Reinforcement Learning: An Introduction'</a> is available free on-line.
+<p></p>
 </body>    
 
 <div align="center">

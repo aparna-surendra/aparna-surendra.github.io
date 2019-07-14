@@ -39,18 +39,18 @@ text {
 <script src="grids/grid.js" type="text/javascript"></script>
 </div>
 
-<p>After interacting with grid above (<b>training</b>) with the environment, you should be able to hit the ‘Reset’ button and play the game for +4  – this is the maximum possible total rewards.</p>
+<p>After interacting with grid above (<b>"training"</b> with the environment), you should be able to hit the ‘Reset’ button and play the game for +4, which is the maximum possible total reward.</p>
 
 <div align="center">
 <div id="grid0"></div>
 <script src="grids/grid27.js" type="text/javascript"></script>
 </div>
 <p>
-In many ways, reinforcement learning can be considered the computational approach to what you just did: you approached a new environment with a given goal, interacted with the environment to learn by trial-and-error, and identified the best possible strategy to achieve the goal (selecting the squares along the diagonal). </p> 
+In many ways, reinforcement learning can be considered the computational approach to what you just did: you approached a new environment with a given goal, interacted with the environment to learn by trial-and-error, and identified the best possible strategy to achieve the goal (selected the squares along the diagonal). </p> 
 </p>
 <p> Through interaction, you would have identifed: 
 <ul> <li> <b>Legal actions:</b> The game must begin on the top-left square; You can only move along adjacent squares within the grid. </li></ul>
-<ul> <li> <b>Reward details:</b> The square along the diagonal have a positive reward (+1, coloured in blue). All other squares have a negative reward (-1, coloured in orange). You can only receive one reward per square per game. You can return to a square within a game, but will not receive a reward for this action. </li> </ul>
+<ul> <li> <b>Reward details:</b> The squares along the diagonal have a positive reward (+1, coloured in blue). All other squares have a negative reward (-1, coloured orange). You can only receive one reward per square per game. While you can return to a square within a game, you will not receive a reward for this action. </li> </ul>
 </p>
 
 <header>
@@ -58,13 +58,15 @@ In many ways, reinforcement learning can be considered the computational approac
 </header>
 <p> Let's introduce some reinforcement learning terminology: 
   <ul> <li> Our 4 x 4 grid is an <b>'environment'</b>. A representation of an environment is known as a <b>'state'</b>. For simplicity, we can refer to each square in our grid as a state (this is not quite correct, but serves the purpose of this primer). The concept of a state will soon become clearer, especially when we discuss environments that better-resemble the real world. </li></ul>
-  <ul> <li> The move from one square (state) to another is known as an <b>'action'</b>. </ul></li></p>
-  <ul> <li> The points received for each state is known as a <b>'reward'</b> </ul></li>
+  <ul> <li> The move from one state to another (up/down/left/right/etc) is an <b>'action'</b>. </ul></li></p>
+  <ul> <li> The points received for each state is a <b>'reward'</b> </ul></li>
   <ul> <li> The sequence to follow (the mapping of states to actions) is known as the <b>'policy'</b> </ul></li>
 </p>
 <p>
-To make it more concrete, let's frame our optimal strategy using these new terms:</p>
-<p> Our first <b>action</b> is to move (from the off-the-grid <b>state</b>) to State 0 <b>state</b>, receiving a <b>reward</b> of +1. We then follow a <b> policy</b> from State 0 to 5,froom State 5 to 10, and State 10 to 15. In reinforcement learning, we will train an <b>agent</b> to do the same. </p>
+To make it more concrete, let's frame our optimal strategy using these new terms:</p> 
+<p> Our first <b>action</b> is to move (from the off-the-grid <b>state</b>) to State 0 <b>state</b>, receiving a <b>reward</b> of +1. We then follow a <b> policy</b> from State 0 - State 5-  State 10 - State 15. </p>
+
+<p>In reinforcement learning, we train an <b>agent</b> to do the same. </p>
 <p>
 
 </div>
