@@ -3,14 +3,15 @@ layout: default
 ---
 
 <h3> A REINFORCEMENT LEARNING PRIMER </h3>
-This reinforcement learning (RL) primer introduces RL fundamentals, and explicitly extends them to topics in AI research. It hopes to bridge the gap between high-level discussions and technical AI research.
-It is divided into two sections:
+This reinforcement learning (RL) primer introduces RL fundamentals, and explicitly extends them to topics in AI research. It is divided into two sections:
 
 – Concepts: Introduces RL concepts and terminology through interactive grids and discussion.
 
 – Calculations: Formalises the concepts with mathematical equations and notation, using examples and interactive grids
 
-This primer was designed for those with an interest in AI, but without any specialised knowledge. On completing it, the reader should be able to engage more deeply with technical AI  – whether it be through deeper understanding of <a href = "https://www.nytimes.com/2019/05/30/science/deep-mind-artificial-intelligence.html">media coverage</a>, or with intermediate RL resources.
+This primer was designed for those with an interest in AI, but without any specialised knowledge. It aims to bridge the gap between high-level discussions and technical AI research.
+
+On completing it, the reader should be able to engage more deeply with technical AI  – whether it be through deeper understanding of <a href = "https://www.nytimes.com/2019/05/30/science/deep-mind-artificial-intelligence.html">media coverage</a>, or intermediate RL resources.
 
 <h4>CONCEPTS</h4> 
 – [1/5: Introduction to reinforcement learning](page1.html)
@@ -30,4 +31,5 @@ This primer was designed for those with an interest in AI, but without any speci
 – [2/2: The Q-learning algorithm](page7.html)
 
 
-All concepts in this tutorial are heavily indebted to Rich Sutton and Andrew Barto's [Reinforcement learning: An introduction (2017)](http://incompleteideas.net/book/bookdraft2017nov5.pdf). 
+
+*All concepts in this tutorial are heavily indebted to Rich Sutton and Andrew Barto's [Reinforcement learning: An introduction (2017)](http://incompleteideas.net/book/bookdraft2017nov5.pdf). 
